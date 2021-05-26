@@ -1,0 +1,38 @@
+$color_copyrigth: #999999;
+$color_phone: #121212;
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: local('Roboto'), url(./../../fonts/Roboto-Regular.ttf) format('truetype');
+  }
+.footer{
+    display: flex;
+    justify-content: flex-end;
+}
+.footer__copyright{
+    position: absolute;
+    width: 173px;
+    height: 16px;
+    left: 128px;
+    top: 763px;
+    
+    font-family: Roboto-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+    color: $color_copyrigth;
+}
+.footer__phone{
+    position: absolute;
+    width: 103px;
+    height: 16px;
+    left: 585px;
+    top: 763px;
+    
+    font-family: Roboto-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+    color: $color_phone;
+}
