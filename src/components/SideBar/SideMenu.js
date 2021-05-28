@@ -29,6 +29,12 @@ const Menu = styled.nav`
     css`
       transform: translateX(0);
     `}
+  @media screen and (max-width: 767px) { 
+    background:  #111518;
+    padding-left: 0px;
+    padding-top: 0px;
+  } 
+  
 `;
 
 export const MenuLink = styled.a`
@@ -54,6 +60,13 @@ export const MenuLink = styled.a`
   :hover {
    color: #0EC261;
   }
+  @media screen and (max-width: 767px) { 
+    
+    margin-left: 28px;
+    top: 100px;
+    font-size: 22px;
+    line-height: 26px;
+  } 
 `;
 export const ImgLink = styled.div`
 display: flex;
@@ -63,6 +76,12 @@ width: 144px;
 height: 32px;
 margin-left: 64px;
 top: 543px;
+@media screen and (max-width: 767px) { 
+  width: 144px;
+  height: 32px;
+  margin-left: 28px;
+  top: 267px;
+} 
 `;
 
 export const SideMenu = ({ children }) => {
@@ -83,9 +102,9 @@ SideMenu.defaultProps = {
       <MenuLink href="/petrol">БЕНЗИН</MenuLink>
       <MenuLink href="/service">ОБСЛУЖИВАНИЕ</MenuLink>
       <ImgLink>
-      <img src = {telegram}/>
-      <img src = {facebook}/>
-      <img src = {instagram}/>      
+      <img src = {telegram} alt = ''/>
+      <img src = {facebook} alt = ''/>
+      <img src = {instagram} alt = ''/>      
       </ImgLink>
       
     </>

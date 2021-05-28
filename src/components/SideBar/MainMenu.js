@@ -20,6 +20,16 @@ const Navbar = styled.div`
   top: 0px;
   justify-content: flex-start;  
   z-index: 500;
+  @media screen and (max-width: 1023px) { 
+    width: 85.77px;
+} 
+  @media screen and (max-width: 767px) { 
+    width: 33.57px;
+    height: 33.45px;
+    left: 16px;
+    top: 16px;
+    background: none;
+} 
 `;
 export const Language = styled.div`
 position: absolute;

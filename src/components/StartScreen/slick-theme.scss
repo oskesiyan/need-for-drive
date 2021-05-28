@@ -192,3 +192,9 @@ $slick-opacity-not-active: 1;
     }
     
 }
+@media screen and (max-width: 1023px) {
+    .slick-prev,
+    .slick-next {
+        width: 32px;        
+    }
+}
