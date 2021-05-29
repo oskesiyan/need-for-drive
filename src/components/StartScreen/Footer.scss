@@ -7,6 +7,8 @@ $color_phone: #121212;
 .footer{
     display: flex;
     justify-content: flex-end;
+    width: 100%; 
+    align-items: flex-end;   
 }
 .footer__copyright{
     position: absolute;
@@ -35,4 +37,56 @@ $color_phone: #121212;
     font-size: 13px;
     line-height: 15px;
     color: $color_phone;
+}
+@media screen and (max-width: 1439px) {
+    .footer__copyright{
+        width: 192px;
+        height: 12px;
+        left: 97px;
+        top: 763px;
+}
+    .footer__phone{
+        width: 103px;
+        height: 16px;
+        left: 479px;
+        top: 763px;
+    }
+}
+@media screen and (max-width: 1023px) {
+    .footer__copyright{
+        width: 192px;
+        height: 12px;
+        left: 117px;
+        top: 757px;
+}
+    .footer__phone{
+        width: 103px;
+        height: 16px;
+        left: 629px;
+        top: 757px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .footer{
+        
+        height: 72px;
+        left: 0px;
+        margin-top: 496px;
+
+        background: #151B1F;    
+    }
+    .footer__copyright{
+        width: 173px;
+        height: 16px;
+        left: 131px;
+        top: 536px;
+        color: #EEEEEE;
+}
+    .footer__phone{
+        width: 103px;
+        height: 16px;
+        left: 201px;
+        top: 512px;
+        color: #0EC261;
+    }
 }

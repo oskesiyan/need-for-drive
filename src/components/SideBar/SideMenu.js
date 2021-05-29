@@ -29,6 +29,10 @@ const Menu = styled.nav`
     css`
       transform: translateX(0);
     `}
+  @media screen and (max-width: 1439px) { 
+      background:  #111518;
+      
+    }
   @media screen and (max-width: 767px) { 
     background:  #111518;
     padding-left: 0px;

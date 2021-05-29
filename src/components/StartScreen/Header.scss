@@ -30,7 +30,7 @@ left: 595px;
 top: 39px;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1439px) {
 .header__logo{
   width: 192px;
   height: 36px;
@@ -44,7 +44,7 @@ top: 39px;
   top: 41px;
   }
 }
-@media screen and (max-width: 767px) { 
+@media screen and (max-width: 1023px) { 
   .header__logo{
     width: 239px;
     height: 33px;
@@ -57,4 +57,18 @@ top: 39px;
     left: 642px;
     top: 38px;
     }
+  }
+  @media screen and (max-width: 767px) {
+    .header__logo{
+      width: 192px;
+      height: 36px;
+      left: 112px;
+      top: 16px;
+    }
+    .header__location{
+      width: 93.5px;
+      height: 18.33px;
+      left: 210px;
+      top: 60px;
+      }
   }
