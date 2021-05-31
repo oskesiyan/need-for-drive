@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.72c2d94e.chunk.css",
+    "main.js": "/static/js/main.530eff7e.chunk.js",
+    "main.js.map": "/static/js/main.530eff7e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.87af3f9e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.87af3f9e.js.map",
+    "static/js/2.5b67b374.chunk.js": "/static/js/2.5b67b374.chunk.js",
+    "static/js/2.5b67b374.chunk.js.map": "/static/js/2.5b67b374.chunk.js.map",
+    "static/js/3.c9d6c12c.chunk.js": "/static/js/3.c9d6c12c.chunk.js",
+    "static/js/3.c9d6c12c.chunk.js.map": "/static/js/3.c9d6c12c.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.72c2d94e.chunk.css.map": "/static/css/main.72c2d94e.chunk.css.map",
+    "static/js/2.5b67b374.chunk.js.LICENSE.txt": "/static/js/2.5b67b374.chunk.js.LICENSE.txt",
+    "static/media/Header.scss": "/static/media/Roboto-Bold.75371f53.ttf",
+    "static/media/slick-theme.scss": "/static/media/Roboto-Light.8be2d148.ttf",
+    "static/media/StartScreen.scss": "/static/media/Roboto-Medium.7429a63c.ttf",
+    "static/media/Footer.scss": "/static/media/Roboto-Regular.a8d6ac03.ttf",
+    "static/media/slide1_parking.28eb6a60.png": "/static/media/slide1_parking.28eb6a60.png",
+    "static/media/slide2_insurance.267d0683.png": "/static/media/slide2_insurance.267d0683.png",
+    "static/media/slide3_patrol.4f3163f1.png": "/static/media/slide3_patrol.4f3163f1.png",
+    "static/media/slide4_servise.55a575ee.png": "/static/media/slide4_servise.55a575ee.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.87af3f9e.js",
+    "static/js/2.5b67b374.chunk.js",
+    "static/css/main.72c2d94e.chunk.css",
+    "static/js/main.530eff7e.chunk.js"
+  ]
+}
