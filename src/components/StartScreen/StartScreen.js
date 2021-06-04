@@ -1,6 +1,4 @@
 import './StartScreen.scss';
-import Header from './Header';
-import Footer from './Footer';
 import slide1 from './../../img/slide1_parking.png';
 import slide2 from './../../img/slide2_insurance.png';
 import slide3 from './../../img/slide3_patrol.png';
@@ -8,6 +6,7 @@ import slide4 from './../../img/slide4_servise.png';
 import "./slick.scss";
 import "./slick-theme.scss";
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 
 const StartScreen = () =>{
   let settings = {
@@ -25,16 +24,16 @@ return(
       <div className = 'app-wraper__block__text1'>Каршеринг</div>
       <div className = 'app-wraper__block__text2'>Need for drive</div>
       <div className = 'app-wraper__block__text3'>Поминутная аренда авто твоего города</div>          
-      <button className = 'app-wraper__button'>Забронировать</button>
-      <Header/>
-      <Footer/>
+      <Link to = '/order'>
+        <button className = 'app-wraper__button'>Забронировать</button>
+      </Link>      
     </div>      
     <Slider {...settings}>           
         <div className = 'slider-block' >
           <img src={slide1} alt = ''/>
           <div className = 'slider-block__text1'>Бесплатная парковка</div>
-          <p className = 'slider-block__text2'>Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах</p>  
-          <button className = 'slider-block__button'>Подробнее</button>         
+          <p className = 'slider-block__text2'>Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах</p>          
+            <button className = 'slider-block__button'>Подробнее</button>                 
         </div>
         <div>
           <img src={slide2} alt = ''/>
