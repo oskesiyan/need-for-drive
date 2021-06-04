@@ -5,10 +5,11 @@ $color_phone: #121212;
     src: local('Roboto'), url(./../../fonts/Roboto-Regular.ttf) format('truetype');
   }
 .footer{
-    display: flex;
-    justify-content: flex-end;
-    width: 100%; 
-    align-items: flex-end;   
+    
+    // display: flex;
+    // justify-content: flex-end;
+    // width: 100%; 
+    // align-items: flex-end;   
 }
 .footer__copyright{
     position: absolute;
@@ -67,8 +68,13 @@ $color_phone: #121212;
     }
 }
 @media screen and (max-width: 767px) {
+   
     .footer{
-        
+        // display: flex;
+        // justify-content: flex-end;
+        // width: 100%; 
+        // align-items: flex-end;
+
         height: 72px;
         left: 0px;
         margin-top: 496px;

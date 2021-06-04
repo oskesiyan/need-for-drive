@@ -14,11 +14,12 @@ function App() {
       <NavState>
         <MainMenu />
         <Header/>
-        <Footer/>
         <Switch>
           <Route path='/need-for-drive' component={StartScreen} exact/>          
           <Route path='/order' component={OrderPage}/>
         </Switch>
+        <Footer/>
+        
       </NavState>    
     </Router>
   );

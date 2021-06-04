@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { MenuContext } from './../../context/NavState';
-import instagram from './../../img/Instagram_white.png';
-import facebook from './../../img/Facebook_white.png';
-import telegram from './../../img/Telegram_white.png';
+import { ReactSVG } from 'react-svg'
+import instagram from './../../img/Instagram.svg';
+import facebook from './../../img/facebook.svg';
+import telegram from './../../img/telegram.svg';
 
 const Menu = styled.nav`
   position: absolute;
@@ -88,6 +89,7 @@ top: 543px;
 } 
 `;
 
+
 export const SideMenu = ({ children }) => {
   const { isMenuOpen } = useContext(MenuContext);
 
@@ -106,9 +108,9 @@ SideMenu.defaultProps = {
       <MenuLink href="/petrol">БЕНЗИН</MenuLink>
       <MenuLink href="/service">ОБСЛУЖИВАНИЕ</MenuLink>
       <ImgLink>
-      <img src = {telegram} alt = ''/>
-      <img src = {facebook} alt = ''/>
-      <img src = {instagram} alt = ''/>      
+      <ReactSVG src={telegram} />
+      <ReactSVG src={facebook} />
+      <ReactSVG src={instagram} />  
       </ImgLink>
       
     </>
