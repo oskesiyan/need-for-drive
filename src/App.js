@@ -10,13 +10,13 @@ import OrderPage from './components/OrderPage/OrderPage';
 
 function App() {
   return (
-    <Router basename = {process.env.PUBLIC_URL}>    
+    <Router >    
       <NavState>
         <MainMenu />
         <Header/>
         <Footer/>
         <Switch>
-          <Route path='/' component={StartScreen} exact/>          
+          <Route path='/need-for-drive' component={StartScreen} exact/>          
           <Route path='/order' component={OrderPage}/>
         </Switch>
       </NavState>    
