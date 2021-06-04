@@ -10,7 +10,7 @@ import OrderPage from './components/OrderPage/OrderPage';
 
 function App() {
   return (
-    <Router>    
+    <Router basename = {process.env.PUBLIC_URL}>    
       <NavState>
         <MainMenu />
         <Header/>
