@@ -4,20 +4,12 @@ $color_phone: #121212;
     font-family: 'Roboto-Regular';
     src: local('Roboto'), url(./../../fonts/Roboto-Regular.ttf) format('truetype');
   }
-.footer{
-    
-    // display: flex;
-    // justify-content: flex-end;
-    // width: 100%; 
-    // align-items: flex-end;   
-}
+
 .footer__copyright{
     position: absolute;
-    width: 173px;
     height: 16px;
     left: 128px;
-    top: 763px;
-    
+    top: 96%;    
     font-family: Roboto-Regular;
     font-style: normal;
     font-weight: normal;
@@ -27,10 +19,9 @@ $color_phone: #121212;
 }
 .footer__phone{
     position: absolute;
-    width: 103px;
     height: 16px;
-    left: 585px;
-    top: 763px;
+    left: 80%;
+    top: 96%;
     
     font-family: Roboto-Regular;
     font-style: normal;
@@ -40,32 +31,15 @@ $color_phone: #121212;
     color: $color_phone;
 }
 @media screen and (max-width: 1439px) {
-    .footer__copyright{
-        width: 192px;
-        height: 12px;
-        left: 97px;
-        top: 763px;
+.footer__copyright{
+    left: 97px;
 }
-    .footer__phone{
-        width: 103px;
-        height: 16px;
-        left: 479px;
-        top: 763px;
-    }
 }
+
 @media screen and (max-width: 1023px) {
-    .footer__copyright{
-        width: 192px;
-        height: 12px;
-        left: 117px;
-        top: 757px;
-}
-    .footer__phone{
-        width: 103px;
-        height: 16px;
-        left: 629px;
-        top: 757px;
-    }
+.footer__copyright{
+    left: 117px;
+}    
 }
 @media screen and (max-width: 767px) {
    

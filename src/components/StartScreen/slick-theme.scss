@@ -61,7 +61,7 @@ $slick-opacity-not-active: 1;
 .slick-next {
     position: absolute;
     display: block;
-    height: 811px;
+    height: 100%;
     width: 64px;
     line-height: 0px;
     font-size: 0px;
@@ -129,17 +129,17 @@ $slick-opacity-not-active: 1;
 /* Dots */
 
 .slick-dotted.slick-slider {
-    margin-bottom: 37px;
+    margin-bottom: 1px;
     
 }
 
 .slick-dots {
     position: absolute;
-    bottom: 37px;
+    bottom: 1px;
     list-style: none;
     display: block;
     text-align: center;
-    padding: 0;
+    padding: 32px;
     margin: 0;
     width: 100%;
    z-index:200;

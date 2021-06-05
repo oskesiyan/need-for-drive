@@ -20,31 +20,32 @@ const Navbar = styled.div`
   top: 0px;
   justify-content: flex-start;  
   z-index: 500;
-  @media screen and (max-width: 1023px) { 
-    width: 85.77px;
+@media screen and (max-width: 1023px) { 
+  width: 85.77px;
 } 
-  @media screen and (max-width: 767px) { 
-    width: 33.57px;
-    height: 33.45px;
-    left: 16px;
-    top: 16px;
-    background: none;
+@media screen and (max-width: 767px) { 
+  width: 33.57px;
+  height: 33.45px;
+  left: 16px;
+  background: none;
 } 
 `;
 export const Language = styled.div`
-position: absolute;
-width: 23px;
-height: 16px;
-left: 21px;
-top: 763px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 13px;
-line-height: 15px;
-color: #0EC261;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  width: 23px;
+  height: 16px;
+  left: 21px;
+  top: 96%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  color: #0EC261;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+@media screen and (max-width: 767px) { 
+  display: none;
+} 
 `;
 
 const MainMenu = () => {

@@ -7,6 +7,8 @@ import "./slick.scss";
 import "./slick-theme.scss";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
+import Header from './../Header/Header';
+import Footer from '../Footer/Footer';
 
 const StartScreen = () =>{
   let settings = {
@@ -19,43 +21,47 @@ const StartScreen = () =>{
   };
 
 return(
-  <div className = 'app-wraper'>        
-    <div className = 'app-wraper__block'>        
-      <div className = 'app-wraper__block__text1'>Каршеринг</div>
-      <div className = 'app-wraper__block__text2'>Need for drive</div>
-      <div className = 'app-wraper__block__text3'>Поминутная аренда авто твоего города</div>          
-      <Link to = '/order'>
-        <button className = 'app-wraper__button'>Забронировать</button>
-      </Link>      
-    </div>      
+  <div className = 'wraper'>
+    <div className = 'app-wraper'>
+      <Header/>  
+         
+      <div className = 'app-wraper__block'>        
+        <div className = 'app-wraper__block__text1'>Каршеринг</div>
+        <div className = 'app-wraper__block__text2'>Need for drive</div>
+        <div className = 'app-wraper__block__text3'>Поминутная аренда авто твоего города</div>          
+        <Link to = '/order' className = 'app-wraper__button-link'>
+          <button className = 'app-wraper__button'>Забронировать</button>
+        </Link>      
+      </div>  
+      <Footer/>   
+    </div>
     <Slider {...settings}>           
-        <div className = 'slider-block' >
-          <img src={slide1} alt = ''/>
-          <div className = 'slider-block__text1'>Бесплатная парковка</div>
-          <p className = 'slider-block__text2'>Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах</p>          
-            <button className = 'slider-block__button'>Подробнее</button>                 
-        </div>
-        <div>
-          <img src={slide2} alt = ''/>
-          <div className = 'slider-block__text1'>Страховка</div>
-          <p className = 'slider-block__text2'>Полная страховка страховка автомобиля</p>  
-          <button className = 'slider-block__button color__slide2'>Подробнее</button> 
-        </div>  
-        <div  >
-          <img src={slide3} alt = ''/>
-          <div className = 'slider-block__text1'>Бензин</div>
-          <p className = 'slider-block__text2'>Полный бак на любой заправке города за наш счёт</p>  
-          <button className = 'slider-block__button color__slide3'>Подробнее</button> 
-        </div>  
-        <div >
-          <img src={slide4} alt = ''/>
-          <div className = 'slider-block__text1'>Обслуживание</div>
-          <p className = 'slider-block__text2'>Автомобиль проходит еженедельное ТО</p>  
-          <button className = 'slider-block__button color__slide4'>Подробнее</button> 
-        </div>           
-    </Slider>
-      
-  </div>
+    <div className = 'slider-blockk' >
+      <img src={slide1} alt = ''/>
+      <div className = 'slider-block__text1'>Бесплатная парковка</div>
+      <p className = 'slider-block__text2'>Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах</p>          
+      <button className = 'slider-block__button'>Подробнее</button>                 
+    </div>
+    <div className = 'slider-blockk'>
+      <img src={slide2} alt = ''/>
+      <div className = 'slider-block__text1'>Страховка</div>
+      <p className = 'slider-block__text2'>Полная страховка страховка автомобиля</p>  
+      <button className = 'slider-block__button color__slide2'>Подробнее</button> 
+    </div>  
+    <div className = 'slider-blockk' >
+      <img src={slide3} alt = ''/>
+      <div className = 'slider-block__text1'>Бензин</div>
+      <p className = 'slider-block__text2'>Полный бак на любой заправке города за наш счёт</p>  
+      <button className = 'slider-block__button color__slide3'>Подробнее</button> 
+    </div>  
+    <div className = 'slider-block'>
+      <img src={slide4} alt = ''/>
+      <div className = 'slider-block__text1'>Обслуживание</div>
+      <p className = 'slider-block__text2'>Автомобиль проходит еженедельное ТО</p>  
+      <button className = 'slider-block__button color__slide4'>Подробнее</button> 
+    </div>           
+  </Slider>
+</div>
 )
 }
 

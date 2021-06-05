@@ -33,6 +33,7 @@ const MenuButton = styled.button`
 
   }
   @media screen and (max-width: 767px) { 
+    padding: 16px;
     &.active {
       span:nth-of-type(1) {
       background-color: white;
