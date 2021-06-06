@@ -23,8 +23,7 @@ const StartScreen = () =>{
 return(
   <div className = 'wraper'>
     <div className = 'app-wraper'>
-      <Header/>  
-         
+      <Header/>          
       <div className = 'app-wraper__block'>        
         <div className = 'app-wraper__block__text1'>Каршеринг</div>
         <div className = 'app-wraper__block__text2'>Need for drive</div>

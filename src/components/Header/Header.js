@@ -6,10 +6,8 @@ const Header = () => {
     return(
         <div>
             <div className = 'header__logo'>Need for drive</div>
-            {/* <div className = 'header__location'> */}
-                <ReactSVG src={map} className = 'header__location-map'/>
-                <div className = 'header__location-text'>Ульяновск</div>
-            {/* </div> */}
+            <ReactSVG src={map} className = 'header__location-map'/>
+            <div className = 'header__location-text'>Ульяновск</div>
         </div>
     )
 }

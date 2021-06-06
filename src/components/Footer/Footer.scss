@@ -1,5 +1,7 @@
 $color_copyrigth: #999999;
 $color_phone: #121212;
+$color_phone_mobile: #0EC261;
+$color_copyright: #EEEEEE;
 @font-face {
     font-family: 'Roboto-Regular';
     src: local('Roboto'), url(./../../fonts/Roboto-Regular.ttf) format('truetype');
@@ -42,31 +44,31 @@ $color_phone: #121212;
 }    
 }
 @media screen and (max-width: 767px) {
-   
-    .footer{
-        // display: flex;
-        // justify-content: flex-end;
-        // width: 100%; 
-        // align-items: flex-end;
-
-        height: 72px;
-        left: 0px;
-        margin-top: 496px;
-
-        background: #151B1F;    
-    }
-    .footer__copyright{
-        width: 173px;
-        height: 16px;
-        left: 131px;
-        top: 536px;
-        color: #EEEEEE;
+.footer__copyright{
+    left: 0px;
+    right: 12px;
+    text-align: end;
+    top: 96%;
+    color: $color_copyright;
+    z-index: 2;
+    white-space: nowrap;
 }
-    .footer__phone{
-        width: 103px;
-        height: 16px;
-        left: 201px;
-        top: 512px;
-        color: #0EC261;
-    }
+.footer__phone{
+    top: 93%;
+    text-align: end;
+    left: 0px;
+    right: 12px;
+    color: $color_phone_mobile;
+    z-index: 2;
+    white-space: nowrap;
+}
+.footer{
+    position: absolute;
+    top:91%;
+    height: 72px;
+    width: 100%;
+    left: 0;
+    background: $color_phone;
+    z-index: 1;
+}
 }

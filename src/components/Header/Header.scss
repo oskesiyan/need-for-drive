@@ -61,29 +61,24 @@ $locationColor: #999999;
 }
 @media screen and (max-width: 767px) {
 .header__logo{
-  width: 192px;
-  height: 36px;
-  left: 112px;
+  width: auto;
+  left: 0px;
+  right: 12px;
+  text-align: end;
   top: 16px;
 }
-// .header__location{
-//   width: 93.5px;
-//   height: 18.33px;
-//   left: 210px;
-//   top: 60px;
-//   }
-// .header__location-text{
-//   position: absolute;
-//   width: 93.5px;
-//   height: 18.33px;
-//   left: 232.5px;
-//   top: 60px;
-
-//   font-family: Roboto-Regular;
-//   font-style: normal;
-//   font-weight: normal;
-//   font-size: 14px;
-//   line-height: 16px;
-//   color: $locationColor;
-//   }
+.header__location-map {
+  width: auto;
+  left: 0px;
+  right: 90px;
+  top: 60px;
+  text-align: end;
+  }
+.header__location-text{
+  width: auto;
+  left: 0px;
+  right: 12px;
+  top: 63px;
+  text-align: end;
+  }
 }
