@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/need-for-drive/static/css/main.9bc3fa3f.chunk.css",
-    "main.js": "/need-for-drive/static/js/main.4c4dc59b.chunk.js",
-    "main.js.map": "/need-for-drive/static/js/main.4c4dc59b.chunk.js.map",
-    "runtime-main.js": "/need-for-drive/static/js/runtime-main.4048b39f.js",
-    "runtime-main.js.map": "/need-for-drive/static/js/runtime-main.4048b39f.js.map",
-    "static/js/2.ec707f5b.chunk.js": "/need-for-drive/static/js/2.ec707f5b.chunk.js",
-    "static/js/2.ec707f5b.chunk.js.map": "/need-for-drive/static/js/2.ec707f5b.chunk.js.map",
-    "static/js/3.c5a039ea.chunk.js": "/need-for-drive/static/js/3.c5a039ea.chunk.js",
-    "static/js/3.c5a039ea.chunk.js.map": "/need-for-drive/static/js/3.c5a039ea.chunk.js.map",
+    "main.css": "/need-for-drive/static/css/main.ad83ffe6.chunk.css",
+    "main.js": "/need-for-drive/static/js/main.2217471b.chunk.js",
+    "main.js.map": "/need-for-drive/static/js/main.2217471b.chunk.js.map",
+    "runtime-main.js": "/need-for-drive/static/js/runtime-main.2e96af02.js",
+    "runtime-main.js.map": "/need-for-drive/static/js/runtime-main.2e96af02.js.map",
+    "static/js/2.a12fd015.chunk.js": "/need-for-drive/static/js/2.a12fd015.chunk.js",
+    "static/js/2.a12fd015.chunk.js.map": "/need-for-drive/static/js/2.a12fd015.chunk.js.map",
+    "static/js/3.59f270b1.chunk.js": "/need-for-drive/static/js/3.59f270b1.chunk.js",
+    "static/js/3.59f270b1.chunk.js.map": "/need-for-drive/static/js/3.59f270b1.chunk.js.map",
     "index.html": "/need-for-drive/index.html",
-    "static/css/main.9bc3fa3f.chunk.css.map": "/need-for-drive/static/css/main.9bc3fa3f.chunk.css.map",
-    "static/js/2.ec707f5b.chunk.js.LICENSE.txt": "/need-for-drive/static/js/2.ec707f5b.chunk.js.LICENSE.txt",
+    "static/css/main.ad83ffe6.chunk.css.map": "/need-for-drive/static/css/main.ad83ffe6.chunk.css.map",
+    "static/js/2.a12fd015.chunk.js.LICENSE.txt": "/need-for-drive/static/js/2.a12fd015.chunk.js.LICENSE.txt",
     "static/media/Instagram.98094ec4.svg": "/need-for-drive/static/media/Instagram.98094ec4.svg",
     "static/media/Map_order.96309faa.png": "/need-for-drive/static/media/Map_order.96309faa.png",
     "static/media/react-tabs.scss": "/need-for-drive/static/media/Roboto-Bold.75371f53.ttf",
-    "static/media/OrderPage.scss": "/need-for-drive/static/media/Roboto-Medium.7429a63c.ttf",
+    "static/media/OrderPage.scss": "/need-for-drive/static/media/order_vector.ce81e742.svg",
     "static/media/Footer.scss": "/need-for-drive/static/media/Roboto-Regular.a8d6ac03.ttf",
     "static/media/facebook.c1876cc3.svg": "/need-for-drive/static/media/facebook.c1876cc3.svg",
     "static/media/location_vector.9d09636f.svg": "/need-for-drive/static/media/location_vector.9d09636f.svg",
@@ -26,9 +26,9 @@
     "static/media/telegram.e8137bbe.svg": "/need-for-drive/static/media/telegram.e8137bbe.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4048b39f.js",
-    "static/js/2.ec707f5b.chunk.js",
-    "static/css/main.9bc3fa3f.chunk.css",
-    "static/js/main.4c4dc59b.chunk.js"
+    "static/js/runtime-main.2e96af02.js",
+    "static/js/2.a12fd015.chunk.js",
+    "static/css/main.ad83ffe6.chunk.css",
+    "static/js/main.2217471b.chunk.js"
   ]
 }

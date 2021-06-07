@@ -6,7 +6,7 @@ $lineColor: #EEEEEE;
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
   margin-top: 96px;
-  margin-left: 128px;
+  // margin-left: 128px;
 
   &__tab-list {
     border-bottom: 1px solid $lineColor;
@@ -24,13 +24,20 @@ $lineColor: #EEEEEE;
     bottom: -1px;
     position: relative;
     list-style: none;
-    padding: 6px 12px;
+    padding: 6px 6px;
+    left: 122px;
     cursor: pointer;
+    color: #999999;
+    font-family: Roboto-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
 
     &--selected {
-      background: #fff;
+      // background: #fff;
       border-color: #aaa;
-      color: rgb(0, 0, 0);
+      color: #0EC261;
       border-radius: 5px 5px 0 0;
     }
 
@@ -40,9 +47,9 @@ $lineColor: #EEEEEE;
     }
 
     &:focus {
-      box-shadow: 0 0 5px hsl(208, 99%, 50%);
-      border-color: hsl(208, 99%, 50%);
-      outline: none;
+      // box-shadow: 0 0 5px hsl(208, 99%, 50%);
+      // border-color: hsl(208, 99%, 50%);
+      // outline: none;
 
       &:after {
         content: "";

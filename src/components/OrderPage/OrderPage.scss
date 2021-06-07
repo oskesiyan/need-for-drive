@@ -30,6 +30,18 @@ border: 1px solid $lineColor;
 transform: rotate(90deg);
 
 }
+.tabs-block__tab{
+    display: flex;
+}
+.tabs-block__tab__vector{
+    height: 8px;
+    width: 6px;
+    margin-top: 4.5px;
+    margin-left: 16px;
+    display: block;
+    background-color: #999999;
+    mask-image: url(../../img/order_vector.svg);
+}
 .tabs-blok__step1__position{
 
 }
@@ -100,7 +112,7 @@ transform: rotate(90deg);
     height: 16px;
     left: 128px;
     top: 192px;
-    
+    white-space: nowrap;
     font-family: Roboto-Light;
     font-style: normal;
     font-weight: 300;
@@ -123,7 +135,7 @@ transform: rotate(90deg);
     height: 16px;
     left: 128px;
     top: 256px;
-    
+    white-space: nowrap;
     font-family: Roboto-Light;
     font-style: normal;
     font-weight: 300;
@@ -144,14 +156,15 @@ transform: rotate(90deg);
     border-left: 1px solid $lineColor;
     width: 0px;
     height: 100%;
-    left: 1056px;
-    top: 130px;
+    // left: 1056px;
+    right: 384px;;
+    top: 125px;
 }
 .tabs-blok__step1__order-info__order{
     position: absolute;
     width: 225px;
     height: 22px;
-    left: 32px;
+    left: 85px;
     top: 30px;
     
     font-family: Roboto-Medium;
@@ -176,6 +189,20 @@ transform: rotate(90deg);
     line-height: 16px;
     color: $textColor;
     
+}
+.tabs-blok__step1__order-info__city-point{
+    position: absolute;
+    width: 91px;
+    height: 16px;
+    left: 200px;
+    top: 78px;
+    white-space: nowrap;
+    font-family: Roboto-Light;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: $inputColorLine;
 }
 .tabs-blok__step1__order-info__price{
     position: absolute;
