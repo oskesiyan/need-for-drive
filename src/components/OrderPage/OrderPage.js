@@ -8,6 +8,8 @@ import  'react-textfield';
 import Select from 'react-select';
 import { useState, useEffect } from 'react';
 import Header from '../Header/Header';
+import Step1 from './Step1/Step1';
+import {getData} from './../../utils/index'
 
 const OrderPage = () => {
 const city = [
@@ -24,6 +26,33 @@ const point = [
 ];
 const [selectedCity, setSelectedCity] = useState(null);
 const [selectedPoint, setSelectedPoint] = useState(null);
+const [selectedModel, setSelectedModel] = useState(null);
+
+const [allCarsState, setAllCars] = useState(false);
+const [economyCarsState, setEconomyCars] = useState(false);
+const [premiumCarsState, setPremiumCars] = useState(false);
+
+const [allCarsData, setAllCarsData] = useState([]);
+const [CarsData, setCarsData] = useState([]);
+
+
+const handleChangeRB1 = () => {
+  setAllCars(!allCarsState)  
+  if (economyCarsState){setEconomyCars(!economyCarsState)}
+  if (premiumCarsState){setPremiumCars(!premiumCarsState)}
+}
+const handleChangeRB2 = () => { 
+  setEconomyCars(!economyCarsState)
+  if (allCarsState){setAllCars(!allCarsState)}
+  if (premiumCarsState){setPremiumCars(!premiumCarsState)}  
+}
+const handleChangeRB3 = () => { 
+  setPremiumCars(!premiumCarsState)
+  if (allCarsState){setAllCars(!allCarsState)}
+  if (economyCarsState){setEconomyCars(!economyCarsState)}
+}
+
+
 const customStylesCity = {
     option: (provided, state) => ({
       ...provided,
@@ -116,6 +145,42 @@ const customStylesPoint = {
     return { ...provided, opacity, transition };
   }
 }
+
+useEffect (async () => {
+ debugger 
+  if (allCarsData.length === 0){
+    const result = await getData("https://cors-anywhere.herokuapp.com/http://api-factory.simbirsoft1.com/api/db/car");
+    setAllCarsData(result?.data?.data)
+  }
+  // if (allCarsState){
+  //   debugger
+  //   setCarsData(allCarsData)
+  // }
+  // if (economyCarsState){
+  //   setCarsData(allCarsData.filter(el => el.categoryId?.name === 'Эконом'))
+  // }
+  // if (premiumCarsState){
+  //   setCarsData(allCarsData.filter(el => el.categoryId?.name === 'Люкс'))
+  // }
+
+},[])
+
+useEffect (() => {  
+   if (allCarsState){
+     debugger
+     setCarsData(allCarsData)
+   }
+   if (economyCarsState){
+     setCarsData(allCarsData.filter(el => el.categoryId?.name === 'Эконом'))
+   }
+   if (premiumCarsState){
+     setCarsData(allCarsData.filter(el => el.categoryId?.name === 'Люкс'))
+   }
+ 
+ },[allCarsState,economyCarsState,premiumCarsState])
+
+
+
 return (
     <div className = 'tabs-block'>
         <Header/>
@@ -175,23 +240,73 @@ return (
                     <div className = 'tabs-blok__step1__order-info__point'>Пункт выдачи</div>
                     <div className = 'tabs-blok__step1__order-info__city-point'>
                       <div>{selectedCity=== null? '': selectedCity.label }</div>
-                      <div>{selectedPoint=== null? '': selectedPoint.label }</div>
+                      <div className ='test'>{selectedPoint=== null? '': selectedPoint.label }</div>
                     </div>
                     <div className = 'tabs-blok__step1__order-info__price'><b>Цена:</b> от 8000 до 12000 ₽</div>
                     <button className = 'tabs-blok__step1__order-info__button'>Выбрать модель</button>                    
                 </div>
+                {/* <Step1/> */}
                 </TabPanel>
                 {/* модель */}
                 <TabPanel>
-                <h2>Any content 2</h2>
+                <div className = 'tabs-block__step2__radio'>
+                    <input id = 'rb1'  type="radio" value="allModel" name="model" checked={allCarsState} onChange={handleChangeRB1} />
+                    <label for = 'rb1' >Все модели</label>         
+                    <input id = 'rb2' type="radio" value="economy" name="model" checked={economyCarsState} onChange={handleChangeRB2} /> 
+                    <label for = 'rb2'>Эконом</label>
+                    <input id = 'rb3' type="radio" value="premium" name="model" checked={premiumCarsState} onChange={handleChangeRB3}/>
+                    <label for = 'rb3'>Премиум </label>       
+                </div>
+                <div className = 'tabs-block__step2-row'>
+                  {CarsData && CarsData.map(el => {
+                     return (
+                       <div className = 'tabs-block__step2-item' onClick = {() => setSelectedModel(el.name)}>
+                        <div className = 'tabs-block__step2-item__name'>{el.name}</div>
+                        <div className = 'tabs-block__step2-item__price'>{el.priceMin}-{el.priceMax} ₽</div>
+                        <img src ={'https://api-factory.simbirsoft1.com/'+ el?.thumbnail?.path} width="256" height="116.36" className = 'tabs-block__step2-item__img'></img>
+                      </div>
+                     )})                    
+                  }
+                </div>
+                <div className = 'tabs-blok__step1__order-info'>
+                    <div className = 'tabs-blok__step1__order-info__order'>Ваш заказ:</div>
+                    <div className = 'tabs-blok__step1__order-info__point'>Пункт выдачи</div>
+                    <div className = 'tabs-blok__step1__order-info__city-point'>
+                      <div>{selectedCity=== null? '': selectedCity.label }</div>
+                      <div>{selectedPoint=== null? '': selectedPoint.label }</div>
+                    </div>
+                    <div className = 'tabs-blok__step1__order-info__model'>Модель</div>
+                    <div>{selectedModel=== null? '': selectedModel}</div>
+                    <div className = 'tabs-blok__step1__order-info__price'><b>Цена:</b> от 8000 до 12000 ₽</div>
+                    <button className = 'tabs-blok__step1__order-info__button'>Дополнительно</button>                    
+                </div>
+
                 </TabPanel>
                 {/* дополнительно */}
                 <TabPanel>
-                <h2>Any content 3</h2>
+                <div className = 'tabs-blok__step1__order-info'>
+                    <div className = 'tabs-blok__step1__order-info__order'>Ваш заказ:</div>
+                    <div className = 'tabs-blok__step1__order-info__point'>Пункт выдачи</div>
+                    <div className = 'tabs-blok__step1__order-info__city-point'>
+                      <div>{selectedCity=== null? '': selectedCity.label }</div>
+                      <div>{selectedPoint=== null? '': selectedPoint.label }</div>
+                    </div>
+                    <div className = 'tabs-blok__step1__order-info__price'><b>Цена:</b> от 8000 до 12000 ₽</div>
+                    <button className = 'tabs-blok__step1__order-info__button'>Итого</button>                    
+                </div>
                 </TabPanel>
                 {/* итого */}
                 <TabPanel>
-                <h2>Any content 4</h2>
+                <div className = 'tabs-blok__step1__order-info'>
+                    <div className = 'tabs-blok__step1__order-info__order'>Ваш заказ:</div>
+                    <div className = 'tabs-blok__step1__order-info__point'>Пункт выдачи</div>
+                    <div className = 'tabs-blok__step1__order-info__city-point'>
+                      <div>{selectedCity=== null? '': selectedCity.label }</div>
+                      <div>{selectedPoint=== null? '': selectedPoint.label }</div>
+                    </div>
+                    <div className = 'tabs-blok__step1__order-info__price'><b>Цена:</b> от 8000 до 12000 ₽</div>
+                    <button className = 'tabs-blok__step1__order-info__button'>Заказать</button>                    
+                </div>
                 </TabPanel>
         </Tabs>
   </div>
