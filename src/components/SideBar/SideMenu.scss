@@ -1,6 +1,115 @@
-.huug {
-    color: lawngreen;
-    background-color: lightcoral;
-    background-image: url('./../../img/telegram.svg');
-    mask-image: url('./../../img/telegram.svg');
+$instagram : url(../../img/Icons/Instagram.svg);
+$facebook: url(../../img/Icons/Facebook.svg);
+$telegram: url(../../img/Icons/Telegram.svg);
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: local('Roboto'), url(./../../fonts/Roboto-Bold.ttf) format('truetype');
+  }
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: local('Roboto'), url(./../../fonts/Roboto-Medium.ttf) format('truetype');
+}
+$mobile: 767px;
+$mainAccent: #0EC261;
+
+.menu-link{
+    position: relative;
+    display: block;
+    text-align: left;
+    max-width: 100%;
+    transition: background-position 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 32px;
+    line-height: 37px;
+    margin-bottom: 15px;
+    font-weight: 500px;
+    font-family: Roboto-Medium;
+    font-style: normal;
+    margin-left: 128px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    &:hover {
+        color: $mainAccent;
+    }
+}
+
+.img-link{
+    display: flex;
+    justify-content:space-between;
+    position: absolute;
+    width: 144px;
+    height: 32px;
+    margin-left: 128px;
+    top: 543px;
+}
+.button-link{
+    display: flex;
+    position: absolute;
+    width: 144px;
+    height: 32px;
+    margin-left: 0px;
+    top: 0px;
+}
+.language {
+    display:none; 
+}
+
+.img-link__facebook{
+    height: 32px;
+    width: 32px;
+    display: block;
+    background-color: white;
+    mask-image: $facebook; 
+    &:hover {
+        background-color: $mainAccent;
+    }
+}
+.img-link__telegram{
+    height: 32px;
+    width: 32px;
+    display: block;
+    background-color: white;
+    mask-image: $telegram; 
+    &:hover {
+        background-color: $mainAccent;
+    }
+}
+.img-link__instagram{
+    height: 32px;
+    width: 32px;
+    display: block;
+    background-color: white;
+    mask-image: $instagram; 
+    &:hover {
+        background-color: $mainAccent;
+    }
+}
+@media screen and (max-width: $mobile) { 
+    .menu-link{
+        margin-left: 16px;
+        top: 100px;
+        font-size: 22px;
+        line-height: 26px;
+    } 
+    .img-link{
+        width: 144px;
+        height: 32px;
+        margin-left: 16px;
+        top: 267px;
+    } 
+    .language {
+        display: flex;
+        position: absolute;
+        width: 23px;
+        height: 16px;
+        left: 21px;
+        top: 96%;
+        font-family: Roboto-Bold;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 15px;
+        color: $mainAccent;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
 }

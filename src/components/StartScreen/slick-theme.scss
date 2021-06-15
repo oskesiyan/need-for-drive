@@ -1,25 +1,19 @@
 @charset "UTF-8";
 
-// Default Variables
-
-// Slick icon entity codes outputs the following
-// "\2190" outputs ascii character "←"
-// "\2192" outputs ascii character "→"
-// "\2022" outputs ascii character "•"
-
 $slick-font-path: Roboto;
 $slick-font-family: "slick" !default;
 $slick-loader-path: "./" !default;
 $slick-arrow-color: white;
 $slick-dot-color: white;
 $slick-dot-color-active: #0EC261;
-$slick-prev-character: url(../../img/arrow_L.png);
-$slick-next-character: url(../../img/arrow_R.png);
+$slick-prev-character: url(../../img/Slider/ArrowL.png);
+$slick-next-character: url(../../img/Slider/ArrowR.png);
 $slick-dot-character: "\2022" !default;
 $slick-dot-size: 40px;
 $slick-opacity-default: 0.75 !default;
 $slick-opacity-on-hover: 1 !default;
 $slick-opacity-not-active: 1;
+$tablet: 1023px;
 
 @function slick-image-url($url) {
     @if function-exists(image-url) {
@@ -39,15 +33,6 @@ $slick-opacity-not-active: 1;
     }
 }
 
-/* Slider */
-
-// .slick-list {
-//     .slick-loading & {
-//         background: #fff slick-image-url("ajax-loader.gif") center center no-repeat;
-//     }
-// }
-
-/* Icons */
 @if $slick-font-family == "slick" {
     @font-face {
         font-family: 'Roboto-Light';
@@ -192,7 +177,7 @@ $slick-opacity-not-active: 1;
     }
     
 }
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: $tablet) {
     .slick-prev,
     .slick-next {
         width: 32px;        

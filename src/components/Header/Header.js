@@ -1,6 +1,5 @@
 import './Header.scss';
-// import map from './../../img/Map.png'
-import map from './../../img/location_vector.svg'
+import map from './../../img/Icons/LocationVector.svg'
 import { ReactSVG } from 'react-svg'
 const Header = () => {
     return(

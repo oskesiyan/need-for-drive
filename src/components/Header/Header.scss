@@ -1,5 +1,8 @@
 $mainAccent: #0EC261;
 $locationColor: #999999;
+$desktop_min: 1439px;
+$tablet: 1023px; 
+$mobile: 767px;
 @font-face {
     font-family: 'Roboto-Bold';
     src: local('Roboto'), url(./../../fonts/Roboto-Bold.ttf) format('truetype');
@@ -47,19 +50,19 @@ $locationColor: #999999;
   color: $locationColor;
   }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: $desktop_min) {
 .header__logo{
   left: 97px;
 }
 }
-@media screen and (max-width: 1023px) { 
+@media screen and (max-width: $tablet) { 
 .header__logo{
   width: 239px;
   height: 33px;
   left: 118px;
 }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $mobile) {
 .header__logo{
   width: auto;
   left: 0px;

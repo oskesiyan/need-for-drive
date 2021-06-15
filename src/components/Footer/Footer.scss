@@ -2,6 +2,9 @@ $color_copyrigth: #999999;
 $color_phone: #121212;
 $color_phone_mobile: #0EC261;
 $color_copyright: #EEEEEE;
+$desktop_min: 1439px;
+$tablet: 1023px; 
+$mobile: 767px;
 @font-face {
     font-family: 'Roboto-Regular';
     src: local('Roboto'), url(./../../fonts/Roboto-Regular.ttf) format('truetype');
@@ -31,19 +34,20 @@ $color_copyright: #EEEEEE;
     font-size: 13px;
     line-height: 15px;
     color: $color_phone;
+    text-decoration: none;
 }
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: $desktop_min ) {
 .footer__copyright{
     left: 97px;
 }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: $tablet) {
 .footer__copyright{
     left: 117px;
 }    
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $mobile) {
 .footer__copyright{
     left: 0px;
     right: 12px;
