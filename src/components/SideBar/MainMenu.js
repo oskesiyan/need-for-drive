@@ -1,9 +1,9 @@
-import React, { useRef, useContext } from 'react';
-import HamburgerButton from './HamburgerButton';
-import { SideMenu } from './SideMenu';
-import useOnClickOutside from './../../hooks/onClickOutside';
-import { MenuContext } from './../../context/NavState';
-import './MainMenu.scss'
+import React, { useRef, useContext } from "react";
+import HamburgerButton from "./HamburgerButton";
+import { SideMenu } from "./SideMenu";
+import useOnClickOutside from "./../../hooks/onClickOutside";
+import { MenuContext } from "./../../context/NavState";
+import "./MainMenu.scss";
 
 const MainMenu = () => {
   const node = useRef();
@@ -16,9 +16,9 @@ const MainMenu = () => {
 
   return (
     <header ref={node}>
-      <div className = 'navbar'>
+      <div className="navbar">
         <HamburgerButton />
-        <div className = 'navbar__language'>Eng</div>
+        <div className="navbar__language">Eng</div>
       </div>
       <SideMenu />
     </header>

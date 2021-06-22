@@ -1,54 +1,54 @@
 $color_copyrigth: #999999;
 $color_phone: #121212;
-$color_phone_mobile: #0EC261;
-$color_copyright: #EEEEEE;
+$color_phone_mobile: #0ec261;
+$color_copyright: #eeeeee;
 $desktop_min: 1439px;
-$tablet: 1023px; 
+$tablet: 1023px;
 $mobile: 767px;
 @font-face {
-    font-family: 'Roboto-Regular';
-    src: local('Roboto'), url(./../../fonts/Roboto-Regular.ttf) format('truetype');
-  }
+  font-family: "Roboto-Regular";
+  src: local("Roboto"), url(./../../fonts/Roboto-Regular.ttf) format("truetype");
+}
 
-.footer__copyright{
-    position: absolute;
-    height: 16px;
-    left: 128px;
-    top: 96%;    
-    font-family: Roboto-Regular;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 13px;
-    line-height: 15px;
-    color: $color_copyrigth;
+.footer__copyright {
+  position: absolute;
+  height: 16px;
+  left: 128px;
+  top: 96%;
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  color: $color_copyrigth;
 }
-.footer__phone{
-    position: absolute;
-    height: 16px;
-    left: 80%;
-    top: 96%;
-    
-    font-family: Roboto-Regular;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 13px;
-    line-height: 15px;
-    color: $color_phone;
-    text-decoration: none;
+.footer__phone {
+  position: absolute;
+  height: 16px;
+  left: 80%;
+  top: 96%;
+
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  color: $color_phone;
+  text-decoration: none;
 }
-@media screen and (max-width: $desktop_min ) {
-.footer__copyright{
+@media screen and (max-width: $desktop_min) {
+  .footer__copyright {
     left: 97px;
-}
+  }
 }
 
 @media screen and (max-width: $tablet) {
-.footer__copyright{
+  .footer__copyright {
     left: 117px;
-}    
+  }
 }
 @media screen and (max-width: $mobile) {
-.footer__copyright{
+  .footer__copyright {
     left: 0px;
     right: 12px;
     text-align: end;
@@ -56,8 +56,8 @@ $mobile: 767px;
     color: $color_copyright;
     z-index: 2;
     white-space: nowrap;
-}
-.footer__phone{
+  }
+  .footer__phone {
     top: 93%;
     text-align: end;
     left: 0px;
@@ -65,14 +65,14 @@ $mobile: 767px;
     color: $color_phone_mobile;
     z-index: 2;
     white-space: nowrap;
-}
-.footer{
+  }
+  .footer {
     position: absolute;
-    top:91%;
+    top: 91%;
     height: 72px;
     width: 100%;
     left: 0;
     background: $color_phone;
     z-index: 1;
-}
+  }
 }

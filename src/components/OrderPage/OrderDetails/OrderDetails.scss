@@ -1,0 +1,90 @@
+$lineColor: #eeeeee;
+$textColor: #121212;
+
+.order-info {
+  position: absolute;
+  display: flex;
+  border-left: 1px solid $lineColor;
+  width: 0px;
+  height: 100%;
+  right: 384px;
+  top: 125px;
+}
+.order-info__order {
+  position: absolute;
+  width: 225px;
+  height: 22px;
+  left: 85px;
+  top: 30px;
+
+  font-family: Roboto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: right;
+  color: $textColor;
+}
+
+$inputColorLine: #999999;
+$textColor: #121212;
+@font-face {
+  font-family: "Roboto-Light";
+  src: local("Roboto"),
+    url(./../../../fonts/Roboto-Light.ttf) format("truetype");
+}
+
+ul.order {
+  list-style-type: none;
+  margin-top: 94px;
+}
+
+.order__city {
+  position: relative;
+}
+
+.order__point {
+  border-bottom: 1px dotted #c2c2c2;
+  position: relative;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+ul.order li span {
+  background-color: #fff;
+  margin: 0;
+}
+
+ul.order li span.order__text,
+ul.order li span.order__info {
+  bottom: -5px;
+  white-space: nowrap;
+}
+
+ul.order span.order__text {
+  position: relative;
+  margin-right: 12.5em;
+  padding-right: 2px;
+  font-family: Roboto-Light;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: $textColor;
+}
+
+ul.order span.order__info {
+  position: absolute;
+  right: 0;
+  padding-left: 2px;
+  font-family: Roboto-Light;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: $inputColorLine;
+}
+.test {
+  list-style-type: none;
+  padding: 0;
+}

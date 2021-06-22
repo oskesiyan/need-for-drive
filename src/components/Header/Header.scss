@@ -1,18 +1,18 @@
-$mainAccent: #0EC261;
+$mainAccent: #0ec261;
 $locationColor: #999999;
 $desktop_min: 1439px;
-$tablet: 1023px; 
+$tablet: 1023px;
 $mobile: 767px;
 @font-face {
-    font-family: 'Roboto-Bold';
-    src: local('Roboto'), url(./../../fonts/Roboto-Bold.ttf) format('truetype');
-  }
-  @font-face {
-    font-family: 'Roboto-Regular';
-    src: local('Roboto'), url(./../../fonts/Roboto-Regular.ttf) format('truetype');
-  }
+  font-family: "Roboto-Bold";
+  src: local("Roboto"), url(./../../fonts/Roboto-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Roboto-Regular";
+  src: local("Roboto"), url(./../../fonts/Roboto-Regular.ttf) format("truetype");
+}
 
-.header__logo{
+.header__logo {
   position: absolute;
   width: 192px;
   height: 32px;
@@ -28,60 +28,60 @@ $mobile: 767px;
   line-height: 35px;
 }
 
-.header__location-map{
+.header__location-map {
   position: absolute;
   width: 94px;
   height: 18px;
   left: 80%;
   top: 39px;
 }
-.header__location-text{
+.header__location-text {
   position: absolute;
   width: 94px;
   height: 18px;
   left: 83%;
   top: 41px;
-    
+
   font-family: Roboto-Regular;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
   color: $locationColor;
-  }
+}
 
 @media screen and (max-width: $desktop_min) {
-.header__logo{
-  left: 97px;
+  .header__logo {
+    left: 97px;
+  }
 }
-}
-@media screen and (max-width: $tablet) { 
-.header__logo{
-  width: 239px;
-  height: 33px;
-  left: 118px;
-}
+@media screen and (max-width: $tablet) {
+  .header__logo {
+    width: 239px;
+    height: 33px;
+    left: 118px;
+  }
 }
 @media screen and (max-width: $mobile) {
-.header__logo{
-  width: auto;
-  left: 0px;
-  right: 12px;
-  text-align: end;
-  top: 16px;
-}
-.header__location-map {
-  width: auto;
-  left: 0px;
-  right: 90px;
-  top: 60px;
-  text-align: end;
+  .header__logo {
+    width: auto;
+    left: 0px;
+    right: 12px;
+    text-align: end;
+    top: 16px;
   }
-.header__location-text{
-  width: auto;
-  left: 0px;
-  right: 12px;
-  top: 63px;
-  text-align: end;
+  .header__location-map {
+    width: auto;
+    left: 0px;
+    right: 90px;
+    top: 60px;
+    text-align: end;
+  }
+  .header__location-text {
+    width: auto;
+    left: 0px;
+    right: 12px;
+    top: 63px;
+    text-align: end;
   }
 }

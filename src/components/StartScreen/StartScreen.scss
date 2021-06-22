@@ -1,33 +1,33 @@
 @font-face {
-  font-family: 'Roboto-Bold';
-  src: local('Roboto'), url(./../../fonts/Roboto-Bold.ttf) format('truetype');
+  font-family: "Roboto-Bold";
+  src: local("Roboto"), url(./../../fonts/Roboto-Bold.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'Roboto-Light';
-  src: local('Roboto'), url(./../../fonts/Roboto-Light.ttf) format('truetype');
+  font-family: "Roboto-Light";
+  src: local("Roboto"), url(./../../fonts/Roboto-Light.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'Roboto-Medium';
-  src: local('Roboto'), url(./../../fonts/Roboto-Medium.ttf) format('truetype');
+  font-family: "Roboto-Medium";
+  src: local("Roboto"), url(./../../fonts/Roboto-Medium.ttf) format("truetype");
 }
 $desktop_min: 1439px;
-$tablet: 1023px; 
+$tablet: 1023px;
 $mobile: 767px;
-  
-.wraper{
+
+.wraper {
   display: flex;
   position: relative;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-.app-wraper{
+.app-wraper {
   display: flex;
   width: 50%;
   height: 100vh;
 }
-  
-.app-wraper__block{
+
+.app-wraper__block {
   position: relative;
   display: flex;
   left: 128px;
@@ -36,9 +36,8 @@ $mobile: 767px;
   justify-content: space-between;
   flex-direction: column;
   flex-shrink: 0;
-
 }
-.app-wraper__block__text1{
+.app-wraper__block__text1 {
   font-family: Roboto-Bold;
   font-style: normal;
   font-weight: bold;
@@ -46,15 +45,15 @@ $mobile: 767px;
   line-height: 66px;
   color: #121212;
 }
-.app-wraper__block__text2{
+.app-wraper__block__text2 {
   font-family: Roboto-Bold;
   font-style: normal;
   font-weight: bold;
   font-size: 70px;
   line-height: 66px;
-  color: #0EC261;
+  color: #0ec261;
 }
-.app-wraper__block__text3{
+.app-wraper__block__text3 {
   margin-top: 34px;
   font-family: Roboto-Light;
   font-style: normal;
@@ -63,17 +62,17 @@ $mobile: 767px;
   line-height: 30px;
   color: #999999;
 }
-.app-wraper__button-link{
+.app-wraper__button-link {
   display: block;
   width: 250px;
   height: 48px;
   margin-top: 60px;
 }
-.app-wraper__button{
+.app-wraper__button {
   width: 250px;
   height: 48px;
   mix-blend-mode: normal;
-  background: linear-gradient(90deg, #0EC261 2.61%, #039F67 112.6%);
+  background: linear-gradient(90deg, #0ec261 2.61%, #039f67 112.6%);
   background-blend-mode: darken;
   border-radius: 8px;
   border: none;
@@ -83,70 +82,69 @@ $mobile: 767px;
   font-size: 18px;
   line-height: 21px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
 
-@media screen and (max-width: $desktop_min) { 
-.app-wraper{
-  width: 66.6%;
+@media screen and (max-width: $desktop_min) {
+  .app-wraper {
+    width: 66.6%;
   }
-.app-wraper__block{
-  left: 97px;   
+  .app-wraper__block {
+    left: 97px;
   }
 
-.app-wraper__button{
-  width: 250px;
-  height: 48px;
-  left: 97px;
-  top: 488px;
+  .app-wraper__button {
+    width: 250px;
+    height: 48px;
+    left: 97px;
+    top: 488px;
+  }
 }
-} 
 @media screen and (max-width: $tablet) {
-.app-wraper{
-  width: 100%;
-}
-.app-wraper__block{
-  left: 118px;   
+  .app-wraper {
+    width: 100%;
+  }
+  .app-wraper__block {
+    left: 118px;
   }
 
-.app-wraper__button{
-  width: 250px;
-  height: 48px;
-  left: 118px;
-  top: 489px;
+  .app-wraper__button {
+    width: 250px;
+    height: 48px;
+    left: 118px;
+    top: 489px;
+  }
 }
+@media screen and (max-width: $mobile) {
+  .app-wraper {
+    width: 100%;
+  }
+  .app-wraper__block {
+    left: 0px;
+    height: 64+43px;
+    flex-shrink: 1;
+  }
+  .app-wraper__block__text1 {
+    margin-left: 16px;
+    font-size: 32px;
+    line-height: 100%;
+  }
+  .app-wraper__block__text2 {
+    margin-left: 16px;
+    font-size: 32px;
+    line-height: 100%;
+  }
+  .app-wraper__block__text3 {
+    margin-left: 16px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .app-wraper__button {
+    height: 50px;
+    left: 0px;
+    top: 273px;
+    border-radius: 0;
+    width: 100vw;
+  }
 }
-@media screen and (max-width: $mobile) { 
-.app-wraper{
-  width: 100%;
-}
-.app-wraper__block{
-  left: 0px; 
-  height: 64+43px;  
-  flex-shrink: 1;
-  }  
-.app-wraper__block__text1 {
-  margin-left: 16px;
-  font-size: 32px;
-  line-height: 100%;
-}
-.app-wraper__block__text2 {
-  margin-left: 16px;
-  font-size: 32px;
-  line-height: 100%;
-}
-.app-wraper__block__text3 {
-  margin-left: 16px;
-  font-size: 18px;
-  line-height: 21px;
-}
-.app-wraper__button{
-  height: 50px;
-  left: 0px;
-  top: 273px;
-  border-radius: 0; 
-  width: 100vw;  
-}  
-} 
-
