@@ -2,19 +2,15 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./react-tabs.scss";
 import "./OrderPage.scss";
 import mapOrder from "./../../img/Map_order.png";
-import "react-autocomplete";
-import "react-textfield";
+// import "react-autocomplete";
+// import "react-textfield";
 import Select from "react-select";
 import { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { getData } from "./../../utils/index";
-import DatePicker, { registerLocale } from "react-datepicker";
-import "./datepicker.scss";
-import "./mixins.scss";
-import "./variables.scss";
 import OrderDetails from "./OrderDetails/OrderDatails";
-import ru from "date-fns/locale/ru";
-registerLocale("ru", ru);
+import DatePicker from "react-datetime-picker";
+import "./DateTimePicker.css";
 
 const OrderPage = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -125,7 +121,7 @@ const OrderPage = () => {
     },
   };
   // Выбор модели
-  const [selectedModel, setSelectedModel] = useState(null);
+  const [selectedModel, setSelectedModel] = useState("");
 
   const [allCarsState, setAllCars] = useState(false);
   const [economyCarsState, setEconomyCars] = useState(false);
@@ -172,9 +168,9 @@ const OrderPage = () => {
   const [fullPatrolState, setFullPatrolState] = useState(false);
   const [babyChairState, setBabyChairState] = useState(false);
   const [rightHDState, setRightHDState] = useState(false);
-
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
+  debugger;
+  const [fromDate, setFromDate] = useState(new Date());
+  const [toDate, setToDate] = useState(new Date());
   let handleColor = (time) => {
     return time.getHours() > 12 ? "text-success" : "text-error";
   };
@@ -206,7 +202,6 @@ const OrderPage = () => {
     }
   };
   const handleChangeRBRateMin = () => {
-    debugger;
     setMinRate(!minRateState);
     if (dayRateState) {
       setDayRate(!dayRateState);
@@ -251,7 +246,6 @@ const OrderPage = () => {
   }, [cityData]);
 
   useEffect(() => {
-    debugger;
     if (selectedCity && pointData) {
       const uniquePoint = pointData
         .filter((el) => el?.cityId?.id === selectedCity.id)
@@ -370,20 +364,24 @@ const OrderPage = () => {
               className="tabs-blok__step1__position__mapOrder"
             ></img>
           </div>
-          <button
-            className="tabs-blok__step1__order-info__button"
-            onClick={() => setTabIndex(tabIndex + 1)}
-            disabled={selectedPoint === null ? true : false}
-          >
-            Выбрать модель
-          </button>
-          <OrderDetails
-            city={selectedCity}
-            point={selectedPoint}
-            model={selectedModel}
-            tab1={true}
-            tab2={false}
-          />
+          <div>
+            <OrderDetails
+              city={selectedCity}
+              point={selectedPoint}
+              model={selectedModel}
+              priceFrom={18000}
+              priceTo={20000}
+              tab1={true}
+              tab2={false}
+            />
+            <button
+              className="tabs-blok__step1__order-info__button"
+              onClick={() => setTabIndex(tabIndex + 1)}
+              disabled={selectedPoint === null ? true : false}
+            >
+              Выбрать модель
+            </button>
+          </div>
           {/* <Step1/> */}
         </TabPanel>
         {/* модель */}
@@ -423,7 +421,7 @@ const OrderPage = () => {
                 return (
                   <div
                     className="tabs-block__step2-item"
-                    onClick={() => setSelectedModel(el.name)}
+                    onClick={() => setSelectedModel(el)}
                   >
                     <div className="tabs-block__step2-item__name">
                       {el.name}
@@ -444,24 +442,28 @@ const OrderPage = () => {
                 );
               })}
           </div>
-          <button
-            className="tabs-blok__step1__order-info__button"
-            onClick={() => setTabIndex(tabIndex + 1)}
-            disabled={selectedModel === null ? true : false}
-          >
-            Дополнительно
-          </button>
-          <OrderDetails
-            city={selectedCity}
-            point={selectedPoint}
-            model={selectedModel}
-            tab2={true}
-          />
+          <div>
+            <OrderDetails
+              city={selectedCity}
+              point={selectedPoint}
+              model={selectedModel.name}
+              priceFrom={selectedModel.priceMin}
+              priceTo={selectedModel.priceMax}
+              tab2={true}
+            />
+            <button
+              className="tabs-blok__step1__order-info__button"
+              onClick={() => setTabIndex(tabIndex + 1)}
+              disabled={selectedModel === null ? true : false}
+            >
+              Дополнительно
+            </button>
+          </div>
         </TabPanel>
         {/* дополнительно */}
         <TabPanel>
           <div className="tabs-block__step2__radio">
-            <div>Цвет</div>
+            <div className="tabs-block__step3-text">Цвет</div>
             <input
               id="rb1"
               type="radio"
@@ -491,42 +493,44 @@ const OrderPage = () => {
             <label for="rb3">Голубой</label>
           </div>
           <div className="tabs-block__step3__date">
-            <div>Дата аренды</div>
-            <label>
+            <div className="tabs-block__step3-text">Дата аренды</div>
+            <label className="tabs-block__step3-label from">
               C
               <DatePicker
-                selected={fromDate}
+                value={fromDate}
                 onChange={(date) => setFromDate(date)}
-                dateFormat="dd.MM.yyyy hh.mm"
-                isClearable
-                placeholderText="Введите дату и время"
-                peekNextMonth
-                showMonthDropdown
-                showYearDropdown
-                showTimeSelect
-                dropdownMode="select"
-                // locale="ru"
+                calendarIcon={null}
+                format="dd.MM.yyyy HH.mm"
+                isClockOpen={false}
+                disableClock={true}
+                dayPlaceholder="Введите дату и время"
+                hourPlaceholder=""
+                minutePlaceholder=""
+                monthPlaceholder=""
+                secondPlaceholder=""
+                yearPlaceholder=""
               />
             </label>
-            <label>
+            <label className="tabs-block__step3-label">
               По
               <DatePicker
-                selected={toDate}
+                value={toDate}
                 onChange={(date) => setToDate(date)}
-                dateFormat="dd.MM.yyyy hh.mm"
-                isClearable
-                placeholderText="Введите дату и время"
-                peekNextMonth
-                showMonthDropdown
-                showYearDropdown
-                showTimeSelect
-                dropdownMode="select"
-                // locale="ru"
+                calendarIcon={null}
+                format="dd.MM.yyyy HH.mm"
+                isClockOpen={false}
+                disableClock={true}
+                dayPlaceholder="Введите дату и время"
+                hourPlaceholder=""
+                minutePlaceholder=""
+                monthPlaceholder=""
+                secondPlaceholder=""
+                yearPlaceholder=""
               />
             </label>
           </div>
           <div className="tabs-block__step3__radio">
-            <div>Тариф</div>
+            <div className="tabs-block__step3-text">Тариф</div>
             <input
               id="rb4"
               type="radio"
@@ -547,74 +551,126 @@ const OrderPage = () => {
             <label for="rb5">На сутки,1999 ₽/сутки</label>
           </div>
           <div className="tabs-block__step3__checkbox">
-            <div>Доп услуги</div>
-            <label>
+            <div className="tabs-block__step3-text">Доп услуги</div>
+            <div>
               <input
+                id="cb1"
                 type="checkbox"
                 className="regular-checkbox"
                 checked={fullPatrolState}
                 onChange={handleChangeCB1}
               />
-              Полный бак, 500р
-            </label>
-            <label>
+              <label for="cb1">Полный бак, 500р</label>
+            </div>
+            <div>
               <input
+                id="cb2"
                 type="checkbox"
                 className="regular-checkbox"
                 checked={babyChairState}
                 onChange={handleChangeCB2}
               />
-              Детское кресло, 200р
-            </label>
-            <label>
+              <label for="cb2">Детское кресло, 200р</label>
+            </div>
+            <div>
               <input
+                id="cb3"
                 type="checkbox"
                 className="regular-checkbox"
                 checked={rightHDState}
                 onChange={handleChangeCB3}
               />
-              Правый руль, 1600р
-            </label>
+              <label for="cb3">Правый руль, 1600р</label>
+            </div>
           </div>
-          <OrderDetails
-            city={selectedCity}
-            point={selectedPoint}
-            model={selectedModel}
-            color={carsColorState}
-            rate={rateState}
-            fullPatrol={fullPatrolState}
-            babyChair={babyChairState}
-            rightHD={rightHDState}
-            tab3={true}
-          />
-          <button
-            className="tabs-blok__step1__order-info__button"
-            // onClick={() => setTabIndex(tabIndex + 1)}
-            // disabled={selectedModel === null ? true : false}
-          >
-            Итого
-          </button>
+          <div>
+            <OrderDetails
+              city={selectedCity}
+              point={selectedPoint}
+              model={selectedModel.name}
+              color={carsColorState}
+              rate={rateState}
+              fullPatrol={fullPatrolState}
+              babyChair={babyChairState}
+              rightHD={rightHDState}
+              dateFrom={fromDate === null ? "" : fromDate}
+              dateTo={toDate === null ? "" : toDate}
+              priceFrom={selectedModel.priceMin}
+              priceTo={selectedModel.priceMax}
+              tab3={true}
+            />
+            <button
+              className="tabs-blok__step1__order-info__button"
+              // onClick={() => setTabIndex(tabIndex + 1)}
+              // disabled={selectedModel === null ? true : false}
+            >
+              Итого
+            </button>
+          </div>
         </TabPanel>
         {/* итого */}
         <TabPanel>
-          <OrderDetails
-            city={selectedCity}
-            point={selectedPoint}
-            model={selectedModel}
-            color={carsColorState}
-            rate={rateState}
-            fullPatrol={fullPatrolState}
-            babyChair={babyChairState}
-            rightHD={rightHDState}
-            tab3={true}
-          />
-          <button
-            className="tabs-blok__step1__order-info__button"
-            // onClick={() => setTabIndex(tabIndex + 1)}
-            // disabled={selectedModel === null ? true : false}
-          >
-            Заказать
-          </button>
+          <div className="tabs-blok__step4">
+            <div className="tabs-blok__step4__total">
+              <div className="tabs-blok__step4__total__model">
+                {selectedModel.name}
+              </div>
+              <div className="tabs-blok__step4__number">
+                {selectedModel.number}
+              </div>
+              <div></div>
+              <div>
+                <b>Топливо</b> 100%
+              </div>
+              <div>
+                <b>Доступна с </b>
+                {fromDate === null
+                  ? ""
+                  : fromDate.getDate() +
+                    "." +
+                    fromDate.getMonth() +
+                    "." +
+                    fromDate.getFullYear() +
+                    " " +
+                    fromDate.getHours() +
+                    ":" +
+                    fromDate.getMinutes()}
+              </div>
+            </div>
+            <img
+              src={
+                "https://api-factory.simbirsoft1.com/" +
+                selectedModel?.thumbnail?.path
+              }
+              width="256"
+              height="116.36"
+              className="tabs-block__step4__img"
+            ></img>
+          </div>
+          <div>
+            <OrderDetails
+              city={selectedCity}
+              point={selectedPoint}
+              model={selectedModel.name}
+              color={carsColorState}
+              rate={rateState}
+              fullPatrol={fullPatrolState}
+              babyChair={babyChairState}
+              rightHD={rightHDState}
+              dateFrom={fromDate === null ? "" : fromDate}
+              dateTo={toDate === null ? "" : toDate}
+              priceFrom={selectedModel.priceMin}
+              priceTo={selectedModel.priceMax}
+              tab3={true}
+            />
+            <button
+              className="tabs-blok__step1__order-info__button"
+              // onClick={() => setTabIndex(tabIndex + 1)}
+              // disabled={selectedModel === null ? true : false}
+            >
+              Заказать
+            </button>
+          </div>
         </TabPanel>
       </Tabs>
     </div>

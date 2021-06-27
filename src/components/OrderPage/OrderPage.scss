@@ -97,7 +97,7 @@ $inputColorLine: #999999;
   width: 287px;
   height: 48px;
   right: 65px;
-  top: 320px;
+  margin-top: 64px;
   background: linear-gradient(
     90deg,
     $buttonColorGradient1 2.61%,
@@ -128,13 +128,6 @@ button[disabled] {
   left: 128px;
   top: 162px;
 }
-.tabs-block__step3__radio {
-  position: absolute;
-  display: flex;
-  flex-flow: column;
-  left: 128px;
-  top: 387px;
-}
 
 input[type="radio"]:checked,
 input[type="radio"]:not(:checked) {
@@ -145,7 +138,8 @@ input[type="radio"]:checked + label,
 input[type="radio"]:not(:checked) + label {
   display: inline-block;
   position: relative;
-  padding-left: 20px;
+  padding-left: 25px;
+  padding-bottom: 8px;
   padding-right: 16px;
   font-family: Roboto-Light;
   font-style: normal;
@@ -242,6 +236,22 @@ input[type="radio"]:checked + label:after {
   margin-top: 92px;
   margin-left: 97px;
 }
+.tabs-block__step3__radio {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  left: 128px;
+  top: 387px;
+}
+.tabs-block__step3-text {
+  margin-bottom: 16px;
+  font-family: Roboto-Light;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+}
+
 .tabs-block__step3__date {
   position: absolute;
   display: flex;
@@ -256,38 +266,100 @@ input[type="radio"]:checked + label:after {
   flex-flow: column;
   margin-top: 380px;
   margin-left: 128px;
+  font-family: Roboto-Light;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
 }
 
-.regular-checkbox {
+.tabs-block__step3-label {
+  font-family: Roboto-Light;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 13px;
+}
+
+.tabs-block__step3-label.from {
+  margin-left: 6px;
+}
+
+input[type="checkbox"]:not(:checked) + label {
+  font-family: Roboto-Light;
+  font-style: normal;
+  color: $inputColorLine;
+  margin-left: 4px;
+}
+input[type="checkbox"] {
   -webkit-appearance: none;
   background-color: #fafafa;
   border: 1px solid #999999;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
-    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
-  padding: 9px;
+  width: 12px;
+  padding: 6px;
   border-radius: 3px;
   display: inline-block;
   position: relative;
-}
-.regular-checkbox:active,
-.regular-checkbox:checked:active {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
-    inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  top: 4px;
+  right: 4px;
 }
 
-.regular-checkbox:checked {
+input[type="checkbox"]:checked {
   background-color: white;
   border: 1px solid #0ec261;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
-    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),
-    inset 15px 10px -12px rgba(255, 255, 255, 0.1);
-  color: #99a1a7;
 }
-.regular-checkbox:checked:after {
+
+input[type="checkbox"]:checked + label {
+  color: #121212;
+  margin-left: 4px;
+}
+
+input[type="checkbox"]:checked:after {
   content: url(./../../img/Icons/Check.svg); //"\2714";
   font-size: 14px;
   position: absolute;
-  top: 0px;
-  left: 6px;
-  color: black;
+  top: -2px;
+  left: 3px;
+  color: $textColor;
+}
+
+.tabs-blok__step4 {
+  display: flex;
+  flex-direction: row;
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  line-height: 16px;
+  color: $textColor;
+}
+
+.tabs-blok__step4__total {
+  display: grid;
+  margin-left: 128px;
+  margin-top: 32px;
+  flex-direction: column;
+}
+.tabs-blok__step4__total__model {
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: $textColor;
+}
+
+.tabs-blok__step4__number {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid $textColor;
+  width: 94px;
+  border-radius: 5px;
+}
+.tabs-block__step4__img {
+  margin-left: 352px;
+  margin-top: 32px;
+}
+.t {
+  display: flex;
+  flex-direction: row;
 }

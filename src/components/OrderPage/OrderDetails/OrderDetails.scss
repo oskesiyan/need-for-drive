@@ -1,5 +1,11 @@
 $lineColor: #eeeeee;
 $textColor: #121212;
+$inputColorLine: #999999;
+@font-face {
+  font-family: "Roboto-Light";
+  src: local("Roboto"),
+    url(./../../../fonts/Roboto-Light.ttf) format("truetype");
+}
 
 .order-info {
   position: absolute;
@@ -24,14 +30,6 @@ $textColor: #121212;
   line-height: 21px;
   text-align: right;
   color: $textColor;
-}
-
-$inputColorLine: #999999;
-$textColor: #121212;
-@font-face {
-  font-family: "Roboto-Light";
-  src: local("Roboto"),
-    url(./../../../fonts/Roboto-Light.ttf) format("truetype");
 }
 
 ul.order {
@@ -87,4 +85,18 @@ ul.order span.order__info {
 .test {
   list-style-type: none;
   padding: 0;
+}
+
+.order-info__price {
+  position: absolute;
+  display: block;
+  margin-top: 32px;
+  margin-left: 42px;
+  white-space: nowrap;
+  font-family: Roboto-Light;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #121212;
 }
