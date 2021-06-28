@@ -2,8 +2,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./react-tabs.scss";
 import "./OrderPage.scss";
 import mapOrder from "./../../img/Map_order.png";
-// import "react-autocomplete";
-// import "react-textfield";
 import Select from "react-select";
 import { useState, useEffect } from "react";
 import Header from "../Header/Header";
@@ -454,7 +452,7 @@ const OrderPage = () => {
             <button
               className="tabs-blok__step1__order-info__button"
               onClick={() => setTabIndex(tabIndex + 1)}
-              disabled={selectedModel === null ? true : false}
+              disabled={selectedModel === "" ? true : false}
             >
               Дополнительно
             </button>

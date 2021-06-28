@@ -38,9 +38,6 @@ const OrderDetails = (props) => {
                   {props.point === null ? "" : props.point.label}
                 </span>
               </li>
-              {/* <li className="order__point">
-              <span className="order__text">Цена: от 8000 до 12000 ₽</span>
-            </li> */}
             </ul>
           ) : (
             ""
@@ -74,10 +71,6 @@ const OrderDetails = (props) => {
                   {props.rate === null ? "" : props.rate}
                 </span>
               </li>
-              {/* <li className="order__point">
-              <span className="order__text">Цена:</span>
-              <span className="order__info">от 8000 до 12000 ₽</span>
-            </li> */}
               {props.fullPatrol === false ? (
                 ""
               ) : (
@@ -112,10 +105,10 @@ const OrderDetails = (props) => {
           ) : (
             ""
           )}
+          <li className="order__price">
+            <b>Цена:</b> от {props.priceFrom} до {props.priceTo} ₽
+          </li>
         </ul>
-      </div>
-      <div className="order-info__price">
-        <b>Цена:</b> от {props.priceFrom} до {props.priceTo} ₽
       </div>
     </div>
   );

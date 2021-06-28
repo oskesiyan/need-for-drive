@@ -6,6 +6,10 @@ $inputColorLine: #999999;
   src: local("Roboto"),
     url(./../../../fonts/Roboto-Light.ttf) format("truetype");
 }
+@font-face {
+  font-family: "Roboto-Bold";
+  src: local("Roboto"), url(./../../../fonts/Roboto-Bold.ttf) format("truetype");
+}
 
 .order-info {
   position: absolute;
@@ -46,6 +50,16 @@ ul.order {
   position: relative;
   padding: 0;
   margin-bottom: 5px;
+}
+.order__price {
+  margin-top: 32px;
+  white-space: nowrap;
+  font-family: Roboto-Bold;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #121212;
 }
 
 ul.order li span {
