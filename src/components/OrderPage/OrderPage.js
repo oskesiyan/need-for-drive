@@ -24,9 +24,11 @@ const OrderPage = () => {
   const customStylesCity = {
     option: (provided, state) => ({
       ...provided,
-      borderBottom: "1px dotted pink",
-      color: state.isSelected ? "red" : "blue",
-      padding: 20,
+      borderBottom: "none",
+      color: state.isSelected ? "white" : "white",
+      padding: 5,
+      zindex: 500,
+      background: "black",
     }),
     control: () => ({
       width: 224,
@@ -59,6 +61,14 @@ const OrderPage = () => {
       fontSize: 14,
       textAlign: "start",
     }),
+    // placeholder: () => ({
+    //   zindex: 1,
+    //   color: "gray",
+    //   marginLeft: "2px",
+    //   marginRight: "2px",
+    //   position: "absolute",
+    //   top: "50%",
+    // }),
     clearIndicator: (prevStyle) => ({
       ...prevStyle,
       color: "#121212",
@@ -76,9 +86,11 @@ const OrderPage = () => {
   const customStylesPoint = {
     option: (provided, state) => ({
       ...provided,
-      borderBottom: "1px dotted pink",
-      color: state.isSelected ? "red" : "blue",
-      padding: 20,
+      borderBottom: "none",
+      color: state.isSelected ? "white" : "white",
+      padding: 5,
+      zindex: 500,
+      background: "black",
     }),
     control: () => ({
       width: 224,
@@ -255,6 +267,13 @@ const OrderPage = () => {
     }
   }, [selectedCity]);
 
+  useEffect(() => {
+    if (selectedCity === null) {
+      setSelectedPoint(null);
+      setPoint({ id: "", label: "" });
+    }
+  }, [selectedCity]);
+
   useEffect(async () => {
     if (allCarsData.length === 0) {
       const result = await getData(
@@ -301,31 +320,33 @@ const OrderPage = () => {
   return (
     <div className="tabs-block">
       <Header />
-      <Tabs
-        disableUpDownKeys="true"
-        selectedIndex={tabIndex}
-        onSelect={(index) => setTabIndex(index)}
-      >
+      <Tabs disableUpDownKeys="true" selectedIndex={tabIndex}>
         <TabList>
-          <Tab>
+          <Tab onClick={() => setTabIndex(0)}>
             <div className="tabs-block__tab">
               <div>Местоположение</div>
               <div className="tabs-block__tab__vector"></div>
             </div>
           </Tab>
-          <Tab>
+          <Tab onClick={() => (selectedPoint === null ? "" : setTabIndex(1))}>
             <div className="tabs-block__tab">
               <div>Модель</div>
               <div className="tabs-block__tab__vector"></div>
             </div>
           </Tab>
-          <Tab>
+          <Tab onClick={() => (selectedModel === "" ? "" : setTabIndex(2))}>
             <div className="tabs-block__tab">
               <div>Дополнительно</div>
               <div className="tabs-block__tab__vector"></div>
             </div>
           </Tab>
-          <Tab>
+          <Tab
+            onClick={() =>
+              (carsColorState !== null) & (rateState !== "")
+                ? setTabIndex(3)
+                : ""
+            }
+          >
             <div className="tabs-block__tab">
               <div>Итого</div>
             </div>
@@ -337,7 +358,7 @@ const OrderPage = () => {
             <div className="tabs-blok__step1__position__city">Город</div>
             <Select
               isClearable={true}
-              defaultValue={selectedCity}
+              value={selectedCity}
               onChange={setSelectedCity}
               options={city}
               styles={customStylesCity}
@@ -348,7 +369,7 @@ const OrderPage = () => {
             </div>
             <Select
               isClearable={true}
-              defaultValue={selectedPoint}
+              value={selectedPoint}
               onChange={setSelectedPoint}
               options={point}
               styles={customStylesPoint}
