@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/need-for-drive/static/css/main.f155909c.chunk.css",
-    "main.js": "/need-for-drive/static/js/main.05e77675.chunk.js",
-    "main.js.map": "/need-for-drive/static/js/main.05e77675.chunk.js.map",
+    "main.css": "/need-for-drive/static/css/main.e449fcd5.chunk.css",
+    "main.js": "/need-for-drive/static/js/main.5338ded9.chunk.js",
+    "main.js.map": "/need-for-drive/static/js/main.5338ded9.chunk.js.map",
     "runtime-main.js": "/need-for-drive/static/js/runtime-main.5099325a.js",
     "runtime-main.js.map": "/need-for-drive/static/js/runtime-main.5099325a.js.map",
     "static/css/2.55c62876.chunk.css": "/need-for-drive/static/css/2.55c62876.chunk.css",
@@ -12,13 +12,13 @@
     "static/js/3.b594af06.chunk.js.map": "/need-for-drive/static/js/3.b594af06.chunk.js.map",
     "index.html": "/need-for-drive/index.html",
     "static/css/2.55c62876.chunk.css.map": "/need-for-drive/static/css/2.55c62876.chunk.css.map",
-    "static/css/main.f155909c.chunk.css.map": "/need-for-drive/static/css/main.f155909c.chunk.css.map",
+    "static/css/main.e449fcd5.chunk.css.map": "/need-for-drive/static/css/main.e449fcd5.chunk.css.map",
     "static/js/2.8c40f449.chunk.js.LICENSE.txt": "/need-for-drive/static/js/2.8c40f449.chunk.js.LICENSE.txt",
     "static/media/OrderPage.scss": "/need-for-drive/static/media/Roboto-Regular.a8d6ac03.ttf",
     "static/media/SideMenu.scss": "/need-for-drive/static/media/Telegram.e8137bbe.svg",
     "static/media/LocationVector.9d09636f.svg": "/need-for-drive/static/media/LocationVector.9d09636f.svg",
     "static/media/Map_order.96309faa.png": "/need-for-drive/static/media/Map_order.96309faa.png",
-    "static/media/OrderDetails.scss": "/need-for-drive/static/media/Roboto-Light.8be2d148.ttf",
+    "static/media/OrderDetails.scss": "/need-for-drive/static/media/Roboto-Medium.7429a63c.ttf",
     "static/media/Slide1Parking.28eb6a60.png": "/need-for-drive/static/media/Slide1Parking.28eb6a60.png",
     "static/media/Slide2Insurance.267d0683.png": "/need-for-drive/static/media/Slide2Insurance.267d0683.png",
     "static/media/Slide3Patrol.4f3163f1.png": "/need-for-drive/static/media/Slide3Patrol.4f3163f1.png",
@@ -28,7 +28,7 @@
     "static/js/runtime-main.5099325a.js",
     "static/css/2.55c62876.chunk.css",
     "static/js/2.8c40f449.chunk.js",
-    "static/css/main.f155909c.chunk.css",
-    "static/js/main.05e77675.chunk.js"
+    "static/css/main.e449fcd5.chunk.css",
+    "static/js/main.5338ded9.chunk.js"
   ]
 }
