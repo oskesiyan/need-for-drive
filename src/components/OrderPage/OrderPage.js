@@ -392,14 +392,18 @@ const OrderPage = () => {
               priceTo={20000}
               tab1={true}
               tab2={false}
+              tab3={false}
+              setTabIndex={setTabIndex}
+              tabIndex={tabIndex}
+              buttonName={"Выбрать модель"}
             />
-            <button
+            {/* <button
               className="tabs-blok__step1__order-info__button"
               onClick={() => setTabIndex(tabIndex + 1)}
               disabled={selectedPoint === null ? true : false}
             >
               Выбрать модель
-            </button>
+            </button> */}
           </div>
           {/* <Step1/> */}
         </TabPanel>
@@ -434,32 +438,34 @@ const OrderPage = () => {
             />
             <label for="rb3">Премиум </label>
           </div>
-          <div className="tabs-block__step2-row">
-            {CarsData &&
-              CarsData.map((el) => {
-                return (
-                  <div
-                    className="tabs-block__step2-item"
-                    onClick={() => setSelectedModel(el)}
-                  >
-                    <div className="tabs-block__step2-item__name">
-                      {el.name}
+          <div className="tabs-block__step2-box">
+            <div className="tabs-block__step2-row">
+              {CarsData &&
+                CarsData.map((el) => {
+                  return (
+                    <div
+                      className="tabs-block__step2-item"
+                      onClick={() => setSelectedModel(el)}
+                    >
+                      <div className="tabs-block__step2-item__name">
+                        {el.name}
+                      </div>
+                      <div className="tabs-block__step2-item__price">
+                        {el.priceMin}-{el.priceMax} ₽
+                      </div>
+                      <img
+                        src={
+                          "https://api-factory.simbirsoft1.com/" +
+                          el?.thumbnail?.path
+                        }
+                        // width="256"
+                        // height="116.36"
+                        className="tabs-block__step2-item__img"
+                      ></img>
                     </div>
-                    <div className="tabs-block__step2-item__price">
-                      {el.priceMin}-{el.priceMax} ₽
-                    </div>
-                    <img
-                      src={
-                        "https://api-factory.simbirsoft1.com/" +
-                        el?.thumbnail?.path
-                      }
-                      width="256"
-                      height="116.36"
-                      className="tabs-block__step2-item__img"
-                    ></img>
-                  </div>
-                );
-              })}
+                  );
+                })}
+            </div>
           </div>
           <div>
             <OrderDetails
@@ -468,15 +474,20 @@ const OrderPage = () => {
               model={selectedModel.name}
               priceFrom={selectedModel.priceMin}
               priceTo={selectedModel.priceMax}
+              tab1={false}
               tab2={true}
+              tab3={false}
+              setTabIndex={setTabIndex}
+              tabIndex={tabIndex}
+              buttonName={"Дополнительно"}
             />
-            <button
+            {/* <button
               className="tabs-blok__step1__order-info__button"
               onClick={() => setTabIndex(tabIndex + 1)}
               disabled={selectedModel === "" ? true : false}
             >
               Дополнительно
-            </button>
+            </button> */}
           </div>
         </TabPanel>
         {/* дополнительно */}
@@ -616,15 +627,20 @@ const OrderPage = () => {
               dateTo={toDate === null ? "" : toDate}
               priceFrom={selectedModel.priceMin}
               priceTo={selectedModel.priceMax}
+              tab1={false}
+              tab2={false}
               tab3={true}
+              setTabIndex={setTabIndex}
+              tabIndex={tabIndex}
+              buttonName={"Итого"}
             />
-            <button
+            {/* <button
               className="tabs-blok__step1__order-info__button"
               // onClick={() => setTabIndex(tabIndex + 1)}
               // disabled={selectedModel === null ? true : false}
             >
               Итого
-            </button>
+            </button> */}
           </div>
         </TabPanel>
         {/* итого */}
@@ -661,8 +677,8 @@ const OrderPage = () => {
                 "https://api-factory.simbirsoft1.com/" +
                 selectedModel?.thumbnail?.path
               }
-              width="256"
-              height="116.36"
+              // width="256"
+              // height="116.36"
               className="tabs-block__step4__img"
             ></img>
           </div>
@@ -680,15 +696,18 @@ const OrderPage = () => {
               dateTo={toDate === null ? "" : toDate}
               priceFrom={selectedModel.priceMin}
               priceTo={selectedModel.priceMax}
-              tab3={true}
+              tab4={true}
+              setTabIndex={setTabIndex}
+              tabIndex={tabIndex}
+              buttonName={"Готово"}
             />
-            <button
+            {/* <button
               className="tabs-blok__step1__order-info__button"
               // onClick={() => setTabIndex(tabIndex + 1)}
               // disabled={selectedModel === null ? true : false}
             >
               Заказать
-            </button>
+            </button> */}
           </div>
         </TabPanel>
       </Tabs>

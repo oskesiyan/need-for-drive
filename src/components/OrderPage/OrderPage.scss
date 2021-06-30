@@ -1,3 +1,4 @@
+@import "./../../styles/variables.scss";
 @font-face {
   font-family: "Roboto-Light";
   src: local("Roboto"), url(./../../fonts/Roboto-Light.ttf) format("truetype");
@@ -235,6 +236,8 @@ input[type="radio"]:checked + label:after {
 .tabs-block__step2-item__img {
   margin-top: 92px;
   margin-left: 97px;
+  width: 256px;
+  height: 116.36px;
 }
 .tabs-block__step3__radio {
   position: absolute;
@@ -362,4 +365,38 @@ input[type="checkbox"]:checked:after {
 .t {
   display: flex;
   flex-direction: row;
+}
+
+@media screen and (max-width: $desktop_min) {
+  .tabs-blok__step1__position__mapOrder {
+    width: 500px;
+    height: 250px;
+  }
+  .tabs-block__step2-item {
+    width: 240px;
+    height: 180px;
+  }
+  .tabs-block__step2-item__img {
+    margin-top: 65px;
+    margin-left: 50px;
+    width: 180px;
+    height: 106.36px;
+  }
+  .tabs-block__step4__img {
+    margin-left: 90px;
+    margin-top: 32px;
+    width: 256px;
+    height: 116.36px;
+  }
+}
+@media screen and (max-width: $tablet) {
+  .tabs-block__step2-box {
+    margin-top: 60px;
+    height: 30vh;
+    position: absolute;
+    box-sizing: border-box;
+    overflow-y: scroll;
+  }
+}
+@media screen and (max-width: $mobile) {
 }

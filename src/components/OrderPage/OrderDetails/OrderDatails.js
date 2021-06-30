@@ -24,7 +24,10 @@ const OrderDetails = (props) => {
       <div className="order-info">
         <div className="order-info__order">Ваш заказ:</div>
         <ul className="order">
-          {props.tab1 === true || props.tab2 === true || props.tab3 === true ? (
+          {props.tab1 === true ||
+          props.tab2 === true ||
+          props.tab3 === true ||
+          props.tab4 === true ? (
             <ul className="test">
               {" "}
               <li className="order__city">
@@ -43,7 +46,7 @@ const OrderDetails = (props) => {
             ""
           )}
 
-          {props.tab2 === true || props.tab3 === true ? (
+          {props.tab2 === true || props.tab3 === true || props.tab4 === true ? (
             <li className="order__point">
               <span className="order__text">Модель</span>
               <span className="order__info">
@@ -53,7 +56,7 @@ const OrderDetails = (props) => {
           ) : (
             ""
           )}
-          {props.tab3 === true ? (
+          {props.tab3 === true || props.tab4 === true ? (
             <ul className="test">
               <li className="order__point">
                 <span className="order__text">Цвет</span>
@@ -107,6 +110,32 @@ const OrderDetails = (props) => {
           )}
           <li className="order__price">
             <b>Цена:</b> от {props.priceFrom} до {props.priceTo} ₽
+          </li>
+          <li className="order__price">
+            <button
+              className="order-info__button"
+              onClick={() => props.setTabIndex(props.tabIndex + 1)}
+              disabled={
+                (props.point !== null) &
+                  (props.tab1 === true) &
+                  (props.tab2 === false) &
+                  (props.tab3 === false) ||
+                (props.model !== undefined) &
+                  (props.tab2 === true) &
+                  (props.tab3 === false) &
+                  (props.tab1 === false) ||
+                (props.color !== null) &
+                  (props.rate !== "") &
+                  (props.tab2 === false) &
+                  (props.tab3 === true) &
+                  (props.tab1 === false) ||
+                props.tab4 === true
+                  ? false
+                  : true
+              }
+            >
+              {props.buttonName}
+            </button>
           </li>
         </ul>
       </div>

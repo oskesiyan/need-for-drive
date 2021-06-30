@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "Roboto-Bold";
+    src: local("Roboto"), url(./../fonts/Roboto-Bold.ttf) format("truetype");
+  }
+  @font-face {
+    font-family: "Roboto-Light";
+    src: local("Roboto"), url(./../fonts/Roboto-Light.ttf) format("truetype");
+  }
+  @font-face {
+    font-family: "Roboto-Medium";
+    src: local("Roboto"), url(./../fonts/Roboto-Medium.ttf) format("truetype");
+  }
+  $desktop_min: 1439px;
+  $tablet: 1023px;
+  $mobile: 767px;
