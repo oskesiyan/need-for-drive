@@ -4,6 +4,7 @@ import "./OrderPage.scss";
 import mapOrder from "./../../img/Map_order.png";
 import Select from "react-select";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import { getData } from "./../../utils/index";
 import OrderDetails from "./OrderDetails/OrderDatails";
@@ -12,6 +13,7 @@ import "./DateTimePicker.css";
 
 const OrderPage = () => {
   const [tabIndex, setTabIndex] = useState(0);
+  const [visibleOrder, setVisibleOrder] = useState(false);
   // местоположение
 
   const [cityData, setCityData] = useState([]);
@@ -35,6 +37,7 @@ const OrderPage = () => {
       marginLeft: 224,
       marginTop: 27,
       textAlign: "end",
+      "@media only screen and (max-width: 767px)": { marginLeft: 125 },
     }),
     indicatorsContainer: () => ({
       borderBottom: "1px solid #999999",
@@ -49,8 +52,6 @@ const OrderPage = () => {
     menu: () => ({
       width: 224, // Custom colour
       marginLeft: 224,
-      color: "black",
-      borderBottom: "1px solid black",
     }),
     menuList: () => ({
       color: "black",
@@ -61,14 +62,6 @@ const OrderPage = () => {
       fontSize: 14,
       textAlign: "start",
     }),
-    // placeholder: () => ({
-    //   zindex: 1,
-    //   color: "gray",
-    //   marginLeft: "2px",
-    //   marginRight: "2px",
-    //   position: "absolute",
-    //   top: "50%",
-    // }),
     clearIndicator: (prevStyle) => ({
       ...prevStyle,
       color: "#121212",
@@ -97,6 +90,7 @@ const OrderPage = () => {
       marginLeft: 224,
       marginTop: 3,
       textAlign: "end",
+      "@media only screen and (max-width: 767px)": { marginLeft: 125 },
     }),
     indicatorsContainer: () => ({
       borderBottom: "1px solid #999999",
@@ -126,7 +120,6 @@ const OrderPage = () => {
     singleValue: (provided, state) => {
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = "opacity 300ms";
-
       return { ...provided, opacity, transition };
     },
   };
@@ -178,7 +171,6 @@ const OrderPage = () => {
   const [fullPatrolState, setFullPatrolState] = useState(false);
   const [babyChairState, setBabyChairState] = useState(false);
   const [rightHDState, setRightHDState] = useState(false);
-  debugger;
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
   let handleColor = (time) => {
@@ -272,6 +264,7 @@ const OrderPage = () => {
       setSelectedPoint(null);
       setPoint({ id: "", label: "" });
     }
+    setSelectedPoint(null);
   }, [selectedCity]);
 
   useEffect(async () => {
@@ -285,7 +278,6 @@ const OrderPage = () => {
 
   useEffect(() => {
     if (allCarsState) {
-      debugger;
       setCarsData(allCarsData);
     }
     if (economyCarsState) {
@@ -360,6 +352,7 @@ const OrderPage = () => {
               isClearable={true}
               value={selectedCity}
               onChange={setSelectedCity}
+              // onClick={}
               options={city}
               styles={customStylesCity}
               placeholder="Начните вводить город"
@@ -397,13 +390,6 @@ const OrderPage = () => {
               tabIndex={tabIndex}
               buttonName={"Выбрать модель"}
             />
-            {/* <button
-              className="tabs-blok__step1__order-info__button"
-              onClick={() => setTabIndex(tabIndex + 1)}
-              disabled={selectedPoint === null ? true : false}
-            >
-              Выбрать модель
-            </button> */}
           </div>
           {/* <Step1/> */}
         </TabPanel>
@@ -481,13 +467,6 @@ const OrderPage = () => {
               tabIndex={tabIndex}
               buttonName={"Дополнительно"}
             />
-            {/* <button
-              className="tabs-blok__step1__order-info__button"
-              onClick={() => setTabIndex(tabIndex + 1)}
-              disabled={selectedModel === "" ? true : false}
-            >
-              Дополнительно
-            </button> */}
           </div>
         </TabPanel>
         {/* дополнительно */}
@@ -634,13 +613,6 @@ const OrderPage = () => {
               tabIndex={tabIndex}
               buttonName={"Итого"}
             />
-            {/* <button
-              className="tabs-blok__step1__order-info__button"
-              // onClick={() => setTabIndex(tabIndex + 1)}
-              // disabled={selectedModel === null ? true : false}
-            >
-              Итого
-            </button> */}
           </div>
         </TabPanel>
         {/* итого */}
@@ -677,8 +649,6 @@ const OrderPage = () => {
                 "https://api-factory.simbirsoft1.com/" +
                 selectedModel?.thumbnail?.path
               }
-              // width="256"
-              // height="116.36"
               className="tabs-block__step4__img"
             ></img>
           </div>
@@ -699,16 +669,30 @@ const OrderPage = () => {
               tab4={true}
               setTabIndex={setTabIndex}
               tabIndex={tabIndex}
-              buttonName={"Готово"}
+              buttonName={"Заказать"}
+              setVisibleOrder={setVisibleOrder}
             />
-            {/* <button
-              className="tabs-blok__step1__order-info__button"
-              // onClick={() => setTabIndex(tabIndex + 1)}
-              // disabled={selectedModel === null ? true : false}
-            >
-              Заказать
-            </button> */}
           </div>
+          {visibleOrder === true ? (
+            <div className="tabs-block__step4__modal">
+              <div>Подтвердить заказ</div>
+              <div className="tabs-block__step4__modal__button">
+                <Link to="/confirmation">
+                  <button className="tabs-block__step4__modal__button__ok">
+                    Подтвердить
+                  </button>
+                </Link>
+                <button
+                  className="tabs-block__step4__modal__button__cancel"
+                  onClick={() => setVisibleOrder(false)}
+                >
+                  Вернуться
+                </button>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </TabPanel>
       </Tabs>
     </div>

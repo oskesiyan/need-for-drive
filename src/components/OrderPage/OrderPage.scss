@@ -361,12 +361,70 @@ input[type="checkbox"]:checked:after {
 .tabs-block__step4__img {
   margin-left: 352px;
   margin-top: 32px;
+  width: 256px;
+  height: 116.36px;
 }
 .t {
   display: flex;
   flex-direction: row;
 }
+.tabs-block__step4__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  font-family: Roboto-Medium;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  /* identical to box height */
 
+  text-align: center;
+}
+.tabs-block__step4__modal__button {
+  display: flex;
+  margin-top: 32px;
+}
+.tabs-block__step4__modal__button__ok {
+  background: linear-gradient(90deg, #0ec261 2.61%, #039f67 112.6%);
+  background-blend-mode: darken;
+  border-radius: 8px;
+  width: 177px;
+  height: 48px;
+  margin-right: 8px;
+  font-family: Roboto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  color: #ffffff;
+}
+.tabs-block__step4__modal__button__cancel {
+  background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
+  border-radius: 4px;
+  width: 177px;
+  height: 48px;
+  color: #eeeeee;
+  margin-left: 8px;
+  font-family: Roboto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  color: #ffffff;
+}
 @media screen and (max-width: $desktop_min) {
   .tabs-blok__step1__position__mapOrder {
     width: 500px;
@@ -397,6 +455,62 @@ input[type="checkbox"]:checked:after {
     box-sizing: border-box;
     overflow-y: scroll;
   }
+  .tabs-block__step3__date {
+    top: 230px;
+  }
+  .tabs-block__step3__radio {
+    top: 347px;
+  }
+  .tabs-block__step3__checkbox {
+    margin-top: 310px;
+  }
 }
 @media screen and (max-width: $mobile) {
+  .tabs-blok__step1__position__city {
+    left: 79px;
+  }
+  .tabs-blok__step1__position__point {
+    left: 27px;
+  }
+  .tabs-blok__step1__position__mapOrder {
+    left: 27px;
+  }
+  .css-152ugju-Control {
+    margin-left: 130px;
+  }
+  .css-134y49l-Control {
+    margin-left: 130px;
+  }
+  .tabs-blok__step1__position__map {
+    left: 27px;
+  }
+  .tabs-block__step2__radio {
+    left: 27px;
+    top: 162px;
+  }
+  .tabs-block__step2-box {
+    margin-top: 100px;
+  }
+  .tabs-block__step2-row {
+    grid-template-columns: 1fr;
+    margin-top: 0px;
+    margin-left: 27px;
+  }
+  .tabs-block__step3__date {
+    left: 27px;
+  }
+  .tabs-block__step3__radio {
+    left: 27px;
+  }
+  .tabs-block__step3__checkbox {
+    margin-left: 27px;
+  }
+  .tabs-blok__step4__total {
+    margin-left: 27px;
+  }
+  .tabs-block__step4__img {
+    margin-left: 27px;
+    margin-top: 132px;
+    position: absolute;
+  }
 }

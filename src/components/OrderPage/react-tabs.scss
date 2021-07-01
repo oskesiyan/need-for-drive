@@ -1,19 +1,18 @@
+@import "./../../styles/variables.scss";
 @font-face {
-  font-family: 'Roboto-Bold';
-  src: local('Roboto'), url(./../../fonts/Roboto-Bold.ttf) format('truetype');
+  font-family: "Roboto-Bold";
+  src: local("Roboto"), url(./../../fonts/Roboto-Bold.ttf) format("truetype");
 }
-$lineColor: #EEEEEE;
+$lineColor: #eeeeee;
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
   margin-top: 96px;
-  
+
   &__tab-list {
     border-bottom: 1px solid $lineColor;
     border-top: 1px solid $lineColor;
     margin: 0 0 10px;
     padding: 0;
-    
-    
   }
 
   &__tab {
@@ -34,7 +33,7 @@ $lineColor: #EEEEEE;
 
     &--selected {
       border-color: #aaa;
-      color: #0EC261;
+      color: #0ec261;
       border-radius: 5px 5px 0 0;
     }
 
@@ -61,6 +60,14 @@ $lineColor: #EEEEEE;
 
     &--selected {
       display: block;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .react-tabs {
+    &__tab {
+      left: 20px;
     }
   }
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./OrderDetails.scss";
 
 const OrderDetails = (props) => {
@@ -112,30 +113,57 @@ const OrderDetails = (props) => {
             <b>Цена:</b> от {props.priceFrom} до {props.priceTo} ₽
           </li>
           <li className="order__price">
-            <button
-              className="order-info__button"
-              onClick={() => props.setTabIndex(props.tabIndex + 1)}
-              disabled={
-                (props.point !== null) &
-                  (props.tab1 === true) &
-                  (props.tab2 === false) &
-                  (props.tab3 === false) ||
-                (props.model !== undefined) &
-                  (props.tab2 === true) &
-                  (props.tab3 === false) &
-                  (props.tab1 === false) ||
-                (props.color !== null) &
-                  (props.rate !== "") &
-                  (props.tab2 === false) &
-                  (props.tab3 === true) &
-                  (props.tab1 === false) ||
-                props.tab4 === true
-                  ? false
-                  : true
-              }
-            >
-              {props.buttonName}
-            </button>
+            {props.tab4 === true ? (
+              <button
+                className="order-info__button"
+                onClick={() => props.setVisibleOrder(true)}
+                disabled={
+                  (props.point !== null) &
+                    (props.tab1 === true) &
+                    (props.tab2 === false) &
+                    (props.tab3 === false) ||
+                  (props.model !== undefined) &
+                    (props.tab2 === true) &
+                    (props.tab3 === false) &
+                    (props.tab1 === false) ||
+                  (props.color !== null) &
+                    (props.rate !== "") &
+                    (props.tab2 === false) &
+                    (props.tab3 === true) &
+                    (props.tab1 === false) ||
+                  props.tab4 === true
+                    ? false
+                    : true
+                }
+              >
+                {props.buttonName}
+              </button>
+            ) : (
+              <button
+                className="order-info__button"
+                onClick={() => props.setTabIndex(props.tabIndex + 1)}
+                disabled={
+                  (props.point !== null) &
+                    (props.tab1 === true) &
+                    (props.tab2 === false) &
+                    (props.tab3 === false) ||
+                  (props.model !== undefined) &
+                    (props.tab2 === true) &
+                    (props.tab3 === false) &
+                    (props.tab1 === false) ||
+                  (props.color !== null) &
+                    (props.rate !== "") &
+                    (props.tab2 === false) &
+                    (props.tab3 === true) &
+                    (props.tab1 === false) ||
+                  props.tab4 === true
+                    ? false
+                    : true
+                }
+              >
+                {props.buttonName}
+              </button>
+            )}
           </li>
         </ul>
       </div>

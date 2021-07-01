@@ -120,11 +120,9 @@ ul.order span.order__info {
 }
 
 .order-info__button {
-  // position: absolute;
   width: 287px;
   height: 48px;
   right: 65px;
-  // margin-top: 128px;
   background: linear-gradient(
     90deg,
     $buttonColorGradient1 2.61%,
@@ -160,4 +158,7 @@ ul.order span.order__info {
   }
 }
 @media screen and (max-width: $mobile) {
+  .order-info {
+    left: 0px;
+  }
 }
