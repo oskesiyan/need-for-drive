@@ -141,6 +141,9 @@ ul.order span.order__info {
   color: $lineColor;
   z-index: 500;
 }
+.order-info__button.order {
+  background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
+}
 @media screen and (max-width: $desktop_min) {
 }
 @media screen and (max-width: $tablet) {

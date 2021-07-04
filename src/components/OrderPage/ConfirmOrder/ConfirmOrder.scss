@@ -1,0 +1,38 @@
+@import "./../../../styles/variables.scss";
+.registration-order {
+}
+.registration-order__details {
+  position: absolute;
+  display: flex;
+  border-bottom: 1px solid $gray_light;
+  border-top: 1px solid $gray_light;
+  top: 93px;
+  // left: 94px;
+  width: 100%;
+}
+.registration-order__details__text {
+  margin-left: 128px;
+  margin-top: 8px;
+  margin-bottom: 7px;
+  font-family: Roboto-Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+}
+.registration-order__info {
+  display: flex;
+  margin-top: 130px;
+  flex-direction: row;
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  line-height: 16px;
+  color: #121212;
+}
+.tabs-blok__step4__total__text {
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}

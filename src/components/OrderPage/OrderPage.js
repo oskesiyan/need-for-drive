@@ -37,7 +37,9 @@ const OrderPage = () => {
       marginLeft: 224,
       marginTop: 27,
       textAlign: "end",
-      "@media only screen and (max-width: 767px)": { marginLeft: 125 },
+      "@media only screen and (max-width: 767px)": {
+        marginLeft: 125,
+      },
     }),
     indicatorsContainer: () => ({
       borderBottom: "1px solid #999999",
@@ -90,7 +92,9 @@ const OrderPage = () => {
       marginLeft: 224,
       marginTop: 3,
       textAlign: "end",
-      "@media only screen and (max-width: 767px)": { marginLeft: 125 },
+      "@media only screen and (max-width: 767px)": {
+        marginLeft: 125,
+      },
     }),
     indicatorsContainer: () => ({
       borderBottom: "1px solid #999999",
@@ -386,6 +390,7 @@ const OrderPage = () => {
               tab1={true}
               tab2={false}
               tab3={false}
+              order={false}
               setTabIndex={setTabIndex}
               tabIndex={tabIndex}
               buttonName={"Выбрать модель"}
@@ -463,6 +468,7 @@ const OrderPage = () => {
               tab1={false}
               tab2={true}
               tab3={false}
+              order={false}
               setTabIndex={setTabIndex}
               tabIndex={tabIndex}
               buttonName={"Дополнительно"}
@@ -609,6 +615,7 @@ const OrderPage = () => {
               tab1={false}
               tab2={false}
               tab3={true}
+              order={false}
               setTabIndex={setTabIndex}
               tabIndex={tabIndex}
               buttonName={"Итого"}
@@ -667,6 +674,7 @@ const OrderPage = () => {
               priceFrom={selectedModel.priceMin}
               priceTo={selectedModel.priceMax}
               tab4={true}
+              order={false}
               setTabIndex={setTabIndex}
               tabIndex={tabIndex}
               buttonName={"Заказать"}

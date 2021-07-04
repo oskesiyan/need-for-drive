@@ -28,7 +28,8 @@ const OrderDetails = (props) => {
           {props.tab1 === true ||
           props.tab2 === true ||
           props.tab3 === true ||
-          props.tab4 === true ? (
+          props.tab4 === true ||
+          props.order === true ? (
             <ul className="test">
               {" "}
               <li className="order__city">
@@ -47,7 +48,10 @@ const OrderDetails = (props) => {
             ""
           )}
 
-          {props.tab2 === true || props.tab3 === true || props.tab4 === true ? (
+          {props.tab2 === true ||
+          props.tab3 === true ||
+          props.tab4 === true ||
+          props.order === true ? (
             <li className="order__point">
               <span className="order__text">Модель</span>
               <span className="order__info">
@@ -57,7 +61,9 @@ const OrderDetails = (props) => {
           ) : (
             ""
           )}
-          {props.tab3 === true || props.tab4 === true ? (
+          {props.tab3 === true ||
+          props.tab4 === true ||
+          props.order === true ? (
             <ul className="test">
               <li className="order__point">
                 <span className="order__text">Цвет</span>
@@ -138,7 +144,7 @@ const OrderDetails = (props) => {
               >
                 {props.buttonName}
               </button>
-            ) : (
+            ) : props.order === false ? (
               <button
                 className="order-info__button"
                 onClick={() => props.setTabIndex(props.tabIndex + 1)}
@@ -163,6 +169,15 @@ const OrderDetails = (props) => {
               >
                 {props.buttonName}
               </button>
+            ) : (
+              ""
+            )}
+            {props.order === true ? (
+              <button className="order-info__button order">
+                {props.buttonName}
+              </button>
+            ) : (
+              ""
             )}
           </li>
         </ul>
