@@ -7,7 +7,8 @@ const OrderDetails = (props) => {
   const [dateTT, setDateTT] = useState("");
   const getDate = () => {
     debugger;
-    if (props.dateFrom !== null && props.dateTo !== null) {
+    setDateTT("");
+    if (props.dateFrom !== "" && props.dateTo !== "") {
       const dateDifference = props.dateTo - props.dateFrom;
       const totalSeconds = dateDifference / 1000;
       const days = Math.floor(totalSeconds / 86400);

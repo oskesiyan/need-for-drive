@@ -207,10 +207,15 @@ input[type="radio"]:checked + label:after {
   height: 224px;
   color: #444;
   border: 1px solid grey;
+  background-color: white;
   &:hover {
     border: 1px solid $buttonColorGradient1;
   }
+  &:focus {
+    border: 1px solid $buttonColorGradient1;
+  }
 }
+
 .tabs-block__step2-item__name {
   position: absolute;
   margin-left: 16px;
@@ -425,6 +430,39 @@ input[type="checkbox"]:checked:after {
   border: none;
   color: #ffffff;
 }
+
+//preloader
+.loader__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // background-color: rgba(255, 255, 255, 0.9);
+}
+.loader {
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #0ec261; /* Blue */
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+//preloader
+
 @media screen and (max-width: $desktop_min) {
   .tabs-blok__step1__position__mapOrder {
     width: 500px;
@@ -443,7 +481,7 @@ input[type="checkbox"]:checked:after {
   .tabs-block__step4__img {
     margin-left: 90px;
     margin-top: 32px;
-    width: 256px;
+    width: 238px;
     height: 116.36px;
   }
 }
@@ -474,6 +512,8 @@ input[type="checkbox"]:checked:after {
   }
   .tabs-blok__step1__position__mapOrder {
     left: 27px;
+    width: 100vw;
+    padding-right: 32px;
   }
   .css-152ugju-Control {
     margin-left: 130px;
@@ -512,5 +552,23 @@ input[type="checkbox"]:checked:after {
     margin-left: 27px;
     margin-top: 132px;
     position: absolute;
+  }
+}
+@media screen and (max-width: $mobile_min) {
+  .tabs-blok__step1__position__city {
+    top: 175px;
+  }
+  .tabs-blok__step1__position__point {
+    top: 205px;
+  }
+  .tabs-blok__step1__position__mapOrder {
+    width: 100vw;
+    padding-right: 32px;
+  }
+  .tabs-block__step2-box {
+    margin-top: 50px;
+  }
+  .tabs-block__step3__checkbox {
+    margin-top: 290px;
   }
 }

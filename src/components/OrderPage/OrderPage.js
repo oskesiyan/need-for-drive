@@ -14,6 +14,10 @@ import "./DateTimePicker.css";
 const OrderPage = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [visibleOrder, setVisibleOrder] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
+  const [isFetchingCars, setIsFetchingCars] = useState(false);
+  debugger;
+
   // местоположение
 
   const [cityData, setCityData] = useState([]);
@@ -39,6 +43,9 @@ const OrderPage = () => {
       textAlign: "end",
       "@media only screen and (max-width: 767px)": {
         marginLeft: 125,
+      },
+      "@media only screen and (max-width: 428px)": {
+        marginTop: 0,
       },
     }),
     indicatorsContainer: () => ({
@@ -95,6 +102,9 @@ const OrderPage = () => {
       "@media only screen and (max-width: 767px)": {
         marginLeft: 125,
       },
+      "@media only screen and (max-width: 428px)": {
+        marginTop: 0,
+      },
     }),
     indicatorsContainer: () => ({
       borderBottom: "1px solid #999999",
@@ -130,12 +140,13 @@ const OrderPage = () => {
   // Выбор модели
   const [selectedModel, setSelectedModel] = useState("");
 
-  const [allCarsState, setAllCars] = useState(false);
+  const [allCarsState, setAllCars] = useState(true);
   const [economyCarsState, setEconomyCars] = useState(false);
   const [premiumCarsState, setPremiumCars] = useState(false);
 
   const [allCarsData, setAllCarsData] = useState([]);
   const [CarsData, setCarsData] = useState([]);
+
   const handleChangeRB1 = () => {
     setAllCars(!allCarsState);
     if (economyCarsState) {
@@ -164,7 +175,7 @@ const OrderPage = () => {
     }
   };
   // Дополнительно
-  const [allColorState, setAllColor] = useState(false);
+  const [allColorState, setAllColor] = useState(true);
   const [redColorState, setRedColor] = useState(false);
   const [blueColorState, setBlueColor] = useState(false);
   const [carsColorState, setCarsColor] = useState(null);
@@ -177,6 +188,7 @@ const OrderPage = () => {
   const [rightHDState, setRightHDState] = useState(false);
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
+  const currentDate = new Date(Date.now() - 1000 * (60 * 5));
   let handleColor = (time) => {
     return time.getHours() > 12 ? "text-success" : "text-error";
   };
@@ -232,6 +244,7 @@ const OrderPage = () => {
   // Итого
 
   useEffect(async () => {
+    setIsFetching(true);
     const result1 = await getData(
       "http://api-factory.simbirsoft1.com/api/db/city"
     );
@@ -240,6 +253,7 @@ const OrderPage = () => {
       "http://api-factory.simbirsoft1.com/api/db/point"
     );
     setPointData(result2?.data?.data);
+    setIsFetching(false);
   }, []);
 
   useEffect(() => {
@@ -272,11 +286,13 @@ const OrderPage = () => {
   }, [selectedCity]);
 
   useEffect(async () => {
+    setIsFetchingCars(true);
     if (allCarsData.length === 0) {
       const result = await getData(
         "http://api-factory.simbirsoft1.com/api/db/car"
       );
       setAllCarsData(result?.data?.data);
+      setIsFetchingCars(false);
     }
   }, []);
 
@@ -290,7 +306,7 @@ const OrderPage = () => {
     if (premiumCarsState) {
       setCarsData(allCarsData.filter((el) => el.categoryId?.name === "Люкс"));
     }
-  }, [allCarsState, economyCarsState, premiumCarsState]);
+  }, [allCarsState, economyCarsState, premiumCarsState, allCarsData]);
 
   useEffect(() => {
     if (allColorState) {
@@ -350,6 +366,11 @@ const OrderPage = () => {
         </TabList>
         {/* местоположение */}
         <TabPanel>
+          {isFetching ? (
+            <div className="loader__modal">
+              <div className="loader"></div>
+            </div>
+          ) : null}
           <div className="tabs-blok__step1__position">
             <div className="tabs-blok__step1__position__city">Город</div>
             <Select
@@ -400,6 +421,11 @@ const OrderPage = () => {
         </TabPanel>
         {/* модель */}
         <TabPanel>
+          {isFetchingCars ? (
+            <div className="loader__modal">
+              <div className="loader"></div>
+            </div>
+          ) : null}
           <div className="tabs-block__step2__radio">
             <input
               id="rb1"
@@ -434,7 +460,7 @@ const OrderPage = () => {
               {CarsData &&
                 CarsData.map((el) => {
                   return (
-                    <div
+                    <button
                       className="tabs-block__step2-item"
                       onClick={() => setSelectedModel(el)}
                     >
@@ -453,7 +479,7 @@ const OrderPage = () => {
                         // height="116.36"
                         className="tabs-block__step2-item__img"
                       ></img>
-                    </div>
+                    </button>
                   );
                 })}
             </div>
@@ -515,6 +541,7 @@ const OrderPage = () => {
                 value={fromDate}
                 onChange={(date) => setFromDate(date)}
                 calendarIcon={null}
+                minDate={new Date()}
                 format="dd.MM.yyyy HH.mm"
                 isClockOpen={false}
                 disableClock={true}
@@ -531,6 +558,7 @@ const OrderPage = () => {
               <DatePicker
                 value={toDate}
                 onChange={(date) => setToDate(date)}
+                minDate={new Date()}
                 calendarIcon={null}
                 format="dd.MM.yyyy HH.mm"
                 isClockOpen={false}

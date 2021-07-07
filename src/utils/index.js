@@ -17,14 +17,6 @@ export const getData = async (url) => {
 
     return result;
   } catch (error) {
-    if (
-      window.confirm(
-        "Для получения данных с сервера, включите демонстрационный режим на сайте https://cors-anywhere.herokuapp.com"
-      )
-    ) {
-      window.open("https://cors-anywhere.herokuapp.com");
-    } else {
-    }
     throw error;
   }
 };
