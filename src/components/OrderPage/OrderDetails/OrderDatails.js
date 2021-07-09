@@ -5,10 +5,14 @@ import "./OrderDetails.scss";
 
 const OrderDetails = (props) => {
   const [dateTT, setDateTT] = useState("");
+  const [costPeriod, setCostPeriod] = useState(0);
   const getDate = () => {
-    debugger;
     setDateTT("");
-    if (props.dateFrom !== "" && props.dateTo !== "") {
+    if (
+      props.dateFrom !== "" &&
+      props.dateTo !== "" &&
+      props.dateTo - props.dateFrom >= 0
+    ) {
       const dateDifference = props.dateTo - props.dateFrom;
       const totalSeconds = dateDifference / 1000;
       const days = Math.floor(totalSeconds / 86400);
@@ -20,6 +24,32 @@ const OrderDetails = (props) => {
   useEffect(() => {
     getDate(props.dateFrom, props.dateTo);
   }, [props.dateFrom, props.dateTo]);
+
+  useEffect(() => {
+    debugger;
+    if (props.rate === "Поминутно") {
+      if (
+        props.dateFrom !== "" &&
+        props.dateTo !== "" &&
+        props.dateTo - props.dateFrom >= 0
+      ) {
+        const minute = (props.dateTo - props.dateFrom) / 60000;
+        const costMin = Math.round(minute * 7);
+        setCostPeriod(costMin);
+      }
+    }
+    if (props.rate === "На сутки") {
+      if (
+        props.dateFrom !== "" &&
+        props.dateTo !== "" &&
+        props.dateTo - props.dateFrom >= 0
+      ) {
+        const day = (props.dateTo - props.dateFrom) / (60 * 60 * 24 * 1000);
+        const costDay = Math.round(day * 1999);
+        setCostPeriod(costDay);
+      }
+    }
+  }, [props.dateFrom, props.dateTo, props.rate]);
 
   return (
     <div>
@@ -116,9 +146,18 @@ const OrderDetails = (props) => {
           ) : (
             ""
           )}
-          <li className="order__price">
-            <b>Цена:</b> от {props.priceFrom} до {props.priceTo} ₽
-          </li>
+          {props.tab4 === true ||
+          props.tab3 === true ||
+          props.order === true ? (
+            <li className="order__price">
+              <b>Цена:</b> {props.costOrder + costPeriod} ₽
+            </li>
+          ) : (
+            <li className="order__price">
+              <b>Цена:</b> от {props.priceFrom} до {props.priceTo} ₽
+            </li>
+          )}
+
           <li className="order__price">
             {props.tab4 === true ? (
               <button

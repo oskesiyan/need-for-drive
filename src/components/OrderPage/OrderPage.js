@@ -16,7 +16,7 @@ const OrderPage = () => {
   const [visibleOrder, setVisibleOrder] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
   const [isFetchingCars, setIsFetchingCars] = useState(false);
-  debugger;
+  const [costOrder, setCostOrder] = useState(0);
 
   // местоположение
 
@@ -233,12 +233,27 @@ const OrderPage = () => {
   };
   const handleChangeCB1 = () => {
     setFullPatrolState(!fullPatrolState);
+    if (fullPatrolState === false) {
+      setCostOrder(costOrder + 500);
+    } else {
+      setCostOrder(costOrder - 500);
+    }
   };
   const handleChangeCB2 = () => {
     setBabyChairState(!babyChairState);
+    if (babyChairState === false) {
+      setCostOrder(costOrder + 200);
+    } else {
+      setCostOrder(costOrder - 200);
+    }
   };
   const handleChangeCB3 = () => {
     setRightHDState(!rightHDState);
+    if (rightHDState === false) {
+      setCostOrder(costOrder + 1600);
+    } else {
+      setCostOrder(costOrder - 1600);
+    }
   };
 
   // Итого
@@ -475,8 +490,6 @@ const OrderPage = () => {
                           "https://api-factory.simbirsoft1.com/" +
                           el?.thumbnail?.path
                         }
-                        // width="256"
-                        // height="116.36"
                         className="tabs-block__step2-item__img"
                       ></img>
                     </button>
@@ -644,6 +657,7 @@ const OrderPage = () => {
               tab2={false}
               tab3={true}
               order={false}
+              costOrder={costOrder}
               setTabIndex={setTabIndex}
               tabIndex={tabIndex}
               buttonName={"Итого"}
@@ -703,6 +717,7 @@ const OrderPage = () => {
               priceTo={selectedModel.priceMax}
               tab4={true}
               order={false}
+              costOrder={costOrder}
               setTabIndex={setTabIndex}
               tabIndex={tabIndex}
               buttonName={"Заказать"}
