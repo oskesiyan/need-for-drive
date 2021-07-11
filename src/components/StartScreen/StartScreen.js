@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import Header from "./../Header/Header";
 import Footer from "../Footer/Footer";
 import SliderBlock from "./SliderBlock";
+import NavState from "../../context/NavState";
+import MainMenu from "../SideBar/MainMenu";
 
 const StartScreen = () => {
   let settings = {
@@ -23,6 +25,9 @@ const StartScreen = () => {
 
   return (
     <div className="wraper">
+      <NavState>
+        <MainMenu />
+      </NavState>
       <div className="app-wraper">
         <Header />
         <div className="app-wraper__block">

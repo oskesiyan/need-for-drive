@@ -264,7 +264,6 @@ input[type="radio"]:checked + label:after {
   position: absolute;
   display: flex;
   flex-flow: column;
-  width: 100%;
   left: 128px;
   top: 240px;
 }

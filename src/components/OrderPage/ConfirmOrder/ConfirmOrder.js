@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import NavState from "../../../context/NavState";
 import Header from "../../Header/Header";
+import MainMenu from "../../SideBar/MainMenu";
 import OrderDetails from "../OrderDetails/OrderDatails";
 import "./ConfirmOrder.scss";
 
 const ConfirmOrder = (props) => {
   return (
     <div className="registration-order">
+      <NavState>
+        <MainMenu />
+      </NavState>
       <Header />
       <div className="registration-order__details">
         <div className="registration-order__details__text">Заказ номер</div>

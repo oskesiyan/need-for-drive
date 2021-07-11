@@ -10,8 +10,15 @@
   font-family: "Roboto-Medium";
   src: local("Roboto"), url(./../fonts/Roboto-Medium.ttf) format("truetype");
 }
+@font-face {
+  font-family: "Roboto-Regular";
+  src: local("Roboto"), url(./../fonts/Roboto-Regular.ttf) format("truetype");
+}
 $desktop_min: 1439px;
 $tablet: 1023px;
 $mobile: 767px;
 $mobile_min: 428px;
 $gray_light: #eeeeee;
+$blue: #007bff;
+$login_color: #f5f6f8;
+$admin_text: #3d5170;

@@ -26,7 +26,6 @@ const OrderDetails = (props) => {
   }, [props.dateFrom, props.dateTo]);
 
   useEffect(() => {
-    debugger;
     if (props.rate === "Поминутно") {
       if (
         props.dateFrom !== "" &&

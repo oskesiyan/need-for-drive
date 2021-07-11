@@ -6,10 +6,12 @@ import Select from "react-select";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
-import { getData } from "./../../utils/index";
+import { getData, postData } from "./../../utils/index";
 import OrderDetails from "./OrderDetails/OrderDatails";
 import DatePicker from "react-datetime-picker";
 import "./DateTimePicker.css";
+import NavState from "../../context/NavState";
+import MainMenu from "../SideBar/MainMenu";
 
 const OrderPage = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -257,6 +259,13 @@ const OrderPage = () => {
   };
 
   // Итого
+  const [clickButtonOK, setClickButtonOK] = useState(false);
+  const onClickButtonOK = () => {
+    debugger;
+    setClickButtonOK(!clickButtonOK);
+
+    postData("http://api-factory.simbirsoft1.com/api/db/order");
+  };
 
   useEffect(async () => {
     setIsFetching(true);
@@ -311,6 +320,14 @@ const OrderPage = () => {
     }
   }, []);
 
+  useEffect(async () => {
+    console.log("hhhhhh");
+    debugger;
+    if (clickButtonOK === true) {
+      postData("http://api-factory.simbirsoft1.com/api/db/order");
+    }
+  }, [clickButtonOK]);
+
   useEffect(() => {
     if (allCarsState) {
       setCarsData(allCarsData);
@@ -346,6 +363,9 @@ const OrderPage = () => {
 
   return (
     <div className="tabs-block">
+      <NavState>
+        <MainMenu />
+      </NavState>
       <Header />
       <Tabs disableUpDownKeys="true" selectedIndex={tabIndex}>
         <TabList>
@@ -728,7 +748,7 @@ const OrderPage = () => {
             <div className="tabs-block__step4__modal">
               <div>Подтвердить заказ</div>
               <div className="tabs-block__step4__modal__button">
-                <Link to="/confirmation">
+                <Link to="/confirmation" onClick={() => onClickButtonOK()}>
                   <button className="tabs-block__step4__modal__button__ok">
                     Подтвердить
                   </button>
