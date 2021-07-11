@@ -259,11 +259,7 @@ const OrderPage = () => {
   };
 
   // Итого
-  const [clickButtonOK, setClickButtonOK] = useState(false);
   const onClickButtonOK = () => {
-    debugger;
-    setClickButtonOK(!clickButtonOK);
-
     postData("http://api-factory.simbirsoft1.com/api/db/order");
   };
 
@@ -319,14 +315,6 @@ const OrderPage = () => {
       setIsFetchingCars(false);
     }
   }, []);
-
-  useEffect(async () => {
-    console.log("hhhhhh");
-    debugger;
-    if (clickButtonOK === true) {
-      postData("http://api-factory.simbirsoft1.com/api/db/order");
-    }
-  }, [clickButtonOK]);
 
   useEffect(() => {
     if (allCarsState) {
