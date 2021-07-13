@@ -12,6 +12,7 @@ import DatePicker from "react-datetime-picker";
 import "./DateTimePicker.css";
 import NavState from "../../context/NavState";
 import MainMenu from "../SideBar/MainMenu";
+// import { useHistory } from "react-router-dom";
 
 const OrderPage = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -19,7 +20,10 @@ const OrderPage = () => {
   const [isFetching, setIsFetching] = useState(false);
   const [isFetchingCars, setIsFetchingCars] = useState(false);
   const [costOrder, setCostOrder] = useState(0);
-
+  const [orderId, setOrderId] = useState("");
+  const [rr, setRR] = useState(false);
+  // const { push } = useHistory();
+  debugger;
   // местоположение
 
   const [cityData, setCityData] = useState([]);
@@ -259,9 +263,38 @@ const OrderPage = () => {
   };
 
   // Итого
-  const onClickButtonOK = () => {
-    postData("http://api-factory.simbirsoft1.com/api/db/order");
+  const onClickButtonOK = async () => {
+    const data = {
+      url: "https://api-factory.simbirsoft1.com/api/db/order",
+      orderStatusId: "5e26a191099b810b946c5d89",
+      cityId: selectedCity.id,
+      pointId: selectedPoint.id,
+      carId: selectedModel.id,
+    };
+    const result = await postData(data);
+    debugger;
+    setOrderId(result?.id);
   };
+
+  // const onClickButtonOK = () => {
+  //   setRR(true);
+  // };
+
+  // useEffect(async () => {
+  //   debugger;
+  //   if (rr === true) {
+  //     const data = {
+  //       url: "https://api-factory.simbirsoft1.com/api/db/order",
+  //       orderStatusId: "5e26a191099b810b946c5d89",
+  //       cityId: selectedCity.id,
+  //       pointId: selectedPoint.id,
+  //       carId: selectedModel.id,
+  //     };
+  //     const result = await postData(data);
+  //     debugger;
+  //     setOrderId(result?.id);
+  //   }
+  // }, [rr]);
 
   useEffect(async () => {
     setIsFetching(true);
@@ -736,11 +769,24 @@ const OrderPage = () => {
             <div className="tabs-block__step4__modal">
               <div>Подтвердить заказ</div>
               <div className="tabs-block__step4__modal__button">
-                <Link to="/confirmation" onClick={() => onClickButtonOK()}>
-                  <button className="tabs-block__step4__modal__button__ok">
+                <Link
+                  onClick={() => onClickButtonOK()}
+                  to={
+                    orderId === ""
+                      ? `/confirmation/123`
+                      : `/confirmation/${orderId}`
+                  }
+                >
+                  <button
+                    className="tabs-block__step4__modal__button__ok"
+                    // onClick={
+                    //   (() => onClickButtonOK())//, push(`/confirmation/${orderId}`)
+                    //}
+                  >
                     Подтвердить
                   </button>
                 </Link>
+
                 <button
                   className="tabs-block__step4__modal__button__cancel"
                   onClick={() => setVisibleOrder(false)}
