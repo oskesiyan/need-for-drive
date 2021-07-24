@@ -1,6 +1,7 @@
 import { ReactSVG } from "react-svg";
 import logoIcon from "./../../../img/Icons/LogoIcon.svg";
 import "./Login.scss";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -24,7 +25,8 @@ const Login = () => {
           <div className="login-page__account__enter__text">
             Запросить доступ
           </div>
-          <button className="login-page__account__enter__button">Войти</button>
+<Link to = '/settings'>
+          <button className="login-page__account__enter__button">Войти</button></Link>
         </div>
       </div>
     </div>

@@ -412,6 +412,7 @@ input[type="checkbox"]:checked:after {
   text-align: center;
   border: none;
   color: #ffffff;
+  cursor: pointer;
 }
 .tabs-block__step4__modal__button__cancel {
   background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
@@ -428,6 +429,7 @@ input[type="checkbox"]:checked:after {
   text-align: center;
   border: none;
   color: #ffffff;
+  cursor: pointer;
 }
 
 //preloader
@@ -511,7 +513,7 @@ input[type="checkbox"]:checked:after {
   }
   .tabs-blok__step1__position__mapOrder {
     left: 27px;
-    width: 100vw;
+    width: 80vw;
     padding-right: 32px;
   }
   .css-152ugju-Control {
@@ -561,7 +563,7 @@ input[type="checkbox"]:checked:after {
     top: 205px;
   }
   .tabs-blok__step1__position__mapOrder {
-    width: 100vw;
+    width: 80vw;
     padding-right: 32px;
   }
   .tabs-block__step2-box {

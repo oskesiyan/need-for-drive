@@ -4,17 +4,18 @@ import "./OrderPage.scss";
 import mapOrder from "./../../img/Map_order.png";
 import Select from "react-select";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Header from "../Header/Header";
-import { getData, postData } from "./../../utils/index";
+import { getData, getDate, postData } from "./../../utils/index";
 import OrderDetails from "./OrderDetails/OrderDatails";
 import DatePicker from "react-datetime-picker";
 import "./DateTimePicker.css";
 import NavState from "../../context/NavState";
 import MainMenu from "../SideBar/MainMenu";
-// import { useHistory } from "react-router-dom";
+import moment from "moment";
 
 const OrderPage = () => {
+  const history = useHistory();
   const [tabIndex, setTabIndex] = useState(0);
   const [visibleOrder, setVisibleOrder] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
@@ -22,8 +23,6 @@ const OrderPage = () => {
   const [costOrder, setCostOrder] = useState(0);
   const [orderId, setOrderId] = useState("");
   const [rr, setRR] = useState(false);
-  // const { push } = useHistory();
-  debugger;
   // местоположение
 
   const [cityData, setCityData] = useState([]);
@@ -37,7 +36,7 @@ const OrderPage = () => {
     option: (provided, state) => ({
       ...provided,
       borderBottom: "none",
-      color: state.isSelected ? "white" : "white",
+      color: "white",
       padding: 5,
       zindex: 500,
       background: "black",
@@ -62,11 +61,18 @@ const OrderPage = () => {
     }),
     dropdownIndicator: (base) => ({
       ...base,
-      display: "none", // Custom colour
+      display: "none",
     }),
     menu: () => ({
-      width: 224, // Custom colour
+      width: 224,
       marginLeft: 224,
+      zindex: 500,
+      "@media only screen and (max-width: 767px)": {
+        marginLeft: 125,
+      },
+      "@media only screen and (max-width: 428px)": {
+        marginTop: 0,
+      },
     }),
     menuList: () => ({
       color: "black",
@@ -95,7 +101,7 @@ const OrderPage = () => {
     option: (provided, state) => ({
       ...provided,
       borderBottom: "none",
-      color: state.isSelected ? "white" : "white",
+      color: "white",
       padding: 5,
       zindex: 500,
       background: "black",
@@ -120,11 +126,17 @@ const OrderPage = () => {
     }),
     dropdownIndicator: (base) => ({
       ...base,
-      display: "none", // Custom colour
+      display: "none",
     }),
     menu: () => ({
-      width: 224, // Custom colour
+      width: 224,
       marginLeft: 224,
+      "@media only screen and (max-width: 767px)": {
+        marginLeft: 125,
+      },
+      "@media only screen and (max-width: 428px)": {
+        marginTop: 0,
+      },
     }),
     valueContainer: () => ({
       fontSize: 14,
@@ -194,10 +206,7 @@ const OrderPage = () => {
   const [rightHDState, setRightHDState] = useState(false);
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
-  const currentDate = new Date(Date.now() - 1000 * (60 * 5));
-  let handleColor = (time) => {
-    return time.getHours() > 12 ? "text-success" : "text-error";
-  };
+
   const handleChangeRBColor1 = () => {
     setAllColor(!allColorState);
     if (redColorState) {
@@ -262,39 +271,60 @@ const OrderPage = () => {
     }
   };
 
+  const [dateTT, setDateTT] = useState("");
+  const [costPeriod, setCostPeriod] = useState(0);
+
+  useEffect(() => {
+    setDateTT("");
+    setDateTT(getDate({ fromDate, toDate }));
+  }, [fromDate, toDate]);
+
+  useEffect(() => {
+    if (rateState === "Поминутно") {
+      if (fromDate !== "" && toDate !== "" && toDate - fromDate >= 0) {
+        const minute = (toDate - fromDate) / 60000;
+        const costMin = Math.round(minute * 7);
+        setCostPeriod(costMin);
+      }
+    }
+    if (rateState === "На сутки") {
+      if (fromDate !== "" && toDate !== "" && toDate - fromDate >= 0) {
+        const day = (toDate - fromDate) / (60 * 60 * 24 * 1000);
+        const costDay = Math.round(day * 1999);
+        setCostPeriod(costDay);
+      }
+    }
+  }, [fromDate, toDate, rateState]);
+
   // Итого
-  const onClickButtonOK = async () => {
-    const data = {
-      url: "https://api-factory.simbirsoft1.com/api/db/order",
-      orderStatusId: "5e26a191099b810b946c5d89",
-      cityId: selectedCity.id,
-      pointId: selectedPoint.id,
-      carId: selectedModel.id,
-    };
-    const result = await postData(data);
-    debugger;
-    setOrderId(result?.id);
-  };
 
-  // const onClickButtonOK = () => {
-  //   setRR(true);
-  // };
-
-  // useEffect(async () => {
-  //   debugger;
-  //   if (rr === true) {
-  //     const data = {
-  //       url: "https://api-factory.simbirsoft1.com/api/db/order",
-  //       orderStatusId: "5e26a191099b810b946c5d89",
-  //       cityId: selectedCity.id,
-  //       pointId: selectedPoint.id,
-  //       carId: selectedModel.id,
-  //     };
-  //     const result = await postData(data);
-  //     debugger;
-  //     setOrderId(result?.id);
-  //   }
-  // }, [rr]);
+  useEffect(async () => {
+    let rateId = "";
+    if (rr === true) {
+      if (rateState === "Поминутно") {
+        rateId = "5fd91571935d4e0be16a3c44";
+      } else {
+        rateId = "5fd910f2935d4e0be16a3c40";
+      }
+      const data = {
+        url: "https://api-factory.simbirsoft1.com/api/db/order",
+        orderStatusId: "5e26a191099b810b946c5d89",
+        cityId: selectedCity.id,
+        pointId: selectedPoint.id,
+        carId: selectedModel.id,
+        color: carsColorState,
+        dateFrom: moment(fromDate).valueOf(),
+        dateTo: moment(toDate).valueOf(),
+        price: costOrder + costPeriod,
+        rate: rateId,
+        isFullTank: fullPatrolState,
+        isNeedChildChair: babyChairState,
+        isRightWheel: rightHDState,
+      };
+      const result = await postData(data);
+      setOrderId(result?.id);
+    }
+  }, [rr]);
 
   useEffect(async () => {
     setIsFetching(true);
@@ -428,27 +458,30 @@ const OrderPage = () => {
             </div>
           ) : null}
           <div className="tabs-blok__step1__position">
-            <div className="tabs-blok__step1__position__city">Город</div>
-            <Select
-              isClearable={true}
-              value={selectedCity}
-              onChange={setSelectedCity}
-              // onClick={}
-              options={city}
-              styles={customStylesCity}
-              placeholder="Начните вводить город"
-            />
-            <div className="tabs-blok__step1__position__point">
-              Пункт выдачи{" "}
+            <div>
+              <div className="tabs-blok__step1__position__city">Город</div>
+              <Select
+                isClearable={true}
+                value={selectedCity}
+                onChange={setSelectedCity}
+                options={city}
+                styles={customStylesCity}
+                placeholder="Начните вводить город"
+              />
             </div>
-            <Select
-              isClearable={true}
-              value={selectedPoint}
-              onChange={setSelectedPoint}
-              options={point}
-              styles={customStylesPoint}
-              placeholder="Начните вводить пункт"
-            />
+            <div>
+              <div className="tabs-blok__step1__position__point">
+                Пункт выдачи{" "}
+              </div>
+              <Select
+                isClearable={true}
+                value={selectedPoint}
+                onChange={setSelectedPoint}
+                options={point}
+                styles={customStylesPoint}
+                placeholder="Начните вводить пункт"
+              />
+            </div>
             <div className="tabs-blok__step1__position__map">
               Выбрать на карте:
             </div>
@@ -459,8 +492,8 @@ const OrderPage = () => {
           </div>
           <div>
             <OrderDetails
-              city={selectedCity}
-              point={selectedPoint}
+              city={selectedCity !== null ? selectedCity.label : ""}
+              point={selectedPoint !== null ? selectedPoint.label : ""}
               model={selectedModel}
               priceFrom={18000}
               priceTo={20000}
@@ -540,8 +573,8 @@ const OrderPage = () => {
           </div>
           <div>
             <OrderDetails
-              city={selectedCity}
-              point={selectedPoint}
+              city={selectedCity !== null ? selectedCity.label : ""}
+              point={selectedPoint !== null ? selectedPoint.label : ""}
               model={selectedModel.name}
               priceFrom={selectedModel.priceMin}
               priceTo={selectedModel.priceMax}
@@ -682,23 +715,22 @@ const OrderPage = () => {
           </div>
           <div>
             <OrderDetails
-              city={selectedCity}
-              point={selectedPoint}
+              city={selectedCity !== null ? selectedCity.label : ""}
+              point={selectedPoint !== null ? selectedPoint.label : ""}
               model={selectedModel.name}
               color={carsColorState}
               rate={rateState}
               fullPatrol={fullPatrolState}
               babyChair={babyChairState}
               rightHD={rightHDState}
-              dateFrom={fromDate === null ? "" : fromDate}
-              dateTo={toDate === null ? "" : toDate}
+              dateTT={dateTT}
               priceFrom={selectedModel.priceMin}
               priceTo={selectedModel.priceMax}
               tab1={false}
               tab2={false}
               tab3={true}
               order={false}
-              costOrder={costOrder}
+              costOrder={costOrder + costPeriod}
               setTabIndex={setTabIndex}
               tabIndex={tabIndex}
               buttonName={"Итого"}
@@ -723,15 +755,7 @@ const OrderPage = () => {
                 <b>Доступна с </b>
                 {fromDate === null
                   ? ""
-                  : fromDate.getDate() +
-                    "." +
-                    fromDate.getMonth() +
-                    "." +
-                    fromDate.getFullYear() +
-                    " " +
-                    fromDate.getHours() +
-                    ":" +
-                    fromDate.getMinutes()}
+                  : moment(new Date(fromDate)).format("DD.MM.YY HH:mm")}
               </div>
             </div>
             <img
@@ -744,21 +768,20 @@ const OrderPage = () => {
           </div>
           <div>
             <OrderDetails
-              city={selectedCity}
-              point={selectedPoint}
+              city={selectedCity !== null ? selectedCity.label : ""}
+              point={selectedPoint !== null ? selectedPoint.label : ""}
               model={selectedModel.name}
               color={carsColorState}
               rate={rateState}
               fullPatrol={fullPatrolState}
               babyChair={babyChairState}
               rightHD={rightHDState}
-              dateFrom={fromDate === null ? "" : fromDate}
-              dateTo={toDate === null ? "" : toDate}
+              dateTT={dateTT}
               priceFrom={selectedModel.priceMin}
               priceTo={selectedModel.priceMax}
               tab4={true}
               order={false}
-              costOrder={costOrder}
+              costOrder={costOrder + costPeriod}
               setTabIndex={setTabIndex}
               tabIndex={tabIndex}
               buttonName={"Заказать"}
@@ -769,23 +792,12 @@ const OrderPage = () => {
             <div className="tabs-block__step4__modal">
               <div>Подтвердить заказ</div>
               <div className="tabs-block__step4__modal__button">
-                <Link
-                  onClick={() => onClickButtonOK()}
-                  to={
-                    orderId === ""
-                      ? `/confirmation/123`
-                      : `/confirmation/${orderId}`
-                  }
+                <button
+                  className="tabs-block__step4__modal__button__ok"
+                  onClick={() => setRR(true)}
                 >
-                  <button
-                    className="tabs-block__step4__modal__button__ok"
-                    // onClick={
-                    //   (() => onClickButtonOK())//, push(`/confirmation/${orderId}`)
-                    //}
-                  >
-                    Подтвердить
-                  </button>
-                </Link>
+                  Подтвердить
+                </button>
 
                 <button
                   className="tabs-block__step4__modal__button__cancel"
@@ -798,6 +810,7 @@ const OrderPage = () => {
           ) : (
             ""
           )}
+          {orderId !== "" ? history.push(`/confirmation/${orderId}`) : ""}
         </TabPanel>
       </Tabs>
     </div>

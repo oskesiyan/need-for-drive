@@ -23,7 +23,6 @@ export const getData = async (url) => {
 
 export const postData = async (props) => {
   try {
-    debugger;
     const result = await axios.post(
       `${props.url}`,
       {
@@ -31,14 +30,14 @@ export const postData = async (props) => {
         cityId: `${props.cityId}`,
         pointId: `${props.pointId}`,
         carId: `${props.carId}`,
-        color: "blue",
-        dateFrom: 0,
-        dateTo: 0,
-        rateId: "5fd910f2935d4e0be16a3c40",
-        price: 0,
-        isFullTank: true,
-        isNeedChildChair: true,
-        isRightWheel: true,
+        color: `${props.color}`,
+        dateFrom: props.dateFrom,
+        dateTo: props.dateTo,
+        rateId: props.rate,
+        price: props.price,
+        isFullTank: props.isFullTank,
+        isNeedChildChair: props.isNeedChildChair,
+        isRightWheel: props.isRightWheel,
       },
       {
         headers: {
@@ -48,8 +47,38 @@ export const postData = async (props) => {
       }
     );
     return result?.data?.data;
-    //console.log("👉 Returned data:", result?.data?.data);
   } catch (e) {
     console.log(`😱 Axios request failed: ${e.response}`);
+  }
+};
+
+export const putData = async (props) => {
+  try {
+    const result = await axios.patch(
+      `https://cors-anywhere.herokuapp.com/${props.url}`,
+      {
+        orderStatusId: `${props.orderStatusId}`,
+      },
+      {
+        headers: {
+          "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return result?.data?.data;
+  } catch (e) {
+    console.log(`😱 Axios request failed: ${e.response}`);
+  }
+};
+
+export const getDate = ({ fromDate, toDate }) => {
+  debugger;
+  if (fromDate !== "" && toDate !== "" && toDate - fromDate >= 0) {
+    const dateDifference = toDate - fromDate;
+    const totalSeconds = dateDifference / 1000;
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    return days + "д" + hours + "ч";
   }
 };

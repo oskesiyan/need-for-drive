@@ -1,0 +1,79 @@
+@import "./../../../styles/variables.scss";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+.col {
+  width: 300px;
+  background: white;
+  padding: 20px;
+  border: 1px solid #eeeeee;
+  font-family: 'Open Sans', sans-serif;
+}
+.col * {margin: 0;}
+.widget-title {
+  margin: 0 0 30px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: #242424;
+  overflow: hidden;
+}
+.widget-title:after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;  
+  right: -15px;
+  margin-right: -100%;
+  border-top: 2px solid #cca86d;   
+}
+.price-line {margin-bottom: 20px;}
+.price-line:last-child {margin-bottom: 0;}
+.price-line:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.product-image {
+  width: 80px;
+  float: left;
+}
+.product-image a {
+  display: block;
+  outline: none;
+}
+.product-image img {
+  display: block;
+  width: 100%;
+}
+.product-content {
+  float: left;
+  margin-left: 20px;
+}
+.product-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+.product-title a {
+  text-decoration: none;
+  color: #242424;
+}
+.price-box {
+  color: #666;
+  font-size: 18px;
+  line-height: 1;
+}
+.star-rating {
+  margin-bottom: 10px;
+  font-size: 13px;
+  position: relative;
+  font-family: 'FontAwesome';
+}
+.star-rating:before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #FF9919;
+}

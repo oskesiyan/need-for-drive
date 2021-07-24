@@ -1,55 +1,6 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./OrderDetails.scss";
 
 const OrderDetails = (props) => {
-  const [dateTT, setDateTT] = useState("");
-  const [costPeriod, setCostPeriod] = useState(0);
-  const getDate = () => {
-    setDateTT("");
-    if (
-      props.dateFrom !== "" &&
-      props.dateTo !== "" &&
-      props.dateTo - props.dateFrom >= 0
-    ) {
-      const dateDifference = props.dateTo - props.dateFrom;
-      const totalSeconds = dateDifference / 1000;
-      const days = Math.floor(totalSeconds / 86400);
-      const hours = Math.floor((totalSeconds % 86400) / 3600);
-      setDateTT(days + "д" + hours + "ч");
-    }
-  };
-
-  useEffect(() => {
-    getDate(props.dateFrom, props.dateTo);
-  }, [props.dateFrom, props.dateTo]);
-
-  useEffect(() => {
-    if (props.rate === "Поминутно") {
-      if (
-        props.dateFrom !== "" &&
-        props.dateTo !== "" &&
-        props.dateTo - props.dateFrom >= 0
-      ) {
-        const minute = (props.dateTo - props.dateFrom) / 60000;
-        const costMin = Math.round(minute * 7);
-        setCostPeriod(costMin);
-      }
-    }
-    if (props.rate === "На сутки") {
-      if (
-        props.dateFrom !== "" &&
-        props.dateTo !== "" &&
-        props.dateTo - props.dateFrom >= 0
-      ) {
-        const day = (props.dateTo - props.dateFrom) / (60 * 60 * 24 * 1000);
-        const costDay = Math.round(day * 1999);
-        setCostPeriod(costDay);
-      }
-    }
-  }, [props.dateFrom, props.dateTo, props.rate]);
-
   return (
     <div>
       <div className="order-info">
@@ -64,13 +15,15 @@ const OrderDetails = (props) => {
               {" "}
               <li className="order__city">
                 <span className="order__info">
-                  {props.city === null ? "" : props.city.label}
+                  {props.city === null || props.city === "" ? "" : props.city}
                 </span>
               </li>
               <li className="order__point">
                 <span className="order__text">Пункт выдачи</span>
                 <span className="order__info">
-                  {props.point === null ? "" : props.point.label}
+                  {props.point === null || props.point === ""
+                    ? ""
+                    : props.point}
                 </span>
               </li>
             </ul>
@@ -103,7 +56,7 @@ const OrderDetails = (props) => {
               </li>
               <li className="order__point">
                 <span className="order__text">Длительность аренды</span>
-                <span className="order__info">{dateTT}</span>
+                <span className="order__info">{props.dateTT}</span>
               </li>
               <li className="order__point">
                 <span className="order__text">Тариф</span>
@@ -149,7 +102,7 @@ const OrderDetails = (props) => {
           props.tab3 === true ||
           props.order === true ? (
             <li className="order__price">
-              <b>Цена:</b> {props.costOrder + costPeriod} ₽
+              <b>Цена:</b> {props.costOrder} ₽
             </li>
           ) : (
             <li className="order__price">
@@ -163,7 +116,7 @@ const OrderDetails = (props) => {
                 className="order-info__button"
                 onClick={() => props.setVisibleOrder(true)}
                 disabled={
-                  (props.point !== null) &
+                  (props.point !== "") &
                     (props.tab1 === true) &
                     (props.tab2 === false) &
                     (props.tab3 === false) ||
@@ -188,7 +141,7 @@ const OrderDetails = (props) => {
                 className="order-info__button"
                 onClick={() => props.setTabIndex(props.tabIndex + 1)}
                 disabled={
-                  (props.point !== null) &
+                  (props.point !== "") &
                     (props.tab1 === true) &
                     (props.tab2 === false) &
                     (props.tab3 === false) ||
@@ -212,7 +165,10 @@ const OrderDetails = (props) => {
               ""
             )}
             {props.order === true ? (
-              <button className="order-info__button order">
+              <button
+                className="order-info__button order"
+                onClick={() => props.setCancel(true)}
+              >
                 {props.buttonName}
               </button>
             ) : (
