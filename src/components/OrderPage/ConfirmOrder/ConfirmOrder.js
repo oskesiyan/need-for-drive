@@ -27,7 +27,7 @@ const ConfirmOrder = (props) => {
   useEffect(async () => {
     if (cancel === true) {
       const data = {
-        url: `http://api-factory.simbirsoft1.com/api/db/order/${currentId}`,
+        url: `https://api-factory.simbirsoft1.com/api/db/order/${currentId}`,
         orderStatusId: "5e26a1f5099b810b946c5d8c",
       };
       const result = await putData(data);

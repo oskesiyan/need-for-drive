@@ -3,7 +3,7 @@ import "./react-tabs.scss";
 import "./OrderPage.scss";
 import mapOrder from "./../../img/Map_order.png";
 import Select from "react-select";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "../Header/Header";
 import { getData, getDate, postData } from "./../../utils/index";
@@ -38,7 +38,7 @@ const OrderPage = () => {
       borderBottom: "none",
       color: "white",
       padding: 5,
-      zindex: 500,
+      zIndex: 500,
       background: "black",
     }),
     control: () => ({
@@ -66,7 +66,8 @@ const OrderPage = () => {
     menu: () => ({
       width: 224,
       marginLeft: 224,
-      zindex: 500,
+      zIndex: 500,
+      position: "absolute",
       "@media only screen and (max-width: 767px)": {
         marginLeft: 125,
       },
@@ -103,7 +104,7 @@ const OrderPage = () => {
       borderBottom: "none",
       color: "white",
       padding: 5,
-      zindex: 500,
+      zIndex: -1,
       background: "black",
     }),
     control: () => ({
@@ -111,6 +112,7 @@ const OrderPage = () => {
       marginLeft: 224,
       marginTop: 3,
       textAlign: "end",
+      zIndex: -1,
       "@media only screen and (max-width: 767px)": {
         marginLeft: 125,
       },
@@ -119,6 +121,7 @@ const OrderPage = () => {
       },
     }),
     indicatorsContainer: () => ({
+      zIndex: -1,
       borderBottom: "1px solid #999999",
     }),
     indicatorSeparator: () => ({
@@ -139,8 +142,12 @@ const OrderPage = () => {
       },
     }),
     valueContainer: () => ({
+      zIndex: -1,
       fontSize: 14,
       textAlign: "start",
+    }),
+    Placeholder: () => ({
+      zIndex: -1,
     }),
     clearIndicator: (prevStyle) => ({
       ...prevStyle,
@@ -193,12 +200,7 @@ const OrderPage = () => {
     }
   };
   // Дополнительно
-  const [allColorState, setAllColor] = useState(true);
-  const [redColorState, setRedColor] = useState(false);
-  const [blueColorState, setBlueColor] = useState(false);
-  const [carsColorState, setCarsColor] = useState(null);
-  const [minRateState, setMinRate] = useState(false);
-  const [dayRateState, setDayRate] = useState(false);
+  const [carsColorState, setCarsColor] = useState("Любой");
   const [rateState, setRateState] = useState("");
 
   const [fullPatrolState, setFullPatrolState] = useState(false);
@@ -207,45 +209,6 @@ const OrderPage = () => {
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
 
-  const handleChangeRBColor1 = () => {
-    setAllColor(!allColorState);
-    if (redColorState) {
-      setRedColor(!redColorState);
-    }
-    if (blueColorState) {
-      setBlueColor(!blueColorState);
-    }
-  };
-  const handleChangeRBColor2 = () => {
-    setRedColor(!redColorState);
-    if (allColorState) {
-      setAllColor(!allColorState);
-    }
-    if (blueColorState) {
-      setBlueColor(!blueColorState);
-    }
-  };
-  const handleChangeRBColor3 = () => {
-    setBlueColor(!blueColorState);
-    if (allColorState) {
-      setAllColor(!allColorState);
-    }
-    if (redColorState) {
-      setRedColor(!redColorState);
-    }
-  };
-  const handleChangeRBRateMin = () => {
-    setMinRate(!minRateState);
-    if (dayRateState) {
-      setDayRate(!dayRateState);
-    }
-  };
-  const handleChangeRBRateDay = () => {
-    setDayRate(!dayRateState);
-    if (minRateState) {
-      setMinRate(!minRateState);
-    }
-  };
   const handleChangeCB1 = () => {
     setFullPatrolState(!fullPatrolState);
     if (fullPatrolState === false) {
@@ -390,27 +353,6 @@ const OrderPage = () => {
       setCarsData(allCarsData.filter((el) => el.categoryId?.name === "Люкс"));
     }
   }, [allCarsState, economyCarsState, premiumCarsState, allCarsData]);
-
-  useEffect(() => {
-    if (allColorState) {
-      setCarsColor("Любой");
-    }
-    if (redColorState) {
-      setCarsColor("Красный");
-    }
-    if (blueColorState) {
-      setCarsColor("Голубой");
-    }
-  }, [allColorState, redColorState, blueColorState]);
-
-  useEffect(() => {
-    if (minRateState) {
-      setRateState("Поминутно");
-    }
-    if (dayRateState) {
-      setRateState("На сутки");
-    }
-  }, [minRateState, dayRateState]);
 
   return (
     <div className="tabs-block">
@@ -597,8 +539,8 @@ const OrderPage = () => {
               type="radio"
               value="allColor"
               name="color"
-              checked={allColorState}
-              onChange={handleChangeRBColor1}
+              checked={carsColorState === "Любой"}
+              onChange={() => setCarsColor("Любой")}
             />
             <label for="rb1">Любой</label>
             <input
@@ -606,8 +548,8 @@ const OrderPage = () => {
               type="radio"
               value="red"
               name="color"
-              checked={redColorState}
-              onChange={handleChangeRBColor2}
+              checked={carsColorState === "Красный"}
+              onChange={() => setCarsColor("Красный")}
             />
             <label for="rb2">Красный</label>
             <input
@@ -615,8 +557,8 @@ const OrderPage = () => {
               type="radio"
               value="blue"
               name="color"
-              checked={blueColorState}
-              onChange={handleChangeRBColor3}
+              checked={carsColorState === "Голубой"}
+              onChange={() => setCarsColor("Голубой")}
             />
             <label for="rb3">Голубой</label>
           </div>
@@ -666,8 +608,8 @@ const OrderPage = () => {
               type="radio"
               value="min"
               name="rate"
-              checked={minRateState}
-              onChange={handleChangeRBRateMin}
+              checked={rateState === "Поминутно"}
+              onChange={() => setRateState("Поминутно")}
             />
             <label for="rb4">Поминутно,7₽ мин</label>
             <input
@@ -675,8 +617,8 @@ const OrderPage = () => {
               type="radio"
               value="day"
               name="rate"
-              checked={dayRateState}
-              onChange={handleChangeRBRateDay}
+              checked={rateState === "На сутки"}
+              onChange={() => setRateState("На сутки")}
             />
             <label for="rb5">На сутки,1999 ₽/сутки</label>
           </div>

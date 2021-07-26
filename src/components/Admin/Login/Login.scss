@@ -19,8 +19,6 @@
   font-weight: normal;
   font-size: 24px;
   line-height: 28px;
-  /* identical to box height */
-
   color: $admin_text;
 }
 .login-page__logo__text {
@@ -49,7 +47,6 @@
   line-height: 20px;
   text-align: center;
   letter-spacing: -0.4375px;
-
   color: $admin_text;
 }
 .login-page__account__inputs {
@@ -60,10 +57,7 @@
   font-weight: normal;
   font-size: 10.5px;
   line-height: 12px;
-  /* identical to box height */
-
   letter-spacing: -0.18421px;
-
   color: $admin_text;
 }
 .login-page__account__inputs__login {
@@ -80,10 +74,7 @@
   font-weight: normal;
   font-size: 11px;
   line-height: 13px;
-  /* identical to box height */
-
   letter-spacing: -0.192982px;
-
   color: $admin_text;
 }
 .login-page__account__inputs__password {
@@ -100,10 +91,7 @@
   font-weight: normal;
   font-size: 11px;
   line-height: 13px;
-  /* identical to box height */
-
   letter-spacing: -0.192982px;
-
   color: $admin_text;
 }
 .login-page__account__enter {
@@ -122,12 +110,7 @@
   font-weight: normal;
   font-size: 10.5px;
   line-height: 12px;
-  /* identical to box height */
-
   letter-spacing: -0.18421px;
-
-  /* Blue */
-
   color: $blue;
 }
 .login-page__account__enter__button {
@@ -145,7 +128,6 @@
   line-height: 13px;
   cursor: pointer;
   letter-spacing: -0.0821429px;
-
   color: #ffffff;
 }
 

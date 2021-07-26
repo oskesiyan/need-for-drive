@@ -1,16 +1,4 @@
 @import "./../../styles/variables.scss";
-@font-face {
-  font-family: "Roboto-Light";
-  src: local("Roboto"), url(./../../fonts/Roboto-Light.ttf) format("truetype");
-}
-@font-face {
-  font-family: "Roboto-Medium";
-  src: local("Roboto"), url(./../../fonts/Roboto-Medium.ttf) format("truetype");
-}
-@font-face {
-  font-family: "Roboto-Regular";
-  src: local("Roboto"), url(./../../fonts/Roboto-Regular.ttf) format("truetype");
-}
 
 $textColor: #121212;
 $lineColor: #eeeeee;
@@ -38,8 +26,6 @@ $inputColorLine: #999999;
   display: block;
   background-color: #999999;
   mask-image: url(../../img/Icons/OrderTabVector.svg);
-}
-.tabs-blok__step1__position {
 }
 .tabs-blok__step1__position__city {
   position: absolute;
@@ -83,6 +69,7 @@ $inputColorLine: #999999;
   font-size: 14px;
   line-height: 16px;
   color: $textColor;
+  z-index: -1;
 }
 .tabs-blok__step1__position__mapOrder {
   position: absolute;
@@ -321,7 +308,7 @@ input[type="checkbox"]:checked + label {
 }
 
 input[type="checkbox"]:checked:after {
-  content: url(./../../img/Icons/Check.svg); //"\2714";
+  content: url(./../../img/Icons/Check.svg);
   font-size: 14px;
   position: absolute;
   top: -2px;
@@ -389,8 +376,6 @@ input[type="checkbox"]:checked:after {
   font-weight: normal;
   font-size: 24px;
   line-height: 28px;
-  /* identical to box height */
-
   text-align: center;
 }
 .tabs-block__step4__modal__button {
@@ -432,7 +417,6 @@ input[type="checkbox"]:checked:after {
   cursor: pointer;
 }
 
-//preloader
 .loader__modal {
   position: fixed;
   top: 0;
@@ -443,11 +427,10 @@ input[type="checkbox"]:checked:after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // background-color: rgba(255, 255, 255, 0.9);
 }
 .loader {
-  border: 10px solid #f3f3f3; /* Light grey */
-  border-top: 10px solid #0ec261; /* Blue */
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #0ec261;
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -462,7 +445,6 @@ input[type="checkbox"]:checked:after {
     transform: rotate(360deg);
   }
 }
-//preloader
 
 @media screen and (max-width: $desktop_min) {
   .tabs-blok__step1__position__mapOrder {
@@ -516,6 +498,9 @@ input[type="checkbox"]:checked:after {
     width: 80vw;
     padding-right: 32px;
   }
+  .tabs-block__step2-item {
+    width: 80vw;
+  }
   .css-152ugju-Control {
     margin-left: 130px;
   }
@@ -553,6 +538,7 @@ input[type="checkbox"]:checked:after {
     margin-left: 27px;
     margin-top: 132px;
     position: absolute;
+    width: 80vw;
   }
 }
 @media screen and (max-width: $mobile_min) {

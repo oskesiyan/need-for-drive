@@ -7,7 +7,7 @@ export const getData = async (url) => {
       {
         headers: {
           "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
-          "Access-Control-Allow-Origin": "*", // * или ваш домен
+          "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE",
           "Access-Control-Allow-Headers":
             "Origin, X-Requested-With, Content-Type, Accept",
@@ -53,11 +53,12 @@ export const postData = async (props) => {
 };
 
 export const putData = async (props) => {
+  debugger
   try {
-    const result = await axios.patch(
-      `https://cors-anywhere.herokuapp.com/${props.url}`,
+    const result = await axios.put(
+      `${props.url}`,
       {
-        orderStatusId: `${props.orderStatusId}`,
+        orderStatusId: {id:`${props.orderStatusId}`},
       },
       {
         headers: {
@@ -67,9 +68,76 @@ export const putData = async (props) => {
       }
     );
     return result?.data?.data;
+    debugger
   } catch (e) {
     console.log(`😱 Axios request failed: ${e.response}`);
   }
+};
+
+export const getToken = async (props) => {
+  debugger
+  // try {
+  //   const result = await axios.post(
+  //     "https://api-factory.simbirsoft1.com/api/auth/login/oauth",{},
+     
+  //     {
+  //       username: `${'intern'}`, //`${props.username}`,
+  //       password: `${'intern-S!'}`,//`${props.password}`,
+  //     },
+  //     {
+  //       headers: {
+  //         "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   );
+  //   debugger
+  //   return result?.data?.data;
+  //   debugger
+  // } catch (e) {
+  //   console.log(`😱 Axios request failed: ${e.response}`);
+  // }
+  // debugger;
+  // axios.post("https://api-factory.simbirsoft1.com/api/auth/login/oauth", {
+  //   withCredentials: true,
+  //   headers: {
+  //     "Accept": "application/json",
+  //     "Content-Type": "application/json",
+  //     "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
+  //   },
+  //   auth: {
+  //     username: `${'intern'}`,
+  //     password: `${'intern-S!'}`
+  // }
+  // },
+  //   ).then(function(response) {
+  //   console.log('Authenticated');
+  // }).catch(function(error) {
+  //   console.log('Error on Authentication');
+  // });
+let axios = require("axios");
+debugger
+axios.request({
+  url: "/auth/login",
+  method: "post",
+  baseURL: "https://api-factory.simbirsoft1.com/api",
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
+  },
+  auth: {
+    username: 'intern', 
+    password: 'intern-S!'
+  },
+  
+  data: {
+    "grant_type": "client_credentials",
+    "scope": "public"    
+  }
+}).then(respose => {
+  console.log(respose);  
+}); 
 };
 
 export const getDate = ({ fromDate, toDate }) => {
