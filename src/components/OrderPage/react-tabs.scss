@@ -1,8 +1,4 @@
 @import "./../../styles/variables.scss";
-@font-face {
-  font-family: "Roboto-Bold";
-  src: local("Roboto"), url(./../../fonts/Roboto-Bold.ttf) format("truetype");
-}
 $lineColor: #eeeeee;
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
@@ -67,7 +63,8 @@ $lineColor: #eeeeee;
 @media screen and (max-width: $mobile) {
   .react-tabs {
     &__tab {
-      left: 20px;
+      margin-left: 20px;
+      left: 0px;
     }
   }
 }

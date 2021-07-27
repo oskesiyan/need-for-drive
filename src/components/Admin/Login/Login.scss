@@ -49,6 +49,14 @@
   letter-spacing: -0.4375px;
   color: $admin_text;
 }
+.login-page__account__unauthorized{
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8.5px;
+  text-align: center;
+  color: red;
+}
 .login-page__account__inputs {
   margin-left: 17px;
   margin-right: 17px;

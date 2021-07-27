@@ -1,16 +1,22 @@
+import { useState } from "react";
 import "./OrderDetails.scss";
 
 const OrderDetails = (props) => {
+  const [visibleButton, setVisibleButton] = useState(false);
+  const onClikButton = () => {
+    props.setCancel(true);
+    setVisibleButton(true);
+  };
   return (
     <div>
       <div className="order-info">
         <div className="order-info__order">Ваш заказ:</div>
         <ul className="order">
-          {props.tab1 === true ||
-          props.tab2 === true ||
-          props.tab3 === true ||
-          props.tab4 === true ||
-          props.order === true ? (
+          {props.tab1 ||
+          props.tab2 ||
+          props.tab3 ||
+          props.tab4 ||
+          props.order ? (
             <ul className="test">
               {" "}
               <li className="order__city">
@@ -31,10 +37,7 @@ const OrderDetails = (props) => {
             ""
           )}
 
-          {props.tab2 === true ||
-          props.tab3 === true ||
-          props.tab4 === true ||
-          props.order === true ? (
+          {props.tab2 || props.tab3 || props.tab4 || props.order ? (
             <li className="order__point">
               <span className="order__text">Модель</span>
               <span className="order__info">
@@ -44,9 +47,7 @@ const OrderDetails = (props) => {
           ) : (
             ""
           )}
-          {props.tab3 === true ||
-          props.tab4 === true ||
-          props.order === true ? (
+          {props.tab3 || props.tab4 || props.order ? (
             <ul className="test">
               <li className="order__point">
                 <span className="order__text">Цвет</span>
@@ -64,32 +65,32 @@ const OrderDetails = (props) => {
                   {props.rate === null ? "" : props.rate}
                 </span>
               </li>
-              {props.fullPatrol === false ? (
+              {!props.fullPatrol ? (
                 ""
               ) : (
                 <li className="order__point">
                   <span className="order__text">
-                    {props.fullPatrol === false ? "" : "Полный бак"}
+                    {!props.fullPatrol ? "" : "Полный бак"}
                   </span>
                   <span className="order__info">Да</span>
                 </li>
               )}
-              {props.babyChair === false ? (
+              {!props.babyChair ? (
                 ""
               ) : (
                 <li className="order__point">
                   <span className="order__text">
-                    {props.babyChair === false ? "" : "Детское кресло"}
+                    {!props.babyChair ? "" : "Детское кресло"}
                   </span>
                   <span className="order__info">Да</span>
                 </li>
               )}
-              {props.rightHD === false ? (
+              {!props.rightHD ? (
                 ""
               ) : (
                 <li className="order__point">
                   <span className="order__text">
-                    {props.rightHD === false ? "" : "Правый руль"}
+                    {!props.rightHD ? "" : "Правый руль"}
                   </span>
                   <span className="order__info">Да</span>
                 </li>
@@ -98,9 +99,7 @@ const OrderDetails = (props) => {
           ) : (
             ""
           )}
-          {props.tab4 === true ||
-          props.tab3 === true ||
-          props.order === true ? (
+          {props.tab4 || props.tab3 || props.order ? (
             <li className="order__price">
               <b>Цена:</b> {props.costOrder} ₽
             </li>
@@ -111,50 +110,50 @@ const OrderDetails = (props) => {
           )}
 
           <li className="order__price">
-            {props.tab4 === true ? (
+            {props.tab4 ? (
               <button
                 className="order-info__button"
                 onClick={() => props.setVisibleOrder(true)}
                 disabled={
                   (props.point !== "") &
-                    (props.tab1 === true) &
-                    (props.tab2 === false) &
-                    (props.tab3 === false) ||
+                    props.tab1 &
+                    !props.tab2 &
+                    !props.tab3 ||
                   (props.model !== undefined) &
-                    (props.tab2 === true) &
-                    (props.tab3 === false) &
-                    (props.tab1 === false) ||
+                    props.tab2 &
+                    !props.tab3 &
+                    !props.tab1 ||
                   (props.color !== null) &
                     (props.rate !== "") &
-                    (props.tab2 === false) &
-                    (props.tab3 === true) &
-                    (props.tab1 === false) ||
-                  props.tab4 === true
+                    !props.tab2 &
+                    props.tab3 &
+                    !props.tab1 ||
+                  props.tab4
                     ? false
                     : true
                 }
               >
                 {props.buttonName}
               </button>
-            ) : props.order === false ? (
+            ) : !props.order ? (
               <button
                 className="order-info__button"
                 onClick={() => props.setTabIndex(props.tabIndex + 1)}
                 disabled={
                   (props.point !== "") &
-                    (props.tab1 === true) &
-                    (props.tab2 === false) &
-                    (props.tab3 === false) ||
+                    props.tab1 &
+                    !props.tab2 &
+                    !props.tab3 ||
                   (props.model !== undefined) &
-                    (props.tab2 === true) &
-                    (props.tab3 === false) &
-                    (props.tab1 === false) ||
+                    props.tab2 &
+                    !props.tab3 &
+                    !props.tab1 ||
                   (props.color !== null) &
                     (props.rate !== "") &
-                    (props.tab2 === false) &
-                    (props.tab3 === true) &
-                    (props.tab1 === false) ||
-                  props.tab4 === true
+                    !props.tab2 &
+                    props.tab3 &
+                    !props.tab1 ||
+                  props.tab4
                     ? false
                     : true
                 }
@@ -164,10 +163,13 @@ const OrderDetails = (props) => {
             ) : (
               ""
             )}
-            {props.order === true ? (
+            {props.order ? (
               <button
                 className="order-info__button order"
-                onClick={() => props.setCancel(true)}
+                onClick={
+                  () => onClikButton() //props.setCancel(true)
+                }
+                disabled={visibleButton}
               >
                 {props.buttonName}
               </button>

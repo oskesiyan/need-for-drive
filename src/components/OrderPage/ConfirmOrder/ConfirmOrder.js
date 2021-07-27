@@ -4,19 +4,18 @@ import Header from "../../Header/Header";
 import MainMenu from "../../SideBar/MainMenu";
 import OrderDetails from "../OrderDetails/OrderDatails";
 import "./ConfirmOrder.scss";
-import { useHistory } from "react-router";
 import { getData, getDate, putData } from "../../../utils";
+import { useParams } from "react-router-dom";
 import moment from "moment";
 
 const ConfirmOrder = (props) => {
-  const history = useHistory();
   const [orderData, setOrderData] = useState("");
   const [period, setPeriod] = useState("");
   const [cancel, setCancel] = useState(false);
-  const currentId = history.location.pathname.split("confirmation/")[1];
+  const currentId = useParams();
   useEffect(async () => {
     const result = await getData(
-      `http://api-factory.simbirsoft1.com/api/db/order/${currentId}`
+      `http://api-factory.simbirsoft1.com/api/db/order/${currentId.id}`
     );
     setOrderData(result?.data?.data);
     const fromDate = new Date(result?.data?.data?.dateFrom);
@@ -27,7 +26,7 @@ const ConfirmOrder = (props) => {
   useEffect(async () => {
     if (cancel === true) {
       const data = {
-        url: `https://api-factory.simbirsoft1.com/api/db/order/${currentId}`,
+        url: `https://api-factory.simbirsoft1.com/api/db/order/${currentId.id}`,
         orderStatusId: "5e26a1f5099b810b946c5d8c",
       };
       const result = await putData(data);

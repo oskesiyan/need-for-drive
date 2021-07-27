@@ -53,12 +53,11 @@ export const postData = async (props) => {
 };
 
 export const putData = async (props) => {
-  debugger
   try {
     const result = await axios.put(
       `${props.url}`,
       {
-        orderStatusId: {id:`${props.orderStatusId}`},
+        orderStatusId: { id: `${props.orderStatusId}` },
       },
       {
         headers: {
@@ -68,80 +67,41 @@ export const putData = async (props) => {
       }
     );
     return result?.data?.data;
-    debugger
   } catch (e) {
     console.log(`😱 Axios request failed: ${e.response}`);
   }
 };
 
-export const getToken = async (props) => {
-  debugger
-  // try {
-  //   const result = await axios.post(
-  //     "https://api-factory.simbirsoft1.com/api/auth/login/oauth",{},
-     
-  //     {
-  //       username: `${'intern'}`, //`${props.username}`,
-  //       password: `${'intern-S!'}`,//`${props.password}`,
-  //     },
-  //     {
-  //       headers: {
-  //         "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
-  //         "Content-Type": "application/json",
-  //       },
-  //     }
-  //   );
-  //   debugger
-  //   return result?.data?.data;
-  //   debugger
-  // } catch (e) {
-  //   console.log(`😱 Axios request failed: ${e.response}`);
-  // }
-  // debugger;
-  // axios.post("https://api-factory.simbirsoft1.com/api/auth/login/oauth", {
-  //   withCredentials: true,
-  //   headers: {
-  //     "Accept": "application/json",
-  //     "Content-Type": "application/json",
-  //     "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
-  //   },
-  //   auth: {
-  //     username: `${'intern'}`,
-  //     password: `${'intern-S!'}`
-  // }
-  // },
-  //   ).then(function(response) {
-  //   console.log('Authenticated');
-  // }).catch(function(error) {
-  //   console.log('Error on Authentication');
-  // });
-let axios = require("axios");
-debugger
-axios.request({
-  url: "/auth/login",
-  method: "post",
-  baseURL: "https://api-factory.simbirsoft1.com/api",
-  headers: {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-    "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
-  },
-  auth: {
-    username: 'intern', 
-    password: 'intern-S!'
-  },
-  
-  data: {
-    "grant_type": "client_credentials",
-    "scope": "public"    
+export const getToken = async ({ username, password }) => {
+  const secret = "4cbcea96de";
+  const crypto = require("crypto");
+  const charset = crypto.randomBytes(20).toString("hex");
+
+  const token = btoa(charset + ":" + secret);
+  try {
+    const result = await axios.post(
+      "https://api-factory.simbirsoft1.com/api/auth/login/",
+      {
+        username: username,
+        password: password,
+      },
+
+      {
+        headers: {
+          "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
+          "Content-Type": "application/json",
+          Authorization: `Basic ${token}`,
+        },
+      }
+    );
+    return result?.data;
+  } catch (e) {
+    console.log(`😱 Axios request failed: ${e.response}`);
+    return "unauthorized";
   }
-}).then(respose => {
-  console.log(respose);  
-}); 
 };
 
 export const getDate = ({ fromDate, toDate }) => {
-  debugger;
   if (fromDate !== "" && toDate !== "" && toDate - fromDate >= 0) {
     const dateDifference = toDate - fromDate;
     const totalSeconds = dateDifference / 1000;

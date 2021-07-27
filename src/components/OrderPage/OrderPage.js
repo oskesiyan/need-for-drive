@@ -22,7 +22,7 @@ const OrderPage = () => {
   const [isFetchingCars, setIsFetchingCars] = useState(false);
   const [costOrder, setCostOrder] = useState(0);
   const [orderId, setOrderId] = useState("");
-  const [rr, setRR] = useState(false);
+  const [clickButtonOK, setClickButtonOK] = useState(false);
   // местоположение
 
   const [cityData, setCityData] = useState([]);
@@ -211,7 +211,7 @@ const OrderPage = () => {
 
   const handleChangeCB1 = () => {
     setFullPatrolState(!fullPatrolState);
-    if (fullPatrolState === false) {
+    if (!fullPatrolState) {
       setCostOrder(costOrder + 500);
     } else {
       setCostOrder(costOrder - 500);
@@ -219,7 +219,7 @@ const OrderPage = () => {
   };
   const handleChangeCB2 = () => {
     setBabyChairState(!babyChairState);
-    if (babyChairState === false) {
+    if (!babyChairState) {
       setCostOrder(costOrder + 200);
     } else {
       setCostOrder(costOrder - 200);
@@ -227,7 +227,7 @@ const OrderPage = () => {
   };
   const handleChangeCB3 = () => {
     setRightHDState(!rightHDState);
-    if (rightHDState === false) {
+    if (!rightHDState) {
       setCostOrder(costOrder + 1600);
     } else {
       setCostOrder(costOrder - 1600);
@@ -263,7 +263,7 @@ const OrderPage = () => {
 
   useEffect(async () => {
     let rateId = "";
-    if (rr === true) {
+    if (clickButtonOK) {
       if (rateState === "Поминутно") {
         rateId = "5fd91571935d4e0be16a3c44";
       } else {
@@ -287,7 +287,7 @@ const OrderPage = () => {
       const result = await postData(data);
       setOrderId(result?.id);
     }
-  }, [rr]);
+  }, [clickButtonOK]);
 
   useEffect(async () => {
     setIsFetching(true);
@@ -730,13 +730,13 @@ const OrderPage = () => {
               setVisibleOrder={setVisibleOrder}
             />
           </div>
-          {visibleOrder === true ? (
+          {visibleOrder ? (
             <div className="tabs-block__step4__modal">
               <div>Подтвердить заказ</div>
               <div className="tabs-block__step4__modal__button">
                 <button
                   className="tabs-block__step4__modal__button__ok"
-                  onClick={() => setRR(true)}
+                  onClick={() => setClickButtonOK(true)}
                 >
                   Подтвердить
                 </button>
