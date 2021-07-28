@@ -1,18 +1,25 @@
+import { Link } from "react-router-dom";
 import { ReactSVG } from "react-svg";
-import logoIcon from "./../../../img/Icons/LogoIcon.svg";
+import logoAdmin from "./../../../img/Icons/LogoAdmin.svg";
 import "./MenuAdmin.scss";
 
 const MenuAdmin = () => {
   return (
-    <div class="widget">
-  <h3>Need for drive</h3>
-  <ul>
-    <li><a href="">Карточка автомобиля</a></li>
-    <li><a href="">Список авто</a></li>
-    <li><a href="">Заказы</a></li>
-    <li><a href="">Города</a></li>
-    <li><a href="">Пункты выдачи</a></li>
-  </ul>
+    <div className="menu-admin">
+
+      <Link to="/admin-panel" className="menu-admin__logo">
+            <ReactSVG src={logoAdmin} className="menu-admin__logo__svg" />
+            <div>Need for car</div>
+      </Link>
+      <Link to="/settings-car" className="menu-admin__link">
+            <div>Карточка автомобиля</div>
+      </Link>
+      <Link to="/car-list" className="menu-admin__link">
+            <div>Список авто</div>
+      </Link>
+      <Link to="/order-list" className="menu-admin__link">
+            <div>Заказы</div>
+      </Link>
 </div>
    );
 };

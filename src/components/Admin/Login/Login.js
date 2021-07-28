@@ -2,25 +2,33 @@ import { ReactSVG } from "react-svg";
 import logoIcon from "./../../../img/Icons/LogoIcon.svg";
 import "./Login.scss";
 import { useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getToken } from "../../../utils";
 
 const Login = () => {
+  debugger;
   const [checkLogin, setCheckLogin] = useState(false);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
+  // const [token, setToken] = useState("");
   const history = useHistory();
 
   useEffect(async () => {
     if (checkLogin) {
+      debugger;
       const result = await getToken({ username, password });
-      setToken(result);
+      localStorage.setItem("token", result);
       if (result === "unauthorized") {
         setCheckLogin(false);
       }
     }
   }, [checkLogin]);
+
+  // const onClickButtonLogin = useCallback(async () => {
+  //   debugger;
+  //   const result = await getToken({ username, password });
+  //   localStorage.setItem("token", result);
+  // }, [localStorage.getItem("token")]);
 
   return (
     <div className="login-page">
@@ -30,13 +38,12 @@ const Login = () => {
       </div>
       <div className="login-page__account">
         <div className="login-page__account__text">Вход</div>
-        {token === "unauthorized" ? (
-          <div className="login-page__account__unauthorized">
-            Неправильный логин или пароль!
-          </div>
-        ) : (
-          ""
-        )}
+        {localStorage.getItem("token") !== null &&
+          localStorage.getItem("token") === "unauthorized" && (
+            <div className="login-page__account__unauthorized">
+              Неправильный логин или пароль!
+            </div>
+          )}
 
         <div className="login-page__account__inputs">
           <div>Почта</div>
@@ -58,14 +65,16 @@ const Login = () => {
 
           <button
             className="login-page__account__enter__button"
-            onClick={() => setCheckLogin(true)}
+            onClick={
+              () => setCheckLogin(true) //onClickButtonLogin()
+            }
           >
             Войти
           </button>
 
-          {(token !== "") & (token !== "unauthorized")
-            ? history.push("/settings")
-            : ""}
+          {localStorage.getItem("token") !== null &&
+            localStorage.getItem("token") !== "unauthorized" &&
+            history.push("/admin-panel")}
         </div>
       </div>
     </div>

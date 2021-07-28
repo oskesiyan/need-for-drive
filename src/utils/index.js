@@ -94,7 +94,7 @@ export const getToken = async ({ username, password }) => {
         },
       }
     );
-    return result?.data;
+    return result?.data?.access_token;
   } catch (e) {
     console.log(`😱 Axios request failed: ${e.response}`);
     return "unauthorized";
