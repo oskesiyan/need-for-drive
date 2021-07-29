@@ -1,8 +1,10 @@
 @import "./../../../styles/variables.scss";
+$car_settings: url(../../../img/Icons/CarSettings.svg);
+$car_list: url(../../../img/Icons/CarList.svg);
+$order_list: url(../../../img/Icons/OrderList.svg);
 .menu-admin{
   display: flex;
   width: 285px;
-  height: 100vw;
   box-shadow: 0px 1px 75px rgba(90, 97, 105, 0.11), 0px 2px 4px rgba(90, 97, 105, 0.12), 0px 7.5px 11px rgba(90, 97, 105, 0.1), 0px 3.5px 17.5px rgba(165, 182, 201, 0.1);
   flex-direction: column;
 }
@@ -40,4 +42,33 @@
   letter-spacing: -0.234375px;
   color: $admin_text;
   text-decoration: none;
+
+}
+.menu-admin__active-link{
+  color: $blue;
+  border-left: 4px solid $blue;
+  span{
+    background-color: $blue;
+  }
+}
+.menu-admin__link__svg{
+  height: 11.5px;
+  width: 11.5px;
+  display: block;
+  margin-right: 13.5px;
+  margin-left: 28.5px;
+  background-color: white;
+  background: #CACEDB;
+  &:active {
+    background-color: $blue;
+  }
+}
+.menu-admin__link__svg.car-settings{
+  mask-image: $car_settings;
+}
+.menu-admin__link__svg.car-list{
+  mask-image: $car_list;
+}
+.menu-admin__link__svg.order-list{
+  mask-image: $order_list;
 }

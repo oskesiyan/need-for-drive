@@ -1,12 +1,11 @@
-import { Redirect } from 'react-router-dom';
-import MenuAdmin from '../MenuAdmin/MenuAdmin';
-
+import StartScreenAdmin from "../StartScreenAdmin/StartScreenAdmin";
+import "./OrderList.scss";
 
 const OrderList = () => {
-    if (localStorage.getItem('token') !== "unauthorized")
-    return (
-        <MenuAdmin/>
-    )
-    return <Redirect to="/admin" />;
+  return (
+    <div className="order-list">
+      <StartScreenAdmin />
+    </div>
+  );
 };
 export default OrderList;

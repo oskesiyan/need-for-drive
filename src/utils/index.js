@@ -110,3 +110,14 @@ export const getDate = ({ fromDate, toDate }) => {
     return days + "д" + hours + "ч";
   }
 };
+
+export const isLogin = () => {
+  if (
+    localStorage.getItem("token") &&
+    localStorage.getItem("token") !== "unauthorized"
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};

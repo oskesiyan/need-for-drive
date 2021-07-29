@@ -1,8 +1,10 @@
-import { Redirect } from "react-router-dom";
-import MenuAdmin from "../MenuAdmin/MenuAdmin";
+import StartScreenAdmin from "../StartScreenAdmin/StartScreenAdmin";
 
 const SettingsCar = () => {
-  if (localStorage.getItem("token") !== "unauthorized") return <MenuAdmin />;
-  return <Redirect to="/admin" />;
+  return (
+    <div>
+      <StartScreenAdmin />
+    </div>
+  );
 };
 export default SettingsCar;

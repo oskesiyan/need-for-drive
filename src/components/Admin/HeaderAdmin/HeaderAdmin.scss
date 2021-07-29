@@ -1,0 +1,26 @@
+@import "./../../../styles/variables.scss";
+
+.header-admin{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 67.5px;
+    background: #FFFFFF;
+    box-shadow: 0px 2.5px 9.5px rgba(90, 97, 105, 0.12);
+    
+}
+.header-admin__search{
+    width: 70%;
+    margin-left: 28px;
+}
+.header-admin__message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    box-shadow: 0.5px 0px 0px #CACEDB, -0.5px 0px 0px #CACEDB;
+    height: 100%;
+}
+.header-admin__logout{
+    margin-left: 26.5px;
+}

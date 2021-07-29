@@ -2,33 +2,19 @@ import { ReactSVG } from "react-svg";
 import logoIcon from "./../../../img/Icons/LogoIcon.svg";
 import "./Login.scss";
 import { useHistory } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { getToken } from "../../../utils";
 
 const Login = () => {
-  debugger;
-  const [checkLogin, setCheckLogin] = useState(false);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  // const [token, setToken] = useState("");
   const history = useHistory();
 
-  useEffect(async () => {
-    if (checkLogin) {
-      debugger;
-      const result = await getToken({ username, password });
-      localStorage.setItem("token", result);
-      if (result === "unauthorized") {
-        setCheckLogin(false);
-      }
-    }
-  }, [checkLogin]);
-
-  // const onClickButtonLogin = useCallback(async () => {
-  //   debugger;
-  //   const result = await getToken({ username, password });
-  //   localStorage.setItem("token", result);
-  // }, [localStorage.getItem("token")]);
+  const onClickButtonLogin = useCallback(async () => {
+    const result = await getToken({ username, password });
+    localStorage.setItem("token", result);
+    history.push("/admin-panel");
+  }, [username, password]);
 
   return (
     <div className="login-page">
@@ -65,16 +51,10 @@ const Login = () => {
 
           <button
             className="login-page__account__enter__button"
-            onClick={
-              () => setCheckLogin(true) //onClickButtonLogin()
-            }
+            onClick={() => onClickButtonLogin()}
           >
             Войти
           </button>
-
-          {localStorage.getItem("token") !== null &&
-            localStorage.getItem("token") !== "unauthorized" &&
-            history.push("/admin-panel")}
         </div>
       </div>
     </div>

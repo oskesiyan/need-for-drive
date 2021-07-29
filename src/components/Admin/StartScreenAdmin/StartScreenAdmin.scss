@@ -1,0 +1,13 @@
+@import "./../../../styles/variables.scss";
+.start-screen-admin{
+    display: flex;
+    height: 100vh;
+    overflow-y: hidden;
+    background: $admin_background;
+}
+.start-screen-admin__header-footer{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+}
