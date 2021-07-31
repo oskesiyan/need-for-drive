@@ -10,34 +10,69 @@ const MenuAdmin = () => {
         <ReactSVG src={logoAdmin} className="menu-admin__logo__svg" />
         <div>Need for car</div>
       </Link>
-      <NavLink
-        exact
-        to="/settings-car"
-        className="menu-admin__link"
-        activeClassName="menu-admin__active-link"
-      >
-        <span className="menu-admin__link__svg car-settings" />
-        <div>Карточка автомобиля</div>
-      </NavLink>
-      <NavLink
-        to="/car-list"
-        className="menu-admin__link"
-        activeClassName="menu-admin__active-link"
-      >
-        <span className="menu-admin__link__svg car-list" />
-        <div>Список авто</div>
-      </NavLink>
-      <NavLink
-        to="/order-list"
-        className="menu-admin__link"
-        activeClassName="menu-admin__active-link"
-      >
-        <span
-          className="menu-admin__link__svg order-list"
-          activeClassName="menu-admin__active-svg"
-        />
-        <div>Список заказов</div>
-      </NavLink>
+      <div className="menu-admin__menu">
+        <NavLink
+          exact
+          to="/settings-car"
+          className="menu-admin__link"
+          activeClassName="menu-admin__active-link"
+        >
+          <span className="menu-admin__link__svg car-settings" />
+          <div>Карточка автомобиля</div>
+        </NavLink>
+        <NavLink
+          to="/car-list"
+          className="menu-admin__link"
+          activeClassName="menu-admin__active-link"
+        >
+          <span className="menu-admin__link__svg car-list" />
+          <div>Список авто</div>
+        </NavLink>
+        <NavLink
+          to="/order-list"
+          className="menu-admin__link"
+          activeClassName="menu-admin__active-link"
+        >
+          <span
+            className="menu-admin__link__svg order-list"
+            activeClassName="menu-admin__active-svg"
+          />
+          <div>Список заказов</div>
+        </NavLink>
+        <NavLink
+          to="/order-list"
+          className="menu-admin__link"
+          activeClassName="menu-admin__active-link"
+        >
+          <span
+            className="menu-admin__link__svg order-list"
+            activeClassName="menu-admin__active-svg"
+          />
+          <div>Список городов</div>
+        </NavLink>
+        <NavLink
+          to="/order-list"
+          className="menu-admin__link"
+          activeClassName="menu-admin__active-link"
+        >
+          <span
+            className="menu-admin__link__svg order-list"
+            activeClassName="menu-admin__active-svg"
+          />
+          <div>Список пунктов</div>
+        </NavLink>
+        <NavLink
+          to="/order-list"
+          className="menu-admin__link"
+          activeClassName="menu-admin__active-link"
+        >
+          <span
+            className="menu-admin__link__svg order-list"
+            activeClassName="menu-admin__active-svg"
+          />
+          <div>Список автомобилей</div>
+        </NavLink>
+      </div>
     </div>
   );
 };

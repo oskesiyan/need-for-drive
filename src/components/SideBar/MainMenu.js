@@ -8,6 +8,7 @@ import "./MainMenu.scss";
 const MainMenu = () => {
   const node = useRef();
   const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
+  debugger;
   useOnClickOutside(node, () => {
     if (isMenuOpen) {
       toggleMenuMode();

@@ -2,16 +2,18 @@
 $car_settings: url(../../../img/Icons/CarSettings.svg);
 $car_list: url(../../../img/Icons/CarList.svg);
 $order_list: url(../../../img/Icons/OrderList.svg);
-.menu-admin{
+.menu-admin {
   display: flex;
   width: 285px;
-  box-shadow: 0px 1px 75px rgba(90, 97, 105, 0.11), 0px 2px 4px rgba(90, 97, 105, 0.12), 0px 7.5px 11px rgba(90, 97, 105, 0.1), 0px 3.5px 17.5px rgba(165, 182, 201, 0.1);
+  box-shadow: 0px 1px 75px rgba(90, 97, 105, 0.11),
+    0px 2px 4px rgba(90, 97, 105, 0.12), 0px 7.5px 11px rgba(90, 97, 105, 0.1),
+    0px 3.5px 17.5px rgba(165, 182, 201, 0.1);
   flex-direction: column;
 }
-.menu-admin__logo{
+.menu-admin__logo {
   display: flex;
   flex-direction: row;
-  box-shadow: 0px 1px 0px #E1E5EB;
+  box-shadow: 0px 1px 0px #e1e5eb;
   height: 67.5px;
   width: 285px;
   align-items: center;
@@ -24,13 +26,13 @@ $order_list: url(../../../img/Icons/OrderList.svg);
   color: $admin_text;
   text-decoration: none;
 }
-.menu-admin__logo__svg{
-  margin-left: 7px;
+.menu-admin__logo__svg {
+  margin-right: 7px;
   margin-left: 77.5px;
 }
-.menu-admin__link{
+.menu-admin__link {
   display: flex;
-  box-shadow: inset 0px -1px 0px #E1E5EB;
+  box-shadow: inset 0px -1px 0px #e1e5eb;
   height: 57.5px;
   width: 285px;
   align-items: center;
@@ -42,33 +44,71 @@ $order_list: url(../../../img/Icons/OrderList.svg);
   letter-spacing: -0.234375px;
   color: $admin_text;
   text-decoration: none;
-
 }
-.menu-admin__active-link{
+.menu-admin__active-link {
   color: $blue;
   border-left: 4px solid $blue;
-  span{
+  span {
     background-color: $blue;
   }
 }
-.menu-admin__link__svg{
+.menu-admin__link__svg {
   height: 11.5px;
   width: 11.5px;
   display: block;
   margin-right: 13.5px;
   margin-left: 28.5px;
   background-color: white;
-  background: #CACEDB;
+  background: #cacedb;
   &:active {
     background-color: $blue;
   }
 }
-.menu-admin__link__svg.car-settings{
+.menu-admin__link__svg.car-settings {
   mask-image: $car_settings;
 }
-.menu-admin__link__svg.car-list{
+.menu-admin__link__svg.car-list {
   mask-image: $car_list;
 }
-.menu-admin__link__svg.order-list{
+.menu-admin__link__svg.order-list {
   mask-image: $order_list;
+}
+
+@media screen and (max-width: $mobile) {
+  .menu-admin {
+    width: 100%;
+    height: 98px;
+    flex-direction: column;
+  }
+  .menu-admin__menu {
+    display: flex;
+    overflow-x: scroll;
+  }
+  .menu-admin__link {
+    width: 26%;
+    height: 67.5px;
+    font-size: 13px;
+    text-align: center;
+  }
+  .menu-admin__active-link {
+    border-left: 2px solid $blue;
+  }
+  .menu-admin__logo {
+    width: 100%;
+    height: 30px;
+    font-size: 14px;
+  }
+  .menu-admin__link__svg.car-settings {
+    display: none;
+  }
+  .menu-admin__link__svg.car-list {
+    display: none;
+  }
+  .menu-admin__link__svg.order-list {
+    display: none;
+  }
+  .menu-admin__logo__svg {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
 }
