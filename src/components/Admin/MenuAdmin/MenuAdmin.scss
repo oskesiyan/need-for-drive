@@ -2,6 +2,8 @@
 $car_settings: url(../../../img/Icons/CarSettings.svg);
 $car_list: url(../../../img/Icons/CarList.svg);
 $order_list: url(../../../img/Icons/OrderList.svg);
+$city_list: url(../../../img/Icons/CityList.svg);
+$point_list: url(../../../img/Icons/PointList.svg);
 .menu-admin {
   display: flex;
   width: 285px;
@@ -73,6 +75,12 @@ $order_list: url(../../../img/Icons/OrderList.svg);
 .menu-admin__link__svg.order-list {
   mask-image: $order_list;
 }
+.menu-admin__link__svg.city-list {
+  mask-image: $city_list;
+}
+.menu-admin__link__svg.point-list {
+  mask-image: $point_list;
+}
 
 @media screen and (max-width: $mobile) {
   .menu-admin {
@@ -105,6 +113,12 @@ $order_list: url(../../../img/Icons/OrderList.svg);
     display: none;
   }
   .menu-admin__link__svg.order-list {
+    display: none;
+  }
+  .menu-admin__link__svg.city-list {
+    display: none;
+  }
+  .menu-admin__link__svg.point-list {
     display: none;
   }
   .menu-admin__logo__svg {

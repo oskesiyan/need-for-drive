@@ -40,37 +40,26 @@ const MenuAdmin = () => {
           <div>Список заказов</div>
         </NavLink>
         <NavLink
-          to="/order-list"
+          to="/city-list"
           className="menu-admin__link"
           activeClassName="menu-admin__active-link"
         >
           <span
-            className="menu-admin__link__svg order-list"
+            className="menu-admin__link__svg city-list"
             activeClassName="menu-admin__active-svg"
           />
           <div>Список городов</div>
         </NavLink>
         <NavLink
-          to="/order-list"
+          to="/point-list"
           className="menu-admin__link"
           activeClassName="menu-admin__active-link"
         >
           <span
-            className="menu-admin__link__svg order-list"
+            className="menu-admin__link__svg point-list"
             activeClassName="menu-admin__active-svg"
           />
           <div>Список пунктов</div>
-        </NavLink>
-        <NavLink
-          to="/order-list"
-          className="menu-admin__link"
-          activeClassName="menu-admin__active-link"
-        >
-          <span
-            className="menu-admin__link__svg order-list"
-            activeClassName="menu-admin__active-svg"
-          />
-          <div>Список автомобилей</div>
         </NavLink>
       </div>
     </div>
