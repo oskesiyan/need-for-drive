@@ -1,0 +1,7 @@
+@import "./../../../styles/variables.scss";
+
+.car-list-admin__box_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

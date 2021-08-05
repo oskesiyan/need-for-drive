@@ -31,7 +31,20 @@
     0px 7px 70px rgba(90, 97, 105, 0.1);
   border-radius: 9px;
   height: 386px;
+  overflow-y: scroll;
 }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 1px;
+  background-color: #ffffff;
+  border-radius: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $admin_border_color;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
+
 .order-list-admin__box__info__selection {
   display: flex;
   flex-direction: row;
@@ -42,6 +55,7 @@
 }
 .order-list-admin__box__info__selection__dropdown {
   display: flex;
+  margin-bottom: 14.5px;
 }
 .order-list-admin__box__info__selection__button {
   background: $blue;
@@ -65,14 +79,128 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 12px;
+  margin-left: 21px;
+  margin-bottom: 12px;
+  margin-right: 21px;
+}
+.order-list-admin__box__info__order__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+label {
+  font-family: Roboto-Regular;
+  font-size: 13px;
+}
+.order-list-admin__box__info__order__img {
+  width: 15%;
+  height: 63px;
 }
 .order-list-admin__box__info__order__details {
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.408571px;
+  color: $admin_order_details_text;
+  width: 35%;
+}
+.order-list-admin__box__info__order__details__container {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+}
+.order-list-admin__box__info__order__details__text {
+  display: flex;
+  white-space: nowrap;
+}
+.order-list-admin__box__info__order__details__text__color {
+  color: black;
 }
 .order-list-admin__box__info__order__checkbox {
   display: flex;
   flex-direction: column;
 }
+.order-list-admin__box__info__order__details__color {
+  display: flex;
+  white-space: nowrap;
+}
 .order-list-admin__box__info__order__price {
+  display: flex;
+  align-items: center;
+  font-family: Roboto-Regular;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.754286px;
+  width: 10%;
+}
+.order-list-admin__box__info__pagination {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid $admin_border_color;
+}
+.order-list-admin__box__info__order__btn_container {
+  display: flex;
+  align-items: center;
+}
+.order-list-admin__box__info__order__button {
+  height: 24px;
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  letter-spacing: -0.345714px;
+  color: $admin_order_details_text_button;
+  background: #ffffff;
+}
+.order-list-admin__box__info__order__button.ready {
+  border: 0.5px solid #becad6;
+  box-sizing: border-box;
+  border-radius: 4px 0px 0px 4px;
+}
+.order-list-admin__box__info__order__button.cancel {
+  border: 0.5px solid #becad6;
+  box-sizing: border-box;
+}
+.order-list-admin__box__info__order__button.change {
+  border: 0.5px solid #becad6;
+  box-sizing: border-box;
+  border-radius: 0px 4px 4px 0px;
+}
+
+@media screen and (max-width: $desktop_min_1260) {
+  .order-list-admin__box__info__order__details__container {
+    flex-direction: column;
+  }
+  .order-list-admin__box__info__order__price {
+    font-size: 18px;
+  }
+  .menu-admin {
+    width: 230px;
+  }
+  .order-list-admin__box__info__order__details {
+    width: 30%;
+  }
+  .order-list-admin__box {
+    margin-left: 12px;
+  }
+  .menu-admin__link {
+    width: 230px;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .order-list-admin {
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  .menu-admin {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: $mobile) {
@@ -101,5 +229,19 @@
   }
   .order-list-admin__box__info__order {
     flex-direction: column;
+  }
+  .order-list-admin__box__info__selection__button {
+    margin-left: 16px;
+    margin-bottom: 16px;
+  }
+  .order-list-admin__box__info__order__img {
+    width: 100%;
+    height: 50%;
+  }
+  .order-list-admin__box__info__order__btn_container {
+    margin-top: 12px;
+  }
+  .order-list-admin__box__info__order__details {
+    white-space: nowrap;
   }
 }

@@ -503,7 +503,7 @@ const OrderPage = () => {
                       </div>
                       <img
                         src={
-                          "https://api-factory.simbirsoft1.com/" +
+                          "https://api-factory.simbirsoft1.com" +
                           el?.thumbnail?.path
                         }
                         className="tabs-block__step2-item__img"

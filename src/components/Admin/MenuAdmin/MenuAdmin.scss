@@ -82,7 +82,12 @@ $point_list: url(../../../img/Icons/PointList.svg);
   mask-image: $point_list;
 }
 
-@media screen and (max-width: $mobile) {
+@media screen and (max-width: $desktop_min_1260) {
+  .menu-admin {
+    width: 230px;
+  }
+}
+@media screen and (max-width: $tablet) {
   .menu-admin {
     width: 100%;
     height: 98px;

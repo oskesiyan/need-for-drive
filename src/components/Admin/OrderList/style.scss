@@ -58,7 +58,6 @@ $arrow: url(../../../img/Icons/Arrow_dropdown.svg);
   max-height: 200px;
   overflow-y: auto;
   position: absolute;
-  top: 100%;
   width: 110.5px;
   z-index: 1000;
   font-family: Roboto-Regular;
@@ -107,4 +106,13 @@ $arrow: url(../../../img/Icons/Arrow_dropdown.svg);
   cursor: default;
   display: block;
   padding: 8px 10px;
+}
+
+@media screen and (max-width: $mobile) {
+  .Dropdown-control {
+    width: 95%;
+  }
+  .Dropdown-menu {
+    width: 95%;
+  }
 }

@@ -15,6 +15,7 @@
   src: local("Roboto"), url(./../fonts/Roboto-Regular.ttf) format("truetype");
 }
 $desktop_min: 1439px;
+$desktop_min_1260: 1260px;
 $tablet: 1023px;
 $mobile: 767px;
 $mobile_min: 428px;
@@ -25,3 +26,5 @@ $admin_text: #3d5170;
 $admin_background: #f5f6f8;
 $admin_text_list: #868e96;
 $admin_border_color: #becad6;
+$admin_order_details_text:#889098;
+$admin_order_details_text_button: #5A6169;

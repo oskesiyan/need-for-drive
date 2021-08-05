@@ -1,0 +1,68 @@
+@import "./../../styles/variables.scss";
+
+.pagination-container {
+  display: flex;
+  list-style-type: none;
+
+  .pagination-item {
+    padding: 0 12px;
+    height: 32px;
+    text-align: center;
+    margin: auto 4px;
+    color: $blue;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    letter-spacing: 0.01071em;
+    border-radius: 16px;
+    line-height: 1.43;
+    font-size: 13px;
+    min-width: 32px;
+
+    &.dots:hover {
+      background-color: transparent;
+      cursor: default;
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+      cursor: pointer;
+    }
+
+    &.selected {
+      background-color: $blue;
+      color: white;
+    }
+
+    .arrow {
+      &::before {
+        position: relative;
+
+        content: "»";
+
+        display: inline-block;
+      }
+
+      &.left {
+        margin-top: 5px;
+        transform: rotate(-180deg) translate(-50%);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .pagination-container .pagination-item {
+    margin: 0;
+    letter-spacing: 0;
+    min-width: 0px;
+  }
+}

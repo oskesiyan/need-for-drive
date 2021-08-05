@@ -9,8 +9,7 @@ export const getData = async (url) => {
           "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE",
-          "Access-Control-Allow-Headers":
-            "Origin, X-Requested-With, Content-Type, Accept",
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
         },
       }
     );
@@ -21,7 +20,29 @@ export const getData = async (url) => {
   }
 };
 
+export const getDataList = async (url) => {
+  try {
+    const result = await axios.get(
+      `https://cors-anywhere.herokuapp.com/${url}`,
+      {
+        headers: {
+          "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE",
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+           Authorization: `Bearer ${localStorage.getItem("token")}`
+        },
+      }
+    );
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
 export const postData = async (props) => {
+  debugger
   try {
     const result = await axios.post(
       `${props.url}`,
