@@ -1,38 +1,5 @@
 @import "./../../../styles/variables.scss";
-.order-list-admin {
-  display: flex;
-  height: 100vh;
-  overflow-y: hidden;
-  background: $admin_background;
-}
-.order-list-admin__box {
-  display: flex;
-  flex-direction: column;
-  margin-left: 32px;
-  margin-right: 25px;
-}
-.order-list-admin__box__text {
-  margin-bottom: 25px;
-  font-family: Roboto-Regular;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 29px;
-  line-height: 33px;
-  letter-spacing: -0.725px;
-  color: $admin_text;
-}
-.order-list-admin__box__info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #ffffff;
-  box-shadow: 0px 2px 0px rgba(90, 97, 105, 0.11),
-    0px 4px 8px rgba(90, 97, 105, 0.12), 0px 10px 10px rgba(90, 97, 105, 0.06),
-    0px 7px 70px rgba(90, 97, 105, 0.1);
-  border-radius: 9px;
-  height: auto; //386px
-  // overflow-y: scroll;
-}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 1px;
@@ -45,45 +12,6 @@
   box-shadow: inset 1px 1px 10px #f3faf7;
 }
 
-.order-list-admin__box__info__selection {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 50px;
-  width: 100%;
-  border-bottom: 1px solid $admin_border_color;
-}
-.order-list-admin__box__info__selection__dropdown {
-  display: flex;
-  margin-bottom: 14.5px;
-}
-.order-list-admin__box__info__selection__button {
-  background: $blue;
-  border: 0.5px solid $blue;
-  box-sizing: border-box;
-  border-radius: 4px;
-  width: 95px;
-  height: 29px;
-  margin-top: 15.5px;
-  margin-right: 21.5px;
-  color: #ffffff;
-  font-family: Roboto-Regular;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 11px;
-  line-height: 13px;
-  text-align: center;
-  letter-spacing: -0.345714px;
-}
-.order-list-admin__box__info__order {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 12px;
-  margin-left: 21px;
-  margin-bottom: 12px;
-  margin-right: 21px;
-}
 .order-list-admin__box__info__order__container {
   display: flex;
   flex-direction: row;
@@ -92,20 +20,6 @@
 label {
   font-family: Roboto-Regular;
   font-size: 13px;
-}
-.order-list-admin__box__info__order__img {
-  width: 15%;
-  height: 63px;
-}
-.order-list-admin__box__info__order__details {
-  font-family: Roboto-Regular;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  line-height: 18px;
-  letter-spacing: -0.408571px;
-  color: $admin_order_details_text;
-  width: 35%;
 }
 .order-list-admin__box__info__order__details__container {
   display: flex;
@@ -136,11 +50,6 @@ label {
   letter-spacing: -0.754286px;
   width: 10%;
 }
-.order-list-admin__box__info__pagination {
-  display: flex;
-  justify-content: center;
-  border-top: 1px solid $admin_border_color;
-}
 
 @media screen and (max-width: $desktop_min_1260) {
   .order-list-admin__box__info__order__details__container {
@@ -148,66 +57,5 @@ label {
   }
   .order-list-admin__box__info__order__price {
     font-size: 18px;
-  }
-  .menu-admin {
-    width: 230px;
-  }
-  .order-list-admin__box__info__order__details {
-    width: 30%;
-  }
-  .order-list-admin__box {
-    margin-left: 12px;
-  }
-  .menu-admin__link {
-    width: 230px;
-  }
-}
-
-@media screen and (max-width: $tablet) {
-  .order-list-admin {
-    flex-direction: column;
-    overflow-y: scroll;
-  }
-  .menu-admin {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: $mobile) {
-  .order-list-admin {
-    height: 100%;
-    flex-direction: column;
-    overflow-y: scroll;
-  }
-  .order-list-admin__box {
-    margin-left: 12px;
-    margin-right: 12px;
-    margin-bottom: 12px;
-  }
-  .order-list-admin__box__text {
-    margin-bottom: 0px;
-    font-size: 23px;
-    line-height: 33px;
-  }
-  .order-list-admin__box__info__selection {
-    flex-direction: column;
-    height: auto;
-  }
-  .order-list-admin__box__info__selection__dropdown {
-    flex-direction: column;
-  }
-  .order-list-admin__box__info__order {
-    flex-direction: column;
-  }
-  .order-list-admin__box__info__selection__button {
-    margin-left: 16px;
-    margin-bottom: 16px;
-  }
-  .order-list-admin__box__info__order__img {
-    width: 100%;
-    height: 50%;
-  }
-  .order-list-admin__box__info__order__details {
-    white-space: nowrap;
   }
 }

@@ -86,6 +86,9 @@ $point_list: url(../../../img/Icons/PointList.svg);
   .menu-admin {
     width: 230px;
   }
+  .menu-admin__link {
+    width: 230px;
+  }
 }
 @media screen and (max-width: $tablet) {
   .menu-admin {

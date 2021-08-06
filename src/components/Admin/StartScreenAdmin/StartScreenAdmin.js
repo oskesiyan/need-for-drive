@@ -6,7 +6,7 @@ import "./../StyleAdmin.scss";
 
 const StartScreenAdmin = () => {
   return (
-    <div className="start-screen-admin">
+    <div className="list-admin">
       <MenuAdmin />
       <div className="admin__header-footer">
         <HeaderAdmin />

@@ -1,7 +1,21 @@
 @import "./../../../styles/variables.scss";
 
-.car-list-admin__box_info {
+.car-list-admin__box__info__order__colors {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Roboto-Regular;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.408571px;
+}
+.car-list-admin__box__info__order__price {
+  display: flex;
+  align-items: center;
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.754286px;
+  width: 15%;
+  white-space: nowrap;
 }

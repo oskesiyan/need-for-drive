@@ -1,4 +1,90 @@
 @import "./../../styles/variables.scss";
+.list-admin {
+  display: flex;
+  height: 100vh;
+  overflow-y: hidden;
+  background: $admin_background;
+}
+.list-admin__box {
+  display: flex;
+  flex-direction: column;
+  margin-left: 32px;
+  margin-right: 25px;
+}
+.list-admin__box__text {
+  margin-bottom: 25px;
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 29px;
+  line-height: 33px;
+  letter-spacing: -0.725px;
+  color: $admin_text;
+}
+.list-admin__box__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  box-shadow: 0px 2px 0px rgba(90, 97, 105, 0.11),
+    0px 4px 8px rgba(90, 97, 105, 0.12), 0px 10px 10px rgba(90, 97, 105, 0.06),
+    0px 7px 70px rgba(90, 97, 105, 0.1);
+  border-radius: 9px;
+  height: auto;
+}
+.list-admin__box__info__selection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid $admin_border_color;
+}
+.list-admin__box__info__selection__dropdown {
+  display: flex;
+  margin-bottom: 14.5px;
+}
+.list-admin__box__info__selection__button {
+  background: $blue;
+  border: 0.5px solid $blue;
+  box-sizing: border-box;
+  border-radius: 4px;
+  width: 95px;
+  height: 29px;
+  margin-top: 15.5px;
+  margin-right: 21.5px;
+  color: #ffffff;
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  letter-spacing: -0.345714px;
+}
+.list-admin__box__info__order {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-left: 21px;
+  margin-bottom: 12px;
+  margin-right: 21px;
+}
+.list-admin__box__info__order__img {
+  width: 15%;
+  height: 63px;
+}
+.list-admin__box__info__order__details {
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.408571px;
+  color: $admin_order_details_text;
+  width: 35%;
+}
 .admin-table {
   text-align: center;
   display: inline-block;
@@ -17,8 +103,8 @@
 .admin-table__table {
   border: 1px solid #ccc;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  margin-bottom: 12px;
+  margin-top: 12px;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -54,7 +140,80 @@
   width: 100%;
   height: 100%;
 }
+
+.admin-loader__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.admin-loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid $blue;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 2s linear infinite;
+}
+
+@media screen and (max-width: $desktop_min_1260) {
+  .list-admin__box {
+    margin-left: 12px;
+  }
+  .list-admin__box__info__order__details {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .list-admin {
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+}
+
 @media screen and (max-width: $mobile) {
+  .list-admin {
+    height: 100%;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  .list-admin__box {
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+  }
+  .list-admin__box__text {
+    margin-bottom: 0px;
+    font-size: 23px;
+    line-height: 33px;
+  }
+  .list-admin__box__info__selection {
+    flex-direction: column;
+    height: auto;
+  }
+  .list-admin__box__info__selection__dropdown {
+    flex-direction: column;
+  }
+  .list-admin__box__info__selection__button {
+    margin-left: 16px;
+    margin-bottom: 16px;
+  }
+  .list-admin__box__info__order {
+    flex-direction: column;
+  }
+  .list-admin__box__info__order__img {
+    width: 100%;
+    height: 50%;
+  }
+  .list-admin__box__info__order__details {
+    white-space: nowrap;
+  }
   .admin-table {
     margin-left: 12px;
     margin-right: 12px;
