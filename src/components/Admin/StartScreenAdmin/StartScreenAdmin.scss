@@ -5,13 +5,13 @@
   overflow-y: hidden;
   background: $admin_background;
 }
-.start-screen-admin__header-footer {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
+// .start-screen-admin__header-footer {
+//   display: flex;
+//   justify-content: space-between;
+//   flex-direction: column;
+//   width: 100%;
+//   height: 100%;
+// }
 
 @media screen and (max-width: $mobile) {
 }

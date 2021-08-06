@@ -1,5 +1,4 @@
 import "./FooterAdmin.scss";
-import { ReactSVG } from "react-svg";
 import { Link } from "react-router-dom";
 
 const FooterAdmin = () => {

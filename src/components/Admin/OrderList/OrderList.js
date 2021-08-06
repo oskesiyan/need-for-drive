@@ -4,16 +4,15 @@ import MenuAdmin from "../MenuAdmin/MenuAdmin";
 import "./OrderList.scss";
 import Dropdown from "react-dropdown";
 import "./style.scss";
+import "./../StyleAdmin.scss";
 import { useEffect, useState } from "react";
 import { getDataList } from "../../../utils";
 import Pagination from "../../Paginator/Pagination";
 import { useMemo } from "react";
 import moment from "moment";
-import ButtonReady from "./../../../img/Icons/ButtonReady.svg";
-import ButtonCancel from "./../../../img/Icons/ButtonCancel.svg";
-import ButtonChange from "./../../../img/Icons/ButtonChange.svg";
+import BtnActions from "../BtnActions/BtnActions";
 
-let PageSize = 10;
+let PageSize = 1;
 
 const OrderList = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,7 +38,7 @@ const OrderList = () => {
   return (
     <div className="order-list-admin">
       <MenuAdmin />
-      <div className="start-screen-admin__header-footer">
+      <div className="admin__header-footer">
         <HeaderAdmin />
         <div className="order-list-admin__box">
           <div className="order-list-admin__box__text">Заказы</div>
@@ -78,7 +77,10 @@ const OrderList = () => {
 
             {currentTableData.map((el) => {
               return (
-                <div className="order-list-admin__box__info__order">
+                <div
+                  key={el?.id}
+                  className="order-list-admin__box__info__order"
+                >
                   <img
                     src={
                       "https://api-factory.simbirsoft1.com" +
@@ -122,10 +124,10 @@ const OrderList = () => {
                         id="cb1"
                         type="checkbox"
                         className="regular-checkbox"
-                        checked={el.isFullTank}
+                        defaultChecked={el.isFullTank}
                         // onChange={handleChangeCB1}
                       />
-                      <label for="cb1">Полный бак</label>
+                      <label htmlFor="cb1">Полный бак</label>
                     </div>
 
                     <div>
@@ -133,10 +135,10 @@ const OrderList = () => {
                         id="cb2"
                         type="checkbox"
                         className="regular-checkbox"
-                        checked={el.isNeedChildChair}
+                        defaultChecked={el.isNeedChildChair}
                         // onChange={handleChangeCB2}
                       />
-                      <label for="cb2">Детское кресло</label>
+                      <label htmlFor="cb2">Детское кресло</label>
                     </div>
 
                     <div>
@@ -144,10 +146,10 @@ const OrderList = () => {
                         id="cb3"
                         type="checkbox"
                         className="regular-checkbox"
-                        checked={el.isRightWheel}
+                        defaultChecked={el.isRightWheel}
                         // onChange={handleChangeCB3}
                       />
-                      <label for="cb3">Правый руль</label>
+                      <label htmlFor="cb3">Правый руль</label>
                     </div>
                   </div>
                   {window.screen.width > 1022 && (
@@ -155,26 +157,12 @@ const OrderList = () => {
                       {el.price} ₽
                     </div>
                   )}
-                  <div className="order-list-admin__box__info__order__btn_container">
-                    <div className="order-list-admin__box__info__order__button">
-                      <button className="order-list-admin__box__info__order__button ready">
-                        <img src={ButtonReady} /> Готово
-                      </button>
-                      <button className="order-list-admin__box__info__order__button cancel">
-                        <img src={ButtonCancel} />
-                        Отмена
-                      </button>
-                      <button className="order-list-admin__box__info__order__button change">
-                        <img src={ButtonChange} />
-                        Изменить
-                      </button>
-                    </div>
-                  </div>
+                  <BtnActions />
                 </div>
               );
             })}
 
-            <div className="order-list-admin__box__info__pagination">
+            <div className="admin__pagination">
               <Pagination
                 className="pagination-bar"
                 currentPage={currentPage}

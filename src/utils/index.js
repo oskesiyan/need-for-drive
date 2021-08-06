@@ -9,7 +9,8 @@ export const getData = async (url) => {
           "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE",
-          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept",
         },
       }
     );
@@ -29,8 +30,9 @@ export const getDataList = async (url) => {
           "X-Api-Factory-Application-Id": "5e25c641099b810b946c5d5b",
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE",
-          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
-           Authorization: `Bearer ${localStorage.getItem("token")}`
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     );
@@ -40,9 +42,8 @@ export const getDataList = async (url) => {
   }
 };
 
-
 export const postData = async (props) => {
-  debugger
+  debugger;
   try {
     const result = await axios.post(
       `${props.url}`,

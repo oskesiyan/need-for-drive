@@ -1,0 +1,38 @@
+@import "./../../../styles/variables.scss";
+
+.btn-container {
+  display: flex;
+  align-items: center;
+}
+.btn-container__button {
+  height: 24px;
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  letter-spacing: -0.345714px;
+  color: $admin_order_details_text_button;
+  background: #ffffff;
+}
+.btn-container__button.ready {
+  border: 0.5px solid #becad6;
+  box-sizing: border-box;
+  border-radius: 4px 0px 0px 4px;
+}
+.btn-container__button.cancel {
+  border: 0.5px solid #becad6;
+  box-sizing: border-box;
+}
+.btn-container__button.change {
+  border: 0.5px solid #becad6;
+  box-sizing: border-box;
+  border-radius: 0px 4px 4px 0px;
+}
+
+@media screen and (max-width: $mobile) {
+  .btn-container {
+    margin-top: 12px;
+  }
+}

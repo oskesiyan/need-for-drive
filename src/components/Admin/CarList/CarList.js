@@ -5,12 +5,11 @@ import Pagination from "../../Paginator/Pagination";
 import FooterAdmin from "../FooterAdmin/FooterAdmin";
 import HeaderAdmin from "../HeaderAdmin/HeaderAdmin";
 import MenuAdmin from "../MenuAdmin/MenuAdmin";
-import ButtonReady from "./../../../img/Icons/ButtonReady.svg";
-import ButtonCancel from "./../../../img/Icons/ButtonCancel.svg";
-import ButtonChange from "./../../../img/Icons/ButtonChange.svg";
 import "./CarList.scss";
+import "./../StyleAdmin.scss";
+import BtnActions from "../BtnActions/BtnActions";
 
-let PageSize = 10;
+let PageSize = 1;
 const CarList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const filterStatus = ["Эконом", "Премиум", "Все"];
@@ -34,7 +33,7 @@ const CarList = () => {
   return (
     <div className="order-list-admin">
       <MenuAdmin />
-      <div className="start-screen-admin__header-footer">
+      <div className="admin__header-footer">
         <HeaderAdmin />
         <div className="order-list-admin__box">
           <div className="order-list-admin__box__text">Автомобили</div>
@@ -58,7 +57,7 @@ const CarList = () => {
                 Применить
               </button>
             </div>
-            {currentTableData.map((el) => {
+            {/* {currentTableData.map((el) => {
               return (
                 <div className="car-list-admin__box_info">
                   <img
@@ -82,26 +81,52 @@ const CarList = () => {
                   <div>
                     {el?.priceMin}-{el?.priceMax}{" "}
                   </div>
-                  <div className="order-list-admin__box__info__order__btn_container">
-                    <div className="order-list-admin__box__info__order__button">
-                      <button className="order-list-admin__box__info__order__button ready">
-                        <img src={ButtonReady} /> Готово
-                      </button>
-                      <button className="order-list-admin__box__info__order__button cancel">
-                        <img src={ButtonCancel} />
-                        Отмена
-                      </button>
-                      <button className="order-list-admin__box__info__order__button change">
-                        <img src={ButtonChange} />
-                        Изменить
-                      </button>
-                    </div>
-                  </div>
+                  <BtnActions />
                 </div>
               );
-            })}
+            })} */}
+            <div className="admin-table">
+              <table className="admin-table__table">
+                <tbody>
+                  {currentTableData.map((el) => {
+                    return (
+                      <tr key={el.id}>
+                        <td>
+                          <img
+                            src={
+                              "https://api-factory.simbirsoft1.com" +
+                              el?.thumbnail?.path
+                            }
+                            className="order-list-admin__box__info__order__img"
+                          />
+                        </td>
+                        <td>
+                          <div className="car-list-admin__box_info__details">
+                            <div>{el?.name}</div>
+                            <div>{el?.number}</div>
+                            <div>{el?.categoryId?.name}</div>
+                            <div>
+                              {el?.priceMin}-{el?.priceMax}
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          {el?.colors.map((el) => {
+                            return <div>{el} </div>;
+                          })}
+                        </td>
 
-            <div className="order-list-admin__box__info__pagination">
+                        <td>
+                          <BtnActions />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="admin__pagination">
               <Pagination
                 className="pagination-bar"
                 currentPage={currentPage}

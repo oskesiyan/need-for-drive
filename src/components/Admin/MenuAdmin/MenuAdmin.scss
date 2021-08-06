@@ -95,7 +95,7 @@ $point_list: url(../../../img/Icons/PointList.svg);
   }
   .menu-admin__menu {
     display: flex;
-    overflow-x: scroll;
+    // overflow-x: scroll;
   }
   .menu-admin__link {
     width: 26%;
@@ -104,7 +104,8 @@ $point_list: url(../../../img/Icons/PointList.svg);
     text-align: center;
   }
   .menu-admin__active-link {
-    border-left: 2px solid $blue;
+    border-left: none;
+    border-bottom: 2px solid $blue;
   }
   .menu-admin__logo {
     width: 100%;
